@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [Header("Velocidades")]
-    public float forwardSpeed = 10f;   // velocidade para frente
+    public float forwardSpeed = 3f;   // velocidade para frente
     public float horizontalSpeed = 5f; // velocidade lateral
 
     [Header("Limites da pista")]
@@ -14,11 +14,9 @@ public class PlayerMove : MonoBehaviour
     private Rigidbody rb;
     private float horizontalInput;
 
-    void Awake()
+    void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotation; 
-        // congela rotação para não tombar
+        rb = GetComponent<Rigidbody>();//Pega o componente de rigid body
     }
 
     void Update()
@@ -42,7 +40,7 @@ public class PlayerMove : MonoBehaviour
         // Restringe dentro dos limites
         newPos.x = Mathf.Clamp(newPos.x, minX, maxX);
 
-        // Aplica movimento via física
+        // Aplica movimento
         rb.MovePosition(newPos);
     }
 }
