@@ -5,6 +5,7 @@ public class ObjectSpawner : MonoBehaviour
 {
     [Header("Referências")]
     public Transform player;
+    public PlayerStats playerStats;
 
     [Header("Obstáculos")]
     public GameObject[] obstaclePrefabs;
@@ -36,6 +37,13 @@ public class ObjectSpawner : MonoBehaviour
 
     void Update()
     {
+        if (playerStats.speed<=10)
+        {
+           obstacleSpawnInterval = 11f - playerStats.speed;
+        }else if (playerStats.speed > 10)
+        {
+            obstacleSpawnInterval = 0.5f;
+        }
         // spawn de obstáculos
         obstacleTimer += Time.deltaTime;
         if (obstacleTimer >= obstacleSpawnInterval)
@@ -67,10 +75,10 @@ public class ObjectSpawner : MonoBehaviour
     void SpawnGround()
     {
         //Fica spawnando o chão
-        Vector3 spawnPos = new Vector3(0, 0, nextGroundZ);
+        Vector3 spawnPos = new Vector3(0, -1, nextGroundZ);
         GameObject obj = Instantiate(groundPrefab, spawnPos, Quaternion.identity);
         spawnedObjects.Add(obj);
-        Destroy(groundPrefab, 20f);
+        //adicionar Destroy(groundPrefab, 20f); quando trocar o obj para um prefab
 
         nextGroundZ += groundLength;
     }

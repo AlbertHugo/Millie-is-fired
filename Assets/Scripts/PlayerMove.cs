@@ -3,9 +3,8 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [Header("Velocidades")]
-    public float forwardSpeed = 3f;    // velocidade para frente
     public float laneChangeSpeed = 8f; // velocidade de troca de pista
-    public float jumpForce = 7f;       // força do pulo
+    public float jumpForce = 5f;       // força do pulo
 
     [Header("Pistas")]
     public float laneOffset = 3f; // distância entre pistas
@@ -19,7 +18,6 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
         targetPosition = transform.position;
         stats = GetComponent<PlayerStats>();
     }
@@ -29,12 +27,12 @@ public class PlayerMove : MonoBehaviour
         // Movimento entre pistas
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (currentLane > -1) // limite na esquerda
+            if (currentLane > -1) // Impede que o jogador saia da pista pela esquerda
                 currentLane--;
         }
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (currentLane < 1) // limite na direita
+            if (currentLane < 1) // impede que o jogador saia da pista pela direita
                 currentLane++;
         }
 
@@ -59,10 +57,9 @@ public class PlayerMove : MonoBehaviour
         Vector3 newPos = new Vector3(targetPosition.x, rb.position.y, rb.position.z);
         rb.position = Vector3.MoveTowards(rb.position, newPos, laneChangeSpeed * Time.fixedDeltaTime);
     }
-
-    // Detecta se está no chão (precisa de um collider no "chão")
     void OnCollisionEnter(Collision collision)
     {
+        // Detecta se está no chão
         if (collision.gameObject.CompareTag("Ground"))
             isGrounded = true;
     }
