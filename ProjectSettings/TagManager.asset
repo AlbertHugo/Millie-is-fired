@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - Obstacle
   - Insta Kill
+  - HPBuff
+  - SpeedBuff
+  - DamageBuff
   layers:
   - Default
   - TransparentFX

@@ -12,6 +12,7 @@ public class ObjectSpawner : MonoBehaviour
     public float obstacleSpawnDistance = 40f;
     public float obstacleSpawnInterval = 3f;
     public float laneOffset = 3f;
+    float obstacleBlockEndZ = 0f;
 
     [Header("Chão")]
     public GameObject groundPrefab;
@@ -20,9 +21,10 @@ public class ObjectSpawner : MonoBehaviour
 
     [Header("PowerUps")]
     public GameObject[] powerUpPrefabs; // deve ter exatamente 3 prefabs (um por pista)
-    public float firstSpawnDistance = 1000f;
-    public float repeatEvery = 500f;
+    private float firstSpawnDistance = 250f;
+    private float repeatEvery = 300f;
     public float noObstacleDistance = 10f;
+    private float nextPowerUpScore = 500f;
 
     [Header("Limpeza")]
     public float despawnDistance = 30f; // distância atrás do player para destruir objetos
@@ -53,7 +55,7 @@ public class ObjectSpawner : MonoBehaviour
         }
         else if (playerStats.speed > 10)
         {
-            obstacleSpawnInterval = 0.5f;
+            obstacleSpawnInterval = 0.4f;
         }
 
         // spawn de powerups em milestones
@@ -115,13 +117,13 @@ public class ObjectSpawner : MonoBehaviour
             int index = lane + 1; // -1 -> 0, 0 -> 1, 1 -> 2
             if (index >= 0 && index < powerUpPrefabs.Length)
             {
-                Vector3 pos = new Vector3(lane * laneOffset, 1f, spawnZ);
+                Vector3 pos = new Vector3(lane * laneOffset, 0f, spawnZ+10f);
                 GameObject obj = Instantiate(powerUpPrefabs[index], pos, Quaternion.identity);
                 spawnedObjects.Add(obj);
             }
         }
 
-        // bloquear obstáculos por 10 metros após spawn
+        // bloquear obstáculos após spawn
         obstacleBlockEndZ = spawnZ + noObstacleDistance;
     }
 
