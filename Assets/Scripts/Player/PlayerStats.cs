@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class PlayerStats : MonoBehaviour
 {
+    [Header("Referências")]
+    public AudioClip damageTook;
     [Header("Atributos do Jogador")]
     public float life = 3f;
     private float baseLife = 3f;
@@ -74,6 +77,8 @@ public class PlayerStats : MonoBehaviour
         if (life > 0)
         {
            baseSpeed = baseSpeed / 2;
+            RepeatableCode.PlaySound(damageTook, gameObject.transform.position);
+            StartCoroutine(CameraShake.instance.Shake(0.3f, 0.3f));
         }
         else
         {

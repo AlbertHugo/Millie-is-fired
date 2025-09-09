@@ -1066,6 +1066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8709658904ff55f449347c231bee9229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageTook: {fileID: 8300000, guid: b1d62bcb0fb44914a8c5a69e32d0aef9, type: 3}
   life: 3
   damage: 3
   speed: 4
@@ -1410,6 +1411,7 @@ GameObject:
   - component: {fileID: 2099807970}
   - component: {fileID: 2099807969}
   - component: {fileID: 2099807971}
+  - component: {fileID: 2099807972}
   m_Layer: 0
   m_Name: PlayerFollower
   m_TagString: Untagged
@@ -1494,6 +1496,18 @@ MonoBehaviour:
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   FollowOffset: {x: 0, y: 10, z: -10}
+--- !u!114 &2099807972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099807968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd80e5f6fa319243959027f6693b0e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
