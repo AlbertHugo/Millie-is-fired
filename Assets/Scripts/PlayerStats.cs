@@ -10,9 +10,13 @@ public class PlayerStats : MonoBehaviour
     public float speed = 3f;
 
     // Ainda preciso programar melhor a aplicação deles
+    [Header("Pontuação e distância")]
+    public float score = 0f;
 
     private void FixedUpdate()
     {
+        //código para medir a distância
+        score += gameObject.gameObject.transform.position.z;
         //código de aceleração
         if (speed <= 20)
         {
