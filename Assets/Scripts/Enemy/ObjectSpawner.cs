@@ -26,6 +26,12 @@ public class ObjectSpawner : MonoBehaviour
     public float noObstacleDistance = 10f;
     private float nextPowerUpScore = 500f;
 
+    [Header("Inimigos")]
+    public GameObject enemyPrefab;
+    private float enemySpawnInterval = 10f; // a cada X segundos aparece um
+    private float enemyTimer;
+    private int blockedLane = int.MinValue; // lane que deve ficar sem obstáculo
+
     [Header("Limpeza")]
     public float despawnDistance = 30f; // distância atrás do player para destruir objetos
 
@@ -65,6 +71,14 @@ public class ObjectSpawner : MonoBehaviour
             nextPowerUpScore += repeatEvery;
         }
 
+        // Inimigos
+        enemyTimer += Time.deltaTime;
+        if (enemyTimer >= enemySpawnInterval)
+        {
+            SpawnEnemy();
+            enemyTimer = 0f;
+        }
+
         // spawn de obstáculos
         if (player.position.z > obstacleBlockEndZ)
         {
@@ -88,6 +102,10 @@ public class ObjectSpawner : MonoBehaviour
 
     void SpawnObstacle()
     {
+
+        // se for a lane bloqueada por inimigo, pula
+        if (lane == blockedLane) return;
+
         int lane = Random.Range(-1, 2); // -1, 0, 1
         GameObject prefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
         Vector3 spawnPos = new Vector3(lane * laneOffset, 0, player.position.z + obstacleSpawnDistance);
@@ -125,6 +143,18 @@ public class ObjectSpawner : MonoBehaviour
 
         // bloquear obstáculos após spawn
         obstacleBlockEndZ = spawnZ + noObstacleDistance;
+    }
+
+    void SpawnEnemy()
+    {
+        int lane = Random.Range(-1, 2);
+        Vector3 spawnPos = new Vector3(lane * laneOffset, 0, player.position.z + obstacleSpawnDistance);
+
+        GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        spawnedObjects.Add(enemy);
+
+        // não spawna obstáculo nessa lane
+        blockedLane = lane;
     }
 
     void CleanupObjects()
