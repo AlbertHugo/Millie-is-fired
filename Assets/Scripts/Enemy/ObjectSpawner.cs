@@ -103,10 +103,9 @@ public class ObjectSpawner : MonoBehaviour
     void SpawnObstacle()
     {
 
+        int lane = Random.Range(-1, 2); // -1, 0, 1
         // se for a lane bloqueada por inimigo, pula
         if (lane == blockedLane) return;
-
-        int lane = Random.Range(-1, 2); // -1, 0, 1
         GameObject prefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
         Vector3 spawnPos = new Vector3(lane * laneOffset, 0, player.position.z + obstacleSpawnDistance);
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using Cinemachine;
+using Unity.Cinemachine;
 
 public class CameraShake : MonoBehaviour
 {
@@ -25,12 +25,12 @@ public class CameraShake : MonoBehaviour
     {
         if (noise == null) yield break;
 
-        float originalAmplitude = noise.m_AmplitudeGain;
-        float originalFrequency = noise.m_FrequencyGain;
+        //float originalAmplitude = noise.m_AmplitudeGain;
+        //float originalFrequency = noise.m_FrequencyGain;
 
         // ativa o shake
-        noise.m_AmplitudeGain = magnitude;
-        noise.m_FrequencyGain = magnitude * 2f;
+        //noise.m_AmplitudeGain = magnitude;
+        //noise.m_FrequencyGain = magnitude * 2f;
 
         Time.timeScale = 0.7f; // efeito de slowmotion
 
@@ -43,8 +43,8 @@ public class CameraShake : MonoBehaviour
         }
 
         // restaura valores originais
-        noise.m_AmplitudeGain = originalAmplitude;
-        noise.m_FrequencyGain = originalFrequency;
+        //noise.m_AmplitudeGain = originalAmplitude;
+        //noise.m_FrequencyGain = originalFrequency;
 
         Time.timeScale = 1f;
     }
