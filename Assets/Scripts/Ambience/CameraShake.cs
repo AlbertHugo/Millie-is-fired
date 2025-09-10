@@ -6,7 +6,6 @@ public class CameraShake : MonoBehaviour
 {
     public static CameraShake instance;
 
-    private CinemachineVirtualCamera cinemachineCam;
     private CinemachineBasicMultiChannelPerlin noise;
 
     private void Awake()
@@ -15,24 +14,21 @@ public class CameraShake : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
-
-        cinemachineCam = GetComponent<CinemachineVirtualCamera>();
-        if (cinemachineCam != null)
-            noise = cinemachineCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        noise = GetComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
     public IEnumerator Shake(float duration, float magnitude)
     {
         if (noise == null) yield break;
 
-        //float originalAmplitude = noise.m_AmplitudeGain;
-        //float originalFrequency = noise.m_FrequencyGain;
+        float originalAmplitude = noise.AmplitudeGain;
+        float originalFrequency = noise.FrequencyGain;
 
         // ativa o shake
-        //noise.m_AmplitudeGain = magnitude;
-        //noise.m_FrequencyGain = magnitude * 2f;
+        noise.AmplitudeGain = magnitude;
+        noise.FrequencyGain = magnitude * 2f;
 
-        Time.timeScale = 0.7f; // efeito de slowmotion
+        Time.timeScale = 0.9f; // efeito de slowmotion
 
         float elapsed = 0f;
 
@@ -43,8 +39,8 @@ public class CameraShake : MonoBehaviour
         }
 
         // restaura valores originais
-        //noise.m_AmplitudeGain = originalAmplitude;
-        //noise.m_FrequencyGain = originalFrequency;
+        noise.AmplitudeGain = originalAmplitude;
+        noise.FrequencyGain = originalFrequency;
 
         Time.timeScale = 1f;
     }

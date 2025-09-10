@@ -72,17 +72,17 @@ public class PlayerStats : MonoBehaviour
     //código de dano básico
     public void TakeDamage(float damage)
     {
-        life -= damage;
-        Debug.Log(life);
-        if (life > 0)
+        baseLife -= damage;
+        Debug.Log("Vida:" + life);
+        if (baseLife+HPBuff > 0)
         {
            baseSpeed = baseSpeed / 2;
             RepeatableCode.PlaySound(damageTook, gameObject.transform.position);
-            StartCoroutine(CameraShake.instance.Shake(0.3f, 0.3f));
+            StartCoroutine(CameraShake.instance.Shake(0.3f, 1.5f));
         }
         else
         {
-            SceneManager.LoadScene("stage1");
+            SceneManager.LoadScene("Defeat");
         }
     }
 }
