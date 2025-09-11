@@ -24,11 +24,16 @@ public class ObjectSpawner : MonoBehaviour
     private float firstSpawnDistance = 250f;
     private float repeatEvery = 300f;
     public float noObstacleDistance = 10f;
-    private float nextPowerUpScore = 500f;
+    private float nextPowerUpDistance = 500f;
+
+
+    [Header("Armas")]
+    public GameObject[] weaponPrefabs;
+    private float spawnDistance = 100f;
 
     [Header("Inimigos")]
     public GameObject enemyPrefab;
-    private float enemySpawnInterval = 10f; // a cada X segundos aparece um
+    private float enemySpawnInterval = 7f; // a cada X segundos aparece um
     private float enemyTimer;
     private int blockedLane = int.MinValue; // lane que deve ficar sem obstáculo
 
@@ -47,12 +52,12 @@ public class ObjectSpawner : MonoBehaviour
         {
             SpawnGround();
         }
-        nextPowerUpScore = firstSpawnDistance;
+        nextPowerUpDistance = firstSpawnDistance;
     }
 
     void Update()
     {
-        float score = playerStats.score; //distância percorrida
+        float distance = playerStats.distance; //distância percorrida
 
         //aumento gradual de dificuldade
         if (playerStats.speed <= 10&&playerStats.speed>=5)
@@ -65,10 +70,17 @@ public class ObjectSpawner : MonoBehaviour
         }
 
         // spawn de powerups em milestones
-        if (score >= nextPowerUpScore)
+        if (distance >= nextPowerUpDistance)
         {
             SpawnPowerUps();
-            nextPowerUpScore += repeatEvery;
+            nextPowerUpDistance += repeatEvery;
+        }
+
+        //spawn de armas
+        if (distance >= spawnDistance && spawnDistance > 5f)
+        {
+            SpawnWeapon();
+            spawnDistance = 4f;
         }
 
         // Inimigos
@@ -136,6 +148,26 @@ public class ObjectSpawner : MonoBehaviour
             {
                 Vector3 pos = new Vector3(lane * laneOffset, 0f, spawnZ+10f);
                 GameObject obj = Instantiate(powerUpPrefabs[index], pos, Quaternion.identity);
+                spawnedObjects.Add(obj);
+            }
+        }
+
+        // bloquear obstáculos após spawn
+        obstacleBlockEndZ = spawnZ + noObstacleDistance;
+    }
+
+    void SpawnWeapon()
+    {
+        float spawnZ = player.position.z + obstacleSpawnDistance;
+
+        // uma por lane: -1, 0, 1
+        for (int lane = -1; lane <= 1; lane++)
+        {
+            int index = lane + 1; // -1 -> 0, 0 -> 1, 1 -> 2
+            if (index >= 0 && index < weaponPrefabs.Length)
+            {
+                Vector3 pos = new Vector3(lane * laneOffset, 1f, spawnZ+10f);
+                GameObject obj = Instantiate(weaponPrefabs[index], pos, Quaternion.identity);
                 spawnedObjects.Add(obj);
             }
         }

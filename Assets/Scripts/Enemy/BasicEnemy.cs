@@ -6,12 +6,15 @@ public class BasicEnemy : MonoBehaviour
     public float laneChangeSpeed = 5f;
     public float laneOffset = 3f;
 
+    public float enemyLife = 15f;
+
     private Transform player;
     private Rigidbody rb;
     private int currentLane = 0;
 
     void Start()
     {
+        enemyLife = 15f;
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -39,5 +42,14 @@ public class BasicEnemy : MonoBehaviour
 
         Vector3 newPos = new Vector3(newX, rb.position.y, rb.position.z) + forwardMove;
         rb.MovePosition(newPos);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        enemyLife -= damage;
+        if (enemyLife <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

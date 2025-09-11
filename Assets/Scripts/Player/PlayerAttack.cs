@@ -2,25 +2,35 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    // CÛdigo completamente provisÛrio, apenas para testes
-    public GameObject projectile;
-    private float fireRate = 0.5f;
-    private float nextFireTime = 0f;
+    public static GameObject projectile; // prefab atribu√≠do pelo power-up
+    public Transform firePoint;          // onde o proj√©til nasce (pode ser null)
+    public float fireRate = 0.5f;
+    private float fireTimer;
+
+    private PlayerStats stats;
+
+    void Start()
+    {
+        stats = GetComponent<PlayerStats>();
+    }
 
     void Update()
     {
-        HandleShooting();
-    }
-
-    void HandleShooting()
-    {
-        if (Time.time >= nextFireTime)
+        fireTimer += Time.deltaTime;
+        if (fireTimer >= fireRate && projectile != null)
         {
-            GameObject selectedShot = projectile;
+            fireTimer = 0f;
 
-            nextFireTime = Time.time + fireRate;
-            Vector3 spawnPosition = transform.position + transform.forward * 1.0f;
-            Instantiate(selectedShot, spawnPosition, transform.rotation);
+            Vector3 spawnPos = (firePoint != null) ? firePoint.position : transform.position + transform.forward * 1f;
+            GameObject projObj = Instantiate(projectile, spawnPos, transform.rotation);
+
+            // configura proj√©til (velocidade e dano)
+            ProjectileMove pm = projObj.GetComponent<ProjectileMove>();
+            if (pm != null)
+            {
+                float projSpeed = (stats != null) ? stats.speed * 2f : 6f;            // 2x speed do player
+                pm.Initialize(projSpeed);
+            }
         }
     }
 }

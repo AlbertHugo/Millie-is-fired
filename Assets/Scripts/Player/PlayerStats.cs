@@ -10,7 +10,9 @@ public class PlayerStats : MonoBehaviour
     [Header("Atributos do Jogador")]
     public float life = 3f;
     private float baseLife = 3f;
-    public float damage = 3f; 
+    public static float damage = 3f;
+
+    public static float baseATK = 0f;
     public float speed = 4f;
     private float baseSpeed = 4f;
 
@@ -21,21 +23,24 @@ public class PlayerStats : MonoBehaviour
 
     // Ainda preciso programar melhor a aplicação deles
     [Header("Pontuação e distância")]
+    public float distance = 0f;
     public float score = 0f;
 
     private void FixedUpdate()
     {
         //código para medir a distância
-        score = gameObject.gameObject.transform.position.z;
+        distance = gameObject.gameObject.transform.position.z;
         //código de aceleração
         if (speed <= 20)
         {
             baseSpeed += gameObject.transform.position.z / 5000;
         }
         //velocidade é multiplicada pelo buff de velocidade atual
-        speed=baseSpeed*SPDBuff;
+        speed = baseSpeed * SPDBuff;
         //vida soma com o buff ao invés de multiplicar, para ficar sempre em valores inteiros
         life = baseLife + HPBuff;
+        //dano também é multiplicado
+        damage = baseATK * ATKBuff;
     }
     private void OnTriggerEnter(Collider other)
     {
