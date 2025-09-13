@@ -10,6 +10,7 @@ TagManager:
   - HPBuff
   - SpeedBuff
   - DamageBuff
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public static GameObject projectile; // prefab atribuído pelo power-up
-    public Transform firePoint;          // onde o projétil nasce (pode ser null)
+    public static GameObject projectile; 
+    public Transform firePoint;
     public float fireRate = 0.5f;
     private float fireTimer;
 
@@ -16,20 +16,29 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Time.timeScale = 0f;
+        }
         fireTimer += Time.deltaTime;
         if (fireTimer >= fireRate && projectile != null)
         {
             fireTimer = 0f;
 
-            Vector3 spawnPos = (firePoint != null) ? firePoint.position : transform.position + transform.forward * 1f;
-            GameObject projObj = Instantiate(projectile, spawnPos, transform.rotation);
+            // posição de spawn
+            Vector3 spawnPos = (firePoint != null) 
+                ? firePoint.position 
+                : transform.position + transform.forward * 1f;
 
-            // configura projétil (velocidade e dano)
+            GameObject projObj = Instantiate(projectile, spawnPos, Quaternion.identity);
+
+            // pega componente e inicializa
             ProjectileMove pm = projObj.GetComponent<ProjectileMove>();
             if (pm != null)
             {
-                float projSpeed = (stats != null) ? stats.speed * 2f : 6f;            // 2x speed do player
-                pm.Initialize(projSpeed);
+                float projSpeed = (stats != null) ? stats.speed * 2f : 6f;
+                Vector3 projDirection = transform.forward;
+                pm.Initialize(projDirection, projSpeed);
             }
         }
     }

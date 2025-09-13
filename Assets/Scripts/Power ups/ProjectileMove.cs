@@ -1,46 +1,27 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class ProjectileMove : MonoBehaviour
 {
+    private float speed;
+
+    private float baseSpeed = 20f;
+
+    private float actualSpeed;
+    private Vector3 direction;
     public float lifetime = 5f;
-    private float speed = 10f;
 
-    private Rigidbody rb;
-    private bool initialized = false;
-
-    void Awake()
+    public void Initialize(Vector3 dir, float spd)
     {
-        rb = GetComponent<Rigidbody>();
+        direction = dir.normalized; // garante direção unitária
+        speed = spd;
+
+        Destroy(gameObject, lifetime); // autodestruir
     }
 
-    /// <summary>
-    /// Deve ser chamado logo após o Instantiate para configurar velocidade e dano.
-    /// </summary>
-    public void Initialize(float projectileSpeed)
+    void Update()
     {
-        speed = projectileSpeed;
-
-        // aplica velocidade imediatamente
-        rb.velocity = transform.forward * speed;
-
-        // garantir autodestruição para não acumular objetos
-        Destroy(gameObject, lifetime);
-
-        initialized = true;
-    }
-
-    // fallback: se por alguma razão Initialize não foi chamado, tenta buscar o Player e usar speed atual
-    void Start()
-    {
-        if (!initialized)
-        {
-            PlayerStats ps = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerStats>();
-            float fallbackSpeed = (ps != null) ? ps.speed * 2f : speed;
-            rb.velocity = transform.forward * fallbackSpeed;
-            Destroy(gameObject, lifetime);
-            initialized = true;
-        }
+        // Move constantemente na direção definida
+        transform.position += direction * speed * Time.deltaTime;
     }
 
     void OnTriggerEnter(Collider other)
@@ -56,7 +37,6 @@ public class ProjectileMove : MonoBehaviour
         }
         else if (!other.CompareTag("Player"))
         {
-            // colidiu com cenário ou outros — destrói (ajuste conforme necessidade)
             Destroy(gameObject);
         }
     }
