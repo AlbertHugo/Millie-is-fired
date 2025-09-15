@@ -60,6 +60,7 @@ public class PlayerStats : MonoBehaviour
             if (SPDBuff < 3)
             {
                 SPDBuff +=0.1f;
+                Object.FindFirstObjectByType<UpgradeNotifier>().ShowUpgrade("Velocidade aumentada!");
             }
             Destroy(other.gameObject);
         }
@@ -67,11 +68,13 @@ public class PlayerStats : MonoBehaviour
         {
             ATKBuff += 0.1f;
             Destroy(other.gameObject);
+            Object.FindFirstObjectByType<UpgradeNotifier>().ShowUpgrade("Dano aumentado!");
         }
         else if((other.gameObject.tag =="HPBuff"))
         {
             HPBuff += 1f;
             Destroy(other.gameObject);
+            Object.FindFirstObjectByType<UpgradeNotifier>().ShowUpgrade("Vida aumentada!");
         }
     }
     //código de dano básico

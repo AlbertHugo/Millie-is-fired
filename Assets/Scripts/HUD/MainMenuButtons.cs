@@ -11,7 +11,14 @@ public void StartGame()
     SceneManager.LoadScene("Stage1");
 }
 
-public void LeaveGame()
+
+    public void GoToSettings()
+    {
+        // Manda para a cena de settings uau
+        SceneManager.LoadScene("Settings");
+    }
+
+    public void LeaveGame()
     {
         // literalmente fecha o jogo
         Application.Quit();

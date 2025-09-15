@@ -224,15 +224,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 441457742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 14}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 18.207}
+  m_LocalScale: {x: 1.6011, y: 1.6011, z: 1.6011}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2045272307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 22, y: 182}
+  m_AnchoredPosition: {x: 35.223, y: 291.39}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &441457744
@@ -481,16 +481,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393876888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -4.2074}
+  m_LocalScale: {x: 1.6011, y: 1.6011, z: 1.6011}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2045272307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -17.769043, y: 0.0006713867}
+  m_SizeDelta: {x: -859.25, y: -405.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1393876890
 MonoBehaviour:
@@ -557,15 +557,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423249025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 2, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -4.2074}
+  m_LocalScale: {x: 1.9213201, y: 3.2022, z: 1.6011}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2045272307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7, y: -115}
+  m_AnchoredPosition: {x: 11.207, y: -184.12}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1423249027
@@ -700,8 +700,8 @@ Transform:
   m_GameObject: {fileID: 1427129595}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -4.2074}
+  m_LocalScale: {x: 1.6011, y: 1.6011, z: 1.6011}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2045272307}
@@ -733,15 +733,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478121018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 2, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -4.2074}
+  m_LocalScale: {x: 1.9213201, y: 3.2022, z: 1.6011}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2045272307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7, y: 44}
+  m_AnchoredPosition: {x: 11.207, y: 70.446}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1478121020
@@ -1002,15 +1002,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931953489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 2, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -4.2074}
+  m_LocalScale: {x: 1.9213201, y: 3.2022, z: 1.6011}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2045272307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7, y: -35.8}
+  m_AnchoredPosition: {x: 11.207, y: -57.318}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1931953491
@@ -1056,7 +1056,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1931953492}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1427129596}
+        m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
+        m_MethodName: GoToSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1931953492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1146,7 +1158,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
