@@ -8,8 +8,8 @@ public class UpgradeNotifier : MonoBehaviour
     public TextMeshProUGUI upgradeText;
     public float slideDuration = 0.5f;
     public float displayTime = 2f;
-    public Vector2 hiddenPosition; // posição fora da tela
-    public Vector2 visiblePosition; // posição visível
+    public Vector2 hiddenPosition; // posicao fora da tela
+    public Vector2 visiblePosition; // posicao visivel
 
     private RectTransform rectTransform;
     private Coroutine currentRoutine;
@@ -22,7 +22,7 @@ public class UpgradeNotifier : MonoBehaviour
 
     public void ShowUpgrade(string message)
     {
-        // Se já está rodando uma animação, interrompe
+        // Se ja esta rodando uma animacao, interrompe
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
 
