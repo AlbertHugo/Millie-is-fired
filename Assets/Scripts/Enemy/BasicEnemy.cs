@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class BasicEnemy : MonoBehaviour
 {
     public float forwardSpeed = 3f;
     public float laneChangeSpeed = 5f;
     public float laneOffset = 3f;
+    public VisualEffect damageTaken;
 
     public float enemyLife = 15f;
 
@@ -14,6 +16,7 @@ public class BasicEnemy : MonoBehaviour
 
     void Start()
     {
+        damageTaken.gameObject.SetActive(false);
         enemyLife = 15f;
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -47,6 +50,11 @@ public class BasicEnemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         enemyLife -= damage;
+        damageTaken.gameObject.SetActive(true);
+        VisualEffect vfxDamage = GameObject.Instantiate(damageTaken, gameObject.transform.position, Quaternion.identity);
+        vfxDamage.Play();
+        GameObject.Destroy(vfxDamage.gameObject, 0.5f);
+        damageTaken.gameObject.SetActive(false);
         if (enemyLife <= 0)
         {
             Destroy(gameObject);
