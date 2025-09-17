@@ -2,11 +2,14 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.VFX;
 
 public class PlayerStats : MonoBehaviour
 {
     [Header("Referências")]
     public AudioClip damageTook;
+    public VisualEffect damaged;
+
     [Header("Atributos do Jogador")]
     public float life = 3f;
     private float baseLife = 3f;
@@ -25,6 +28,11 @@ public class PlayerStats : MonoBehaviour
     [Header("Pontuação e distância")]
     public float distance = 0f;
     public float score = 0f;
+
+    private void Start()
+    {
+        damaged.gameObject.SetActive(false);
+    }
 
     private void FixedUpdate()
     {
@@ -81,7 +89,11 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(float damage)
     {
         baseLife -= damage;
-        Debug.Log("Vida:" + life);
+        damaged.gameObject.SetActive(true);
+        VisualEffect vfxDamage = GameObject.Instantiate(damaged, gameObject.transform.position, Quaternion.identity);
+        vfxDamage.Play();
+        GameObject.Destroy(vfxDamage.gameObject, 0.5f);
+        damaged.gameObject.SetActive(false);
         if (baseLife+HPBuff > 0)
         {
            baseSpeed = baseSpeed / 2;

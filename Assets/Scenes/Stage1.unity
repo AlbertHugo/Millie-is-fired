@@ -1910,6 +1910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageTook: {fileID: 8300000, guid: b1d62bcb0fb44914a8c5a69e32d0aef9, type: 3}
+  damaged: {fileID: 1211772272}
   life: 3
   speed: 4
   HPBuff: 0
