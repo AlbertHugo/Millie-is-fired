@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class ObjectSpawner : MonoBehaviour
 {
@@ -60,7 +61,7 @@ public class ObjectSpawner : MonoBehaviour
         float distance = playerStats.distance; //distância percorrida
 
         //aumento gradual de dificuldade
-        if (playerStats.speed <= 10&&playerStats.speed>=5)
+        if (playerStats.speed <= 10 && playerStats.speed >= 5)
         {
             obstacleSpawnInterval = 11f - playerStats.speed;
         }
@@ -69,6 +70,10 @@ public class ObjectSpawner : MonoBehaviour
             obstacleSpawnInterval = 0.4f;
         }
 
+    if (distance < 3000f)
+    {
+
+        
         // spawn de powerups em milestones
         if (distance >= nextPowerUpDistance)
         {
@@ -100,6 +105,11 @@ public class ObjectSpawner : MonoBehaviour
                 SpawnObstacle();
                 obstacleTimer = 0f;
             }
+        }
+    //Carrega tela de vitoria ao chegar na distância determinada. Para de spawnar tudo um pouco antes
+    }else if (distance >= 3250)
+        {
+            SceneManager.LoadScene("Victory");
         }
 
         // spawn de chão sempre que necessário
