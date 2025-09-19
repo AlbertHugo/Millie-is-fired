@@ -11,6 +11,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
+        projectile = null;
         stats = GetComponent<PlayerStats>();
     }
 
