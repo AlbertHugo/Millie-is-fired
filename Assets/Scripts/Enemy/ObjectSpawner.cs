@@ -107,7 +107,7 @@ public class ObjectSpawner : MonoBehaviour
             }
         }
     //Carrega tela de vitoria ao chegar na distância determinada. Para de spawnar tudo um pouco antes
-    }else if (distance >= 3250)
+    }else if (distance >= 3100)
         {
             SceneManager.LoadScene("Victory");
         }
