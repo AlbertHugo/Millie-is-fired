@@ -53,7 +53,7 @@ public class PlayerStats : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Dano de objeto básico
-        if (other.gameObject.tag == "Obstacle")
+        if (other.gameObject.tag == "Obstacle"||other.gameObject.tag == "Enemy")
         {
             TakeDamage(1);
         //Dano de morte imediata
@@ -78,7 +78,7 @@ public class PlayerStats : MonoBehaviour
             Destroy(other.gameObject);
             Object.FindFirstObjectByType<UpgradeNotifier>().ShowUpgrade("Dano aumentado!");
         }
-        else if((other.gameObject.tag =="HPBuff"))
+        else if(other.gameObject.tag =="HPBuff")
         {
             HPBuff += 1f;
             Destroy(other.gameObject);
