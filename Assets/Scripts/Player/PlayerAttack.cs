@@ -17,10 +17,6 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Time.timeScale = 0f;
-        }
         fireTimer += Time.deltaTime;
         if (fireTimer >= fireRate && projectile != null)
         {

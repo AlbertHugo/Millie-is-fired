@@ -13,7 +13,9 @@ public class PlayerMove : MonoBehaviour
     private Rigidbody rb;
     private bool isGrounded = true; // checa se o jogador está no chão
     private Vector3 targetPosition;
+    public static bool pauseMenuActive = false;
     private PlayerStats stats;
+    public GameObject pauseMenu;
 
     void Start()
     {
@@ -45,6 +47,22 @@ public class PlayerMove : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pauseMenuActive == false)
+            {
+                Time.timeScale = 0f;
+                pauseMenu.SetActive(!pauseMenu.activeSelf);
+                pauseMenuActive = true;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                pauseMenuActive = false;
+                pauseMenu.SetActive(!pauseMenu.activeSelf);
+            }
+        }
     }
 
     void FixedUpdate()
@@ -63,4 +81,6 @@ public class PlayerMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
             isGrounded = true;
     }
+
+    
 }
