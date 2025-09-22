@@ -9,6 +9,11 @@ public class PlayerStats : MonoBehaviour
     [Header("Referências")]
     public AudioClip damageTook;
     public VisualEffect damaged;
+    //Pega as imagens dos ícones como objetos, quando chama a coroutine
+    //deixa a imagem do power up pego ativa ao invés de ter um texto
+    public GameObject dmgIcon;
+    public GameObject hpIcon;
+    public GameObject spdIcon;
 
     [Header("Atributos do Jogador")]
     public float life = 3f;
@@ -38,6 +43,7 @@ public class PlayerStats : MonoBehaviour
     {
         //código para medir a distância
         distance = gameObject.gameObject.transform.position.z;
+        score += distance;
         //código de aceleração
         if (speed <= 20)
         {
@@ -68,7 +74,8 @@ public class PlayerStats : MonoBehaviour
             if (SPDBuff < 3)
             {
                 SPDBuff +=0.1f;
-                Object.FindFirstObjectByType<UpgradeNotifier>().ShowUpgrade("Velocidade aumentada!");
+                Object.FindFirstObjectByType<UpgradeNotifier>().ShowUpgrade();
+                spdIcon.SetActive(true);
             }
             Destroy(other.gameObject);
         }
@@ -76,13 +83,15 @@ public class PlayerStats : MonoBehaviour
         {
             ATKBuff += 0.1f;
             Destroy(other.gameObject);
-            Object.FindFirstObjectByType<UpgradeNotifier>().ShowUpgrade("Dano aumentado!");
+            Object.FindFirstObjectByType<UpgradeNotifier>().ShowUpgrade();
+            dmgIcon.SetActive(true);
         }
         else if(other.gameObject.tag =="HPBuff")
         {
             HPBuff += 1f;
             Destroy(other.gameObject);
-            Object.FindFirstObjectByType<UpgradeNotifier>().ShowUpgrade("Vida aumentada!");
+            Object.FindFirstObjectByType<UpgradeNotifier>().ShowUpgrade();
+            hpIcon.SetActive(true);
         }
     }
     //código de dano básico

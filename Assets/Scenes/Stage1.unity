@@ -318,11 +318,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077f468aabba47a40a0cab0680362cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeText: {fileID: 852308133}
   slideDuration: 0.5
   displayTime: 2
   hiddenPosition: {x: 1029, y: 619}
   visiblePosition: {x: 1029, y: 469}
+  dmgIcon: {fileID: 2081176429}
+  hpIcon: {fileID: 409459893}
+  spdIcon: {fileID: 642209562}
 --- !u!114 &223379812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1333,7 +1335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &852308132
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2644,6 +2646,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageTook: {fileID: 8300000, guid: b1d62bcb0fb44914a8c5a69e32d0aef9, type: 3}
   damaged: {fileID: 1211772272}
+  dmgIcon: {fileID: 2081176429}
+  hpIcon: {fileID: 409459893}
+  spdIcon: {fileID: 642209562}
   life: 3
   speed: 4
   HPBuff: 0

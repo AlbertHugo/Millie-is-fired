@@ -18,7 +18,7 @@ public class ObjectSpawner : MonoBehaviour
     [Header("Chão")]
     public GameObject groundPrefab;
     private float groundLength = 8f;
-    private int groundAhead = 10; // quantos blocos de chão ficam na frente do player
+    private int groundAhead = 7; // quantos blocos de chão ficam na frente do player
 
     [Header("PowerUps")]
     public GameObject[] powerUpPrefabs; // deve ter exatamente 3 prefabs (um por pista)
@@ -59,6 +59,7 @@ public class ObjectSpawner : MonoBehaviour
     void Update()
     {
         float distance = playerStats.distance; //distância percorrida
+        float score = playerStats.score;//pontuação
 
         //aumento gradual de dificuldade
         if (playerStats.speed <= 10 && playerStats.speed >= 5)
@@ -107,7 +108,7 @@ public class ObjectSpawner : MonoBehaviour
             }
         }
     //Carrega tela de vitoria ao chegar na distância determinada. Para de spawnar tudo um pouco antes
-    }else if (distance >= 3100)
+    }else if (score >= 3100)
         {
             SceneManager.LoadScene("Victory");
         }
@@ -193,6 +194,9 @@ public class ObjectSpawner : MonoBehaviour
         Vector3 spawnPos = new Vector3(lane * laneOffset, 0, player.position.z + obstacleSpawnDistance);
 
         GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        //atribui o player stats do enemy criado
+        BasicEnemy script = enemy.GetComponent<BasicEnemy>();
+        script.playerStats = playerStats;
         spawnedObjects.Add(enemy);
 
         // não spawna obstáculo nessa lane

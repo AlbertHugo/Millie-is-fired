@@ -11,6 +11,7 @@ public class BasicEnemy : MonoBehaviour
     public float enemyLife = 15f;
 
     private Transform player;
+    public PlayerStats playerStats;
     private Rigidbody rb;
     private int currentLane = 0;
 
@@ -57,6 +58,8 @@ public class BasicEnemy : MonoBehaviour
         damageTaken.gameObject.SetActive(false);
         if (enemyLife <= 0)
         {
+            //aumenta a pontuação quando derrotado
+            playerStats.score += 100;
             Destroy(gameObject);
         }
     }

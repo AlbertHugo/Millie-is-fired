@@ -5,7 +5,6 @@ using System.Collections;
 
 public class UpgradeNotifier : MonoBehaviour
 {
-    public TextMeshProUGUI upgradeText;
     public float slideDuration = 0.5f;
     public float displayTime = 2f;
     public Vector2 hiddenPosition; // posicao fora da tela
@@ -13,6 +12,10 @@ public class UpgradeNotifier : MonoBehaviour
 
     private RectTransform rectTransform;
     private Coroutine currentRoutine;
+    //pega as imagens dos icons como game objects
+    public GameObject dmgIcon;
+    public GameObject hpIcon;
+    public GameObject spdIcon;
 
     void Awake()
     {
@@ -20,19 +23,21 @@ public class UpgradeNotifier : MonoBehaviour
         rectTransform.anchoredPosition = hiddenPosition;
     }
 
-    public void ShowUpgrade(string message)
+    public void ShowUpgrade()
     {
-        // Se ja esta rodando uma animacao, interrompe
+        // Seja esta rodando uma animacao, interrompe
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
+        //destaiva as imagens quando a coroutine acaba
+            spdIcon.SetActive(false);
+            dmgIcon.SetActive(false);
+            hpIcon.SetActive(false);
 
-        currentRoutine = StartCoroutine(ShowRoutine(message));
+        currentRoutine = StartCoroutine(ShowRoutine());
     }
 
-    IEnumerator ShowRoutine(string message)
+    IEnumerator ShowRoutine()
     {
-        // Atualiza o texto
-        upgradeText.text = message;
 
         // Sobe o painel
         yield return StartCoroutine(MovePanel(rectTransform.anchoredPosition, visiblePosition, slideDuration));
