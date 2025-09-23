@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class RulerWeapon : MonoBehaviour
+public class StaplerWeapon : MonoBehaviour
 {
-    public GameObject self;
-    private Vector3 spin = new Vector3 (0, 10, 0);
+    public GameObject projectile;
+    private Vector3 spin = new Vector3(0, 10, 0);
     void Start()
     {
         Destroy(gameObject, 20f);
@@ -16,11 +16,11 @@ public class RulerWeapon : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            PlayerStats.baseATK = 10f;
-            Debug.Log("Atribuido");
-            PlayerAttack.projectile = self;
+            PlayerStats.baseATK = 3f;
+            PlayerAttack.projectile = projectile;
             Destroy(gameObject);
-        }else
+        }
+        else
         {
             Destroy(gameObject);
         }
