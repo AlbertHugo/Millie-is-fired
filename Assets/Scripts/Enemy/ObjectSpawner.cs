@@ -71,7 +71,7 @@ public class ObjectSpawner : MonoBehaviour
             obstacleSpawnInterval = 0.4f;
         }
 
-    if (distance < 3000f)
+    if (score < 950f)
     {
 
         
@@ -108,7 +108,7 @@ public class ObjectSpawner : MonoBehaviour
             }
         }
     //Carrega tela de vitoria ao chegar na distância determinada. Para de spawnar tudo um pouco antes
-    }else if (score >= 3100)
+    }else if (score >= 1000)
         {
             SceneManager.LoadScene("Victory");
         }

@@ -43,7 +43,11 @@ public class PlayerStats : MonoBehaviour
     {
         //código para medir a distância
         distance = gameObject.gameObject.transform.position.z;
-        score += distance;
+        //a cada certo número de distância percorrida, aumenta a pontuação
+        if (distance % 10 == 0)
+        {
+            score += 10;
+        }
         //código de aceleração
         if (speed <= 20)
         {
