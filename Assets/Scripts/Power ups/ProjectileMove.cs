@@ -35,7 +35,7 @@ public class ProjectileMove : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        else if (!other.CompareTag("Player"))
+        else if (other.gameObject.tag!="Player")
         {
             Destroy(gameObject);
         }

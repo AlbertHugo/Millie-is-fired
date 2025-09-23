@@ -102,16 +102,11 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(float damage)
     {
         baseLife -= damage;
-        damaged.gameObject.SetActive(true);
-        VisualEffect vfxDamage = GameObject.Instantiate(damaged, gameObject.transform.position, Quaternion.identity);
-        vfxDamage.Play();
-        GameObject.Destroy(vfxDamage.gameObject, 0.5f);
-        damaged.gameObject.SetActive(false);
         if (baseLife+HPBuff > 0)
         {
            baseSpeed = baseSpeed / 2;
             RepeatableCode.PlaySound(damageTook, gameObject.transform.position);
-            StartCoroutine(CameraShake.instance.Shake(0.3f, 1.5f));
+            StartCoroutine(CameraShake.instance.Shake(0.6f, 2f));
         }
         else
         {
