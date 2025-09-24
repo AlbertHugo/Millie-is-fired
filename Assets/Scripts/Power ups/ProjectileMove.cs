@@ -31,7 +31,7 @@ public class ProjectileMove : MonoBehaviour
             BasicEnemy enemy = other.GetComponent<BasicEnemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(PlayerStats.damage);
+                enemy.TakeDamage(PlayerStats.damage, 0);
             }
             Destroy(gameObject);
         }
