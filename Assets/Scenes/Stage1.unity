@@ -320,7 +320,7 @@ MonoBehaviour:
   slideDuration: 0.5
   displayTime: 2
   hiddenPosition: {x: 1029, y: 700}
-  visiblePosition: {x: 1029, y: 434}
+  visiblePosition: {x: 1025, y: 434}
   dmgIcon: {fileID: 2081176429}
   hpIcon: {fileID: 409459893}
   spdIcon: {fileID: 642209562}
