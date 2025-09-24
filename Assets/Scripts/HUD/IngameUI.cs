@@ -13,10 +13,10 @@ public class IngameUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Ele pega como referencia o int da vida do jogador, transforma em string e atualiza o texto na tela na medida que � alterado.
+        // Ele pega como referencia o int da vida do jogador, transforma em string e atualiza o texto na tela na medida que e alterado.
         healthText.text = "Life: " + playerStats.life.ToString();
         //pega a pontuacao do jogador e exibe
-        scoreText.text = "Score: " + playerStats.score.ToString() + " /1000";
+        scoreText.text = "Score: " + playerStats.score.ToString() + " /2000";
     }
 
     public void resumeGame()

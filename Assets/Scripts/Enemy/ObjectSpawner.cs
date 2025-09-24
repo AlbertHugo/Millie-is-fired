@@ -18,7 +18,7 @@ public class ObjectSpawner : MonoBehaviour
     [Header("Chão")]
     public GameObject groundPrefab;
     private float groundLength = 8f;
-    private int groundAhead = 7; // quantos blocos de chão ficam na frente do player
+    private int groundAhead = 10; // quantos blocos de chão ficam na frente do player
 
     [Header("PowerUps")]
     public GameObject[] powerUpPrefabs; // deve ter exatamente 3 prefabs (um por pista)
@@ -71,7 +71,7 @@ public class ObjectSpawner : MonoBehaviour
             obstacleSpawnInterval = 0.4f;
         }
 
-    if (score < 950f)
+    if (score < 1900f)
     {
 
         
@@ -108,7 +108,7 @@ public class ObjectSpawner : MonoBehaviour
             }
         }
     //Carrega tela de vitoria ao chegar na distância determinada. Para de spawnar tudo um pouco antes
-    }else if (score >= 1000)
+    }else if (score >= 2000)
         {
             SceneManager.LoadScene("Victory");
         }

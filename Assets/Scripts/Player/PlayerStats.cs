@@ -33,6 +33,7 @@ public class PlayerStats : MonoBehaviour
     [Header("Pontuação e distância")]
     public float distance = 0f;
     public float score = 0f;
+    private float landMark = 5f;
 
     private void Start()
     {
@@ -44,9 +45,10 @@ public class PlayerStats : MonoBehaviour
         //código para medir a distância
         distance = gameObject.gameObject.transform.position.z;
         //a cada certo número de distância percorrida, aumenta a pontuação
-        if (distance % 10 == 0)
+        if (distance>=landMark)
         {
-            score += 10;
+            score += 5;
+            landMark = distance+5f;
         }
         //código de aceleração
         if (speed <= 20)

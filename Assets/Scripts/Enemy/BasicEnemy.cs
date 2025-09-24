@@ -71,7 +71,7 @@ public class BasicEnemy : MonoBehaviour
 
         if (enemyLife <= 0)
         {
-            playerStats.score += 100;
+            playerStats.score += 10;
             Destroy(gameObject);
         }
     }
