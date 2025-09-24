@@ -140,8 +140,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         //Fica spawnando o chão
         Vector3 spawnPos = new Vector3(0, -0.7f, nextGroundZ);
-        Quaternion spawnRot = Quaternion.Euler(-90, 0, 0);
-        GameObject obj = Instantiate(groundPrefab, spawnPos, spawnRot);
+        GameObject obj = Instantiate(groundPrefab, spawnPos, Quaternion.identity);
         spawnedObjects.Add(obj);
         //adicionar Destroy(groundPrefab, 20f); quando trocar o obj para um prefab
 

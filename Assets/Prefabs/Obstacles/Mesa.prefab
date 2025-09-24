@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4369811269910129220}
   - component: {fileID: 7532724409538240386}
   - component: {fileID: 2651719948221688873}
-  - component: {fileID: 8203399592581994753}
+  - component: {fileID: 6418259768017404414}
   m_Layer: 0
   m_Name: Mesa
   m_TagString: Insta Kill
@@ -27,9 +27,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2466432301181725185}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.04, y: 0, z: 7.88}
-  m_LocalScale: {x: 100, y: 99.999985, z: 99.999985}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2466432301181725185}
-  m_Mesh: {fileID: -3101794883780484172, guid: 3d9162f844c16ba4f8c1997a48f2308d, type: 3}
+  m_Mesh: {fileID: -3101794883780484172, guid: e40f6083dce97874aa137d9be3b70317, type: 3}
 --- !u!23 &2651719948221688873
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -87,7 +87,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8203399592581994753
+--- !u!65 &6418259768017404414
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,5 +106,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.021800123, y: 0.01984195, z: 0.014550049}
-  m_Center: {x: -0.00000022305176, y: 0.000000079628066, z: -0.00047916165}
+  m_Size: {x: 2.1800122, y: 1.455005, z: 1.9841951}
+  m_Center: {x: -0.000022292137, y: -0.047916166, z: -0.000007927417}

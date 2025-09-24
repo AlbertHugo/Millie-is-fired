@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7390609727871425435}
   - component: {fileID: 5822771890815033993}
   - component: {fileID: 6023590132503658724}
-  - component: {fileID: 984008047157076365}
+  - component: {fileID: 3886402830109379260}
+  - component: {fileID: 1120493499165656474}
   m_Layer: 0
   m_Name: Promocao
   m_TagString: DamageBuff
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.8413756, y: 0.19742234, z: 1.4229754}
-  m_LocalScale: {x: 100, y: 99.999985, z: 99.999985}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -41,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8136308391654285941}
-  m_Mesh: {fileID: 946917477938669978, guid: c338c1e96b1dfb649aae8a81018aaf02, type: 3}
+  m_Mesh: {fileID: 946917477938669978, guid: 306c77c33fd59c248ba3b07abf9806f5, type: 3}
 --- !u!23 &6023590132503658724
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -87,7 +88,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &984008047157076365
+--- !u!114 &3886402830109379260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8136308391654285941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27534d702c4b7514dbbeb66cb8a706f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1120493499165656474
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,5 +119,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.014333381, y: 0.02, z: 0.00012336031}
-  m_Center: {x: 0, y: 0, z: -7.6397555e-11}
+  m_Size: {x: 1.4333382, y: 1.7382188, z: 1.0106834}
+  m_Center: {x: 0, y: 0, z: 0}
