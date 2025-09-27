@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1186853003975545115}
   - component: {fileID: 2093738290895171725}
   - component: {fileID: 4411308321630165694}
-  - component: {fileID: 1117574455851897262}
+  - component: {fileID: 8315064301846408316}
+  - component: {fileID: 2508304432014070655}
   m_Layer: 0
   m_Name: Caneca
   m_TagString: SpeedBuff
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.5945654, y: 0.46501705, z: 0}
-  m_LocalScale: {x: 100, y: 99.999985, z: 99.999985}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -41,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8734252382392578695}
-  m_Mesh: {fileID: 6753568942237695447, guid: c338c1e96b1dfb649aae8a81018aaf02, type: 3}
+  m_Mesh: {fileID: 6753568942237695447, guid: 306c77c33fd59c248ba3b07abf9806f5, type: 3}
 --- !u!23 &4411308321630165694
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -87,7 +88,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1117574455851897262
+--- !u!114 &8315064301846408316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8734252382392578695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27534d702c4b7514dbbeb66cb8a706f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &2508304432014070655
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,5 +119,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.011887874, y: 0.014608499, z: 0.013627603}
-  m_Center: {x: -0.0006848144, y: 0.0022247015, z: -0.0018879083}
+  m_Size: {x: 1.3173151, y: 1.3662739, z: 0.62833863}
+  m_Center: {x: -0.019089699, y: 0.03160575, z: -0.05665186}

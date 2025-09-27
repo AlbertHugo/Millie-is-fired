@@ -22,6 +22,10 @@ public class Obstacle : MonoBehaviour
             damaged.gameObject.SetActive(false);
             RepeatableCode.PlaySound(breaked, gameObject.transform.position);
             Destroy(gameObject);
+        }else
+        {
+            Debug.Log("Colisão detectada");
+            Destroy(other.gameObject);
         }
     }
 }

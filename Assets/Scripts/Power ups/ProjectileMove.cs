@@ -31,12 +31,13 @@ public class ProjectileMove : MonoBehaviour
             BasicEnemy enemy = other.GetComponent<BasicEnemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(PlayerStats.damage);
+                enemy.TakeDamage(PlayerStats.damage, 0);
             }
             Destroy(gameObject);
         }
         else if (other.gameObject.tag!="Player")
         {
+            Debug.Log("Colisão detectada");
             Destroy(gameObject);
         }
     }
