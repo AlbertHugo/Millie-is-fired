@@ -3,7 +3,8 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [Header("Velocidades")]
-    public float laneChangeSpeed = 8f; // velocidade de troca de pista
+    public float laneChangeSpeed = 7f; // velocidade de troca de pista
+    private float laneBaseSpeed = 7f;
     public float jumpForce = 5f;       // força do pulo
 
     [Header("Pistas")]
@@ -26,6 +27,7 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        laneChangeSpeed=laneBaseSpeed*stats.SPDBuff;
         // Movimento entre pistas
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {

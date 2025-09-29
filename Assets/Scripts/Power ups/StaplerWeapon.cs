@@ -16,8 +16,9 @@ public class StaplerWeapon : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            PlayerStats.baseATK = 3f;
+            PlayerStats.baseATK = 1f;
             PlayerAttack.projectile = projectile;
+            PlayerAttack.projectileIndex = 1;
             Destroy(gameObject);
         }
         else

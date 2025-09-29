@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public static GameObject projectile; 
+    public static GameObject projectile;
+    public static int projectileIndex;
     public Transform firePoint;
     public float fireRate = 0.5f;
     private float fireTimer;
@@ -12,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         projectile = null;
+        projectileIndex = 0;
         stats = GetComponent<PlayerStats>();
     }
 
@@ -35,7 +37,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 float projSpeed = (stats != null) ? stats.speed * 2f : 6f;
                 Vector3 projDirection = transform.forward;
-                pm.Initialize(projDirection, projSpeed);
+                pm.Initialize(projDirection, projSpeed, projectileIndex);
             }
         }
     }

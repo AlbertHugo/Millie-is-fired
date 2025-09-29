@@ -1,19 +1,18 @@
+using System;
 using UnityEngine;
 
 public class ProjectileMove : MonoBehaviour
 {
     private float speed;
-
-    private float baseSpeed = 20f;
-
-    private float actualSpeed;
     private Vector3 direction;
     public float lifetime = 5f;
+    private int selfIndex;
 
-    public void Initialize(Vector3 dir, float spd)
+    public void Initialize(Vector3 dir, float spd, int projectile)
     {
         direction = dir.normalized; // garante direção unitária
         speed = spd;
+        selfIndex = projectile;
 
         Destroy(gameObject, lifetime); // autodestruir
     }
@@ -31,7 +30,7 @@ public class ProjectileMove : MonoBehaviour
             BasicEnemy enemy = other.GetComponent<BasicEnemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(PlayerStats.damage, 0);
+                enemy.TakeDamage(PlayerStats.damage, selfIndex);
             }
             Destroy(gameObject);
         }

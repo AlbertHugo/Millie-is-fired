@@ -14,9 +14,9 @@ public class IngameUI : MonoBehaviour
     void Update()
     {
         // Ele pega como referencia o int da vida do jogador, transforma em string e atualiza o texto na tela na medida que e alterado.
-        healthText.text = "Life: " + playerStats.life.ToString();
+        healthText.text = playerStats.life.ToString();
         //pega a pontuacao do jogador e exibe
-        scoreText.text = "Score: " + playerStats.score.ToString() + " /2000";
+        scoreText.text = playerStats.score.ToString() + " /2000";
     }
 
     public void resumeGame()
