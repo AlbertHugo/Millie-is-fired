@@ -15,13 +15,17 @@ public class Obstacle : MonoBehaviour
     {
         if (other.CompareTag("Enemy") || other.CompareTag("Player"))
         {
-            damaged.gameObject.SetActive(true);
-            VisualEffect vfxDamage = GameObject.Instantiate(damaged, gameObject.transform.position, Quaternion.identity);
-            vfxDamage.Play();
-            GameObject.Destroy(vfxDamage.gameObject, 1.5f);
-            damaged.gameObject.SetActive(false);
-            RepeatableCode.PlaySound(breaked, gameObject.transform.position);
-            Destroy(gameObject);
+            Destruction();
         }
+    }
+    public void Destruction()
+    {
+        damaged.gameObject.SetActive(true);
+        VisualEffect vfxDamage = GameObject.Instantiate(damaged, gameObject.transform.position, Quaternion.identity);
+        vfxDamage.Play();
+        GameObject.Destroy(vfxDamage.gameObject, 1.5f);
+        damaged.gameObject.SetActive(false);
+        RepeatableCode.PlaySound(breaked, gameObject.transform.position);
+        Destroy(gameObject);
     }
 }
