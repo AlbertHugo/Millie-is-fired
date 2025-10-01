@@ -22,9 +22,9 @@ public class ObjectSpawner : MonoBehaviour
 
     [Header("PowerUps")]
     public GameObject[] powerUpPrefabs; // deve ter exatamente 3 prefabs (um por pista)
-    private float firstSpawnDistance = 250f;
+    private float firstSpawnDistance = 270f;
     private float repeatEvery = 300f;
-    public float noObstacleDistance = 10f;
+    private float noObstacleDistance = 30f;
     private float nextPowerUpDistance = 500f;
 
 
@@ -70,6 +70,10 @@ public class ObjectSpawner : MonoBehaviour
         {
             obstacleSpawnInterval = 0.4f;
         }
+        if (playerStats.speed >= 12)
+        {
+            enemySpawnInterval = 3f;
+        }
 
     if (score < 1900f)
     {
@@ -90,12 +94,15 @@ public class ObjectSpawner : MonoBehaviour
         }
 
         // Inimigos
-        enemyTimer += Time.deltaTime;
-        if (enemyTimer >= enemySpawnInterval)
-        {
-            SpawnEnemy();
-            enemyTimer = 0f;
-        }
+            if (player.position.z > obstacleBlockEndZ)
+            {
+                enemyTimer += Time.deltaTime;
+                if (enemyTimer >= enemySpawnInterval)
+                {
+                    SpawnEnemy();
+                    enemyTimer = 0f;
+                }
+            }
 
         // spawn de obstáculos
         if (player.position.z > obstacleBlockEndZ)

@@ -21,9 +21,6 @@ public class RulerWeapon : MonoBehaviour
             PlayerAttack.projectile = self;
             PlayerAttack.projectileIndex = 0;
             Destroy(gameObject);
-        }else
-        {
-            Destroy(gameObject);
         }
     }
 }

@@ -21,9 +21,5 @@ public class PaperWeapon : MonoBehaviour
             PlayerAttack.projectileIndex = 2;
             Destroy(gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
     }
 }

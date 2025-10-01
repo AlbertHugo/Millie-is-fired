@@ -21,9 +21,5 @@ public class StaplerWeapon : MonoBehaviour
             PlayerAttack.projectileIndex = 1;
             Destroy(gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
     }
 }

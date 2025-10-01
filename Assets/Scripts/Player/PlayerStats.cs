@@ -22,7 +22,7 @@ public class PlayerStats : MonoBehaviour
 
     public static float baseATK = 0f;
     public float speed = 4f;
-    private float baseSpeed = 15f;
+    private float baseSpeed = 5f;
 
     [Header("Buffs dos Atributos")]
     public float HPBuff = 0f;
