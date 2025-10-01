@@ -33,7 +33,7 @@ public class ProjectileMove : MonoBehaviour
                 enemy.TakeDamage(PlayerStats.damage, selfIndex);
             }
             Destroy(gameObject);
-        }else if (selfIndex==2&&other.gameObject.tag == "InstaKill")
+        }else if (selfIndex==2&&other.gameObject.tag == "Insta Kill")
         {
             Obstacle obstacle = other.GetComponent<Obstacle>();
             obstacle.Destruction();
