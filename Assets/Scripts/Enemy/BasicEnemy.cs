@@ -33,7 +33,7 @@ public class BasicEnemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(enemyLife);
+        Debug.Log("Vida:" + enemyLife);
         // sempre corre pra frente
         Vector3 forwardMove = Vector3.forward * forwardSpeed * Time.fixedDeltaTime;
 

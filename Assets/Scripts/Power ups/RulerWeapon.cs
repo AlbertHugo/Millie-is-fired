@@ -16,7 +16,7 @@ public class RulerWeapon : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            PlayerStats.baseATK = 10f;
+            PlayerStats.baseATK = 7f;
             Debug.Log("Atribuido");
             PlayerAttack.projectile = self;
             PlayerAttack.projectileIndex = 0;

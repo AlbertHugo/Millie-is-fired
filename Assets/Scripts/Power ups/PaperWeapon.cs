@@ -16,7 +16,7 @@ public class PaperWeapon : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            PlayerStats.baseATK = 5f;
+            PlayerStats.baseATK = 2.5f;
             PlayerAttack.projectile = projectile;
             PlayerAttack.projectileIndex = 2;
             Destroy(gameObject);
