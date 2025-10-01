@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class ButtonsSettings : MonoBehaviour
 {
     public GameObject canvasAudio;
+    public GameObject settingsMenu;
 
     public void ShowCanvasAudio()
     {
@@ -18,6 +19,11 @@ public class ButtonsSettings : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void esconderSettings()
+    {
+        settingsMenu.SetActive(!settingsMenu.activeSelf);
     }
 
 }
