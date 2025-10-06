@@ -6,6 +6,7 @@ public class PlayerMove : MonoBehaviour
     public float laneChangeSpeed = 7f; // velocidade de troca de pista
     private float laneBaseSpeed = 7f;
     public float jumpForce = 5f;       // força do pulo
+    private float jumpTimer = 0f;
 
     [Header("Pistas")]
     public float laneOffset = 3f; // distância entre pistas
@@ -44,10 +45,11 @@ public class PlayerMove : MonoBehaviour
         targetPosition = new Vector3(currentLane * laneOffset, transform.position.y, transform.position.z);
 
         // Pulo
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded&&jumpTimer<=Time.time)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+            jumpTimer = Time.time+1f;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
