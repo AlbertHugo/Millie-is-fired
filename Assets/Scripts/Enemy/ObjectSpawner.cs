@@ -32,6 +32,10 @@ public class ObjectSpawner : MonoBehaviour
     public GameObject[] weaponPrefabs;
     private float spawnDistance = 100f;
 
+    [Header("Ultimates")]
+    public GameObject[] ultPrefabs;
+    private float s
+
     [Header("Inimigos")]
     public GameObject enemyPrefab;
     private float enemySpawnInterval = 7f; // a cada X segundos aparece um
