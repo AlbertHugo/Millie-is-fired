@@ -34,7 +34,7 @@ public class ObjectSpawner : MonoBehaviour
 
     [Header("Ultimates")]
     public GameObject[] ultPrefabs;
-    private float s
+    private float spawnUlt = 500f;
 
     [Header("Inimigos")]
     public GameObject enemyPrefab;
