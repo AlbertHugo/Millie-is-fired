@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -28,6 +29,7 @@ public class PlayerAttack : MonoBehaviour
             Vector3 spawnPos = (firePoint != null) 
                 ? firePoint.position 
                 : transform.position + transform.forward * 1f;
+            spawnPos.y += 1;
 
             GameObject projObj = Instantiate(projectile, spawnPos, Quaternion.identity);
 
