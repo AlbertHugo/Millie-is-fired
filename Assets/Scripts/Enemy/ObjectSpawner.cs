@@ -201,7 +201,7 @@ public class ObjectSpawner : MonoBehaviour
     void SpawnEnemy()
     {
         int lane = Random.Range(-1, 2);
-        Vector3 spawnPos = new Vector3(lane * laneOffset, 0, player.position.z + obstacleSpawnDistance);
+        Vector3 spawnPos = new Vector3(lane * laneOffset, 0.5f, player.position.z + obstacleSpawnDistance);
 
         GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
         //atribui o player stats do enemy criado
