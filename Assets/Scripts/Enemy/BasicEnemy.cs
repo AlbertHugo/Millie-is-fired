@@ -20,9 +20,25 @@ public class BasicEnemy : MonoBehaviour
     private Rigidbody rb;
     private int currentLane = 0;
 
+    [Header("Efeitos sonoros")]
+    private int entranceIndex = 0;
+    public AudioClip entrance1;
+    public AudioClip entrance2;
+    public AudioClip Death;
+
     void Start()
     {
-        damageTaken.gameObject.SetActive(false);
+        entranceIndex = Random.Range(0, 3);//seleciona qual o efeito sonoro que será tocado na entrada
+        //toca o som na entrada, ou não toca nada
+        if (entranceIndex >= 1&&entranceIndex<2)
+        {
+            RepeatableCode.PlaySound(entrance1, gameObject.transform.position);
+        }
+        else if(entranceIndex >= 0&&entranceIndex<1)
+        {
+            RepeatableCode.PlaySound(entrance2 , gameObject.transform.position);
+        }
+            damageTaken.gameObject.SetActive(false);
         enemyLife = 15f;
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -72,6 +88,7 @@ public class BasicEnemy : MonoBehaviour
 
         if (enemyLife <= 0)
         {
+            RepeatableCode.PlaySound(Death, gameObject.transform.position);
             playerStats.score += 10;
             Destroy(gameObject);
         }
