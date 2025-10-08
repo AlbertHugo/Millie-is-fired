@@ -97,7 +97,13 @@ public class ObjectSpawner : MonoBehaviour
             spawnDistance = 4f;
         }
 
-        // Inimigos
+        /*if (distance >= spawnUlt)
+        {
+           SpawnUlt();
+           spawnDistance = 5f;
+        }*/
+
+            // Inimigos
             if (player.position.z > obstacleBlockEndZ)
             {
                 enemyTimer += Time.deltaTime;
@@ -190,6 +196,26 @@ public class ObjectSpawner : MonoBehaviour
             {
                 Vector3 pos = new Vector3(lane * laneOffset, 1f, spawnZ+10f);
                 GameObject obj = Instantiate(weaponPrefabs[index], pos, Quaternion.identity);
+                spawnedObjects.Add(obj);
+            }
+        }
+
+        // bloquear obstáculos após spawn
+        obstacleBlockEndZ = spawnZ + noObstacleDistance;
+    }
+
+    void SpawnUlt()
+    {
+        float spawnZ = player.position.z + obstacleSpawnDistance;
+
+        // uma por lane: -1, 0, 1
+        for (int lane = -1; lane <= 1; lane++)
+        {
+            int index = lane + 1; // -1 -> 0, 0 -> 1, 1 -> 2
+            if (index >= 0 && index < ultPrefabs.Length)
+            {
+                Vector3 pos = new Vector3(lane * laneOffset, 1f, spawnZ + 10f);
+                GameObject obj = Instantiate(ultPrefabs[index], pos, Quaternion.identity);
                 spawnedObjects.Add(obj);
             }
         }
