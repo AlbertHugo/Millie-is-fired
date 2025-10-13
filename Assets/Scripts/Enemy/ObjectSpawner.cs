@@ -97,11 +97,11 @@ public class ObjectSpawner : MonoBehaviour
             spawnDistance = 4f;
         }
 
-        /*if (distance >= spawnUlt)
+        if (distance >= spawnUlt)
         {
            SpawnUlt();
            spawnDistance = 5f;
-        }*/
+        }
 
             // Inimigos
             if (player.position.z > obstacleBlockEndZ)
@@ -150,6 +150,9 @@ public class ObjectSpawner : MonoBehaviour
         Vector3 spawnPos = new Vector3(lane * laneOffset, 0, player.position.z + obstacleSpawnDistance);
 
         GameObject obj = Instantiate(prefab, spawnPos, Quaternion.identity);
+
+        //ajuste para tocar no chão
+        SetObjectOnGround(obj);
         spawnedObjects.Add(obj);
     }
 
@@ -230,6 +233,10 @@ public class ObjectSpawner : MonoBehaviour
         Vector3 spawnPos = new Vector3(lane * laneOffset, 0.5f, player.position.z + obstacleSpawnDistance);
 
         GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+
+        // --- Ajusta o inimigo para tocar o chão ---
+        SetObjectOnGround(enemy);
+
         //atribui o player stats do enemy criado
         BasicEnemy script = enemy.GetComponent<BasicEnemy>();
         script.playerStats = playerStats;
@@ -252,4 +259,38 @@ public class ObjectSpawner : MonoBehaviour
             }
         }
     }
+
+    void SetObjectOnGround(GameObject obj)
+    {
+        // Obtém o ponto mais baixo do objeto (inclui todos os MeshRenderers/Colliders)
+        float lowestY = float.MaxValue;
+
+        Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in renderers)
+        {
+            if (r.bounds.min.y < lowestY)
+                lowestY = r.bounds.min.y;
+        }
+
+        // Caso não tenha Renderer, tenta usar Collider
+        if (renderers.Length == 0)
+        {
+            Collider[] colliders = obj.GetComponentsInChildren<Collider>();
+            foreach (Collider c in colliders)
+            {
+                if (c.bounds.min.y < lowestY)
+                    lowestY = c.bounds.min.y;
+            }
+        }
+
+        // Altura do chão
+        float groundY = -0.7f;
+
+        // Diferença necessária para encostar no chão
+        float offsetY = groundY - lowestY;
+
+        // Aplica o deslocamento
+        obj.transform.position += new Vector3(0, offsetY, 0);
+    }
+
 }
