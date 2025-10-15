@@ -44,6 +44,7 @@ public class ObjectSpawner : MonoBehaviour
     private float enemyTimer;
     private int blockedLane = int.MinValue; // lane que deve ficar sem obstáculo
 
+
     [Header("Limpeza")]
     public float despawnDistance = 30f; // distância atrás do player para destruir objetos
 

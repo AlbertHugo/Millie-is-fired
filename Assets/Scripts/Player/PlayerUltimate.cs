@@ -21,36 +21,51 @@ public class PlayerUltimate : MonoBehaviour
         {
             ultIcon1.SetActive(true);
         }
-        //verifica se está no cooldown e com a ult, e então destrói tudo com o pressionar de X
-        if (haveUlt && cooldown <= Time.time&&Input.GetKeyDown(KeyCode.X))
+
+        // Verifica se a ult está pronta para ser ativada e se o cooldown já passou
+        if (haveUlt && cooldown <= Time.time && Input.GetKeyDown(KeyCode.X))
         {
+            // Aplica cooldown de 10 segundos
             cooldown = Time.time + 10f;
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            for (int i = 0; i <= enemies.Length; i++)
+
+            // Chama a função para destruir inimigos e obstáculos
+            PenUltimate();
+        }
+    }
+
+    // Função para destruir todos os inimigos e obstáculos
+    void PenUltimate()
+    {
+        // Destruir inimigos
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemyObj in enemies)
+        {
+            BasicEnemy enemy = enemyObj.GetComponent<BasicEnemy>();
+            if (enemy != null)
             {
-                BasicEnemy enemy = enemies[i].GetComponent<BasicEnemy>();
-                if (enemy != null)
-                {
-                    enemy.TakeDamage(100, 1);
-                }
+                enemy.TakeDamage(100, 1);  // Dano fatal
             }
-            GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
-            for (int i = 0; i <= obstacles.Length; i++)
+        }
+
+        // Destruir obstáculos
+        GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+        foreach (GameObject obstacleObj in obstacles)
+        {
+            Obstacle obstacle = obstacleObj.GetComponent<Obstacle>();
+            if (obstacle != null)
             {
-                Obstacle enemy = obstacles[i].GetComponent<Obstacle>();
-                if (enemy != null)
-                {
-                    enemy.Destruction();
-                }
+                obstacle.Destruction();  // Destrói o obstáculo
             }
-            GameObject[] instaKill = GameObject.FindGameObjectsWithTag("Insta Kill");
-            for (int i = 0; i <= instaKill.Length; i++)
+        }
+
+        // Destruir objetos com tag "Insta Kill"
+        GameObject[] instaKillObjects = GameObject.FindGameObjectsWithTag("Insta Kill");
+        foreach (GameObject instaKillObj in instaKillObjects)
+        {
+            Obstacle instaKill = instaKillObj.GetComponent<Obstacle>();
+            if (instaKill != null)
             {
-                Obstacle enemy = instaKill[i].GetComponent<Obstacle>();
-                if (enemy != null)
-                {
-                    enemy.Destruction();
-                }
+                instaKill.Destruction();  // Destrói o objeto
             }
         }
     }
