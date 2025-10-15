@@ -5,7 +5,7 @@ public class PlayerMove : MonoBehaviour
     [Header("Velocidades")]
     public float laneChangeSpeed = 7f; // velocidade de troca de pista
     private float laneBaseSpeed = 7f;
-    public float jumpForce = 5f;       // força do pulo
+    private float jumpForce = 15f;       // força do pulo
     private float jumpTimer = 0f;
 
     [Header("Pistas")]
