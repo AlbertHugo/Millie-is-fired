@@ -19,6 +19,7 @@ public class ObjectSpawner : MonoBehaviour
     public GameObject groundPrefab;
     private float groundLength = 8f;
     private int groundAhead = 10; // quantos blocos de chão ficam na frente do player
+    private Quaternion groundRotation = Quaternion.Euler(new Vector3 (-90, 0, 0));
 
     [Header("PowerUps")]
     public GameObject[] powerUpPrefabs; // deve ter exatamente 3 prefabs (um por pista)
@@ -35,6 +36,7 @@ public class ObjectSpawner : MonoBehaviour
     [Header("Ultimates")]
     public GameObject[] ultPrefabs;
     private float spawnUlt = 500f;
+    private bool canSpawnUlt = true;
 
     [Header("Inimigos")]
     public GameObject enemyPrefab;
@@ -58,6 +60,7 @@ public class ObjectSpawner : MonoBehaviour
             SpawnGround();
         }
         nextPowerUpDistance = firstSpawnDistance;
+        canSpawnUlt = true;
     }
 
     void Update()
@@ -97,10 +100,10 @@ public class ObjectSpawner : MonoBehaviour
             spawnDistance = 4f;
         }
 
-        if (distance >= spawnUlt)
+        if (distance >= spawnUlt && canSpawnUlt)
         {
            SpawnUlt();
-           spawnDistance = 5f;
+           canSpawnUlt= false;
         }
 
             // Inimigos
@@ -160,7 +163,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         //Fica spawnando o chão
         Vector3 spawnPos = new Vector3(0, -0.7f, nextGroundZ);
-        GameObject obj = Instantiate(groundPrefab, spawnPos, Quaternion.identity);
+        GameObject obj = Instantiate(groundPrefab, spawnPos, groundRotation);
         spawnedObjects.Add(obj);
         //adicionar Destroy(groundPrefab, 20f); quando trocar o obj para um prefab
 
@@ -217,7 +220,7 @@ public class ObjectSpawner : MonoBehaviour
             int index = lane + 1; // -1 -> 0, 0 -> 1, 1 -> 2
             if (index >= 0 && index < ultPrefabs.Length)
             {
-                Vector3 pos = new Vector3(lane * laneOffset, 1f, spawnZ + 10f);
+                Vector3 pos = new Vector3(lane * laneOffset, 2f, spawnZ + 10f);
                 GameObject obj = Instantiate(ultPrefabs[index], pos, Quaternion.identity);
                 spawnedObjects.Add(obj);
             }
