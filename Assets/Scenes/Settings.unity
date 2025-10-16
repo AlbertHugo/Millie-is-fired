@@ -295,6 +295,7 @@ RectTransform:
   m_Children:
   - {fileID: 57734190}
   - {fileID: 1669154400}
+  - {fileID: 850155670}
   m_Father: {fileID: 1233684871}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -930,16 +931,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 850155669}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1.4154}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3.1690466}
+  m_LocalScale: {x: 0.65, y: 0.706, z: 2.2754498}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1233684871}
+  m_Father: {fileID: 237459175}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 899.97, y: 349.11084}
+  m_AnchoredPosition: {x: 1446.1, y: 598.4}
   m_SizeDelta: {x: 183.035, y: 107.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &850155671
@@ -1495,7 +1496,6 @@ RectTransform:
   m_Children:
   - {fileID: 237459175}
   - {fileID: 676722065}
-  - {fileID: 850155670}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1516,6 +1516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasAudio: {fileID: 1669154396}
+  settingsMenu: {fileID: 0}
 --- !u!114 &1233684873
 MonoBehaviour:
   m_ObjectHideFlags: 0
