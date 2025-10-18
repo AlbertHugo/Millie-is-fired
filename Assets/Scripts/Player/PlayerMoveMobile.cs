@@ -3,22 +3,28 @@ using UnityEngine;
 public class PlayerMoveMobile : MonoBehaviour
 {
     [Header("Velocidades")]
-    public float laneChangeSpeed = 8f;  // Velocidade de troca de pista
-    public float jumpForce = 5f;        // Força do pulo
+    public float laneChangeSpeed = 8f;  // velocidade de troca de pista base
+    private float laneBaseSpeed = 8f;
+    private float jumpForce = 8f;       // força do pulo
+    private float jumpTimer = 0f;
 
     [Header("Pistas")]
-    public float laneOffset = 3f;       // Distância entre as pistas
+    public float laneOffset = 3f;       // distância entre as pistas
     private int currentLane = 0;        // -1 = esquerda, 0 = meio, 1 = direita
 
+    [Header("Menu de Pausa")]
+    public static bool pauseMenuActive = false;
+    public GameObject pauseMenu;
+
     private Rigidbody rb;
-    private bool isGrounded = true;     // Checa se o jogador está no chão
+    private bool isGrounded = true;     // checa se o jogador está no chão
     private Vector3 targetPosition;
     private PlayerStats stats;
 
-    // Para controle de toque
-    private Vector2 touchStartPos;      // Posição inicial do toque
-    private bool isSwiping = false;     // Flag para saber se está arrastando
-    private bool jumpRequested = false; // Flag para saber se o pulo foi solicitado
+    // Controle de toque
+    private Vector2 touchStartPos;
+    private bool isSwiping = false;
+    private bool jumpRequested = false;
 
     void Start()
     {
@@ -29,55 +35,64 @@ public class PlayerMoveMobile : MonoBehaviour
 
     void Update()
     {
-        // Detectando toque na tela
+        // Aplica multiplicador de buff de velocidade
+        laneChangeSpeed = laneBaseSpeed * stats.SPDBuff;
+
+        // --- CONTROLE POR TOQUE ---
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            
+
+            // Início do toque
             if (touch.phase == TouchPhase.Began)
             {
                 touchStartPos = touch.position;
                 isSwiping = false;
             }
-            
+
+            // Arrasto detectado
             if (touch.phase == TouchPhase.Moved)
             {
-                // Detecta o arrasto para a esquerda ou direita
                 float swipeDistance = touch.position.x - touchStartPos.x;
 
-                if (!isSwiping && Mathf.Abs(swipeDistance) > 50) // Caso o arrasto seja significativo
+                if (!isSwiping && Mathf.Abs(swipeDistance) > 50)
                 {
                     isSwiping = true;
-                    if (swipeDistance < 0) // Arrasto para a esquerda
-                    {
-                        if (currentLane > -1) // Impede que o jogador saia da pista pela esquerda
-                            currentLane--;
-                    }
-                    else if (swipeDistance > 0) // Arrasto para a direita
-                    {
-                        if (currentLane < 1) // Impede que o jogador saia da pista pela direita
-                            currentLane++;
-                    }
+
+                    if (swipeDistance < 0 && currentLane > -1)
+                        currentLane--; // Esquerda
+                    else if (swipeDistance > 0 && currentLane < 1)
+                        currentLane++; // Direita
                 }
             }
 
+            // Fim do toque
             if (touch.phase == TouchPhase.Ended)
             {
-                // Verifica se o toque foi para pular
-                if (Mathf.Abs(touch.position.y - touchStartPos.y) < 100) // Verifica um toque simples
+                float verticalSwipe = touch.position.y - touchStartPos.y;
+
+                // Toque rápido sem arrastar = pulo
+                if (Mathf.Abs(verticalSwipe) < 100)
                 {
-                    if (isGrounded)
+                    if (isGrounded && jumpTimer <= Time.time)
                     {
                         jumpRequested = true;
+                        jumpTimer = Time.time + 1f; // tempo mínimo entre pulos
                     }
                 }
             }
         }
 
-        // Calcula a posição alvo da pista
+        // --- PAUSE MENU (por botão físico ou UI) ---
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePauseMenu();
+        }
+
+        // --- Calcula posição alvo ---
         targetPosition = new Vector3(currentLane * laneOffset, transform.position.y, transform.position.z);
 
-        // Pulo
+        // --- Pulo ---
         if (jumpRequested)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -92,15 +107,32 @@ public class PlayerMoveMobile : MonoBehaviour
         Vector3 forwardMove = Vector3.forward * stats.speed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + forwardMove);
 
-        // Movimento suave para a pista
+        // Movimento suave lateral
         Vector3 newPos = new Vector3(targetPosition.x, rb.position.y, rb.position.z);
         rb.position = Vector3.MoveTowards(rb.position, newPos, laneChangeSpeed * Time.fixedDeltaTime);
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        // Detecta se está no chão
         if (collision.gameObject.CompareTag("Ground"))
             isGrounded = true;
+    }
+
+    public void TogglePauseMenu()
+    {
+        if (pauseMenu == null) return;
+
+        if (!pauseMenuActive)
+        {
+            Time.timeScale = 0f;
+            pauseMenu.SetActive(true);
+            pauseMenuActive = true;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            pauseMenu.SetActive(false);
+            pauseMenuActive = false;
+        }
     }
 }
