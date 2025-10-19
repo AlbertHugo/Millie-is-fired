@@ -1888,12 +1888,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Damage:
-
-
-    Speed:
-
-'
+  m_text: "Damage:\n\n   Speed:\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea62d5ada0e89954688b14455b8c49b0, type: 2}
   m_sharedMaterial: {fileID: -1267909969813723275, guid: ea62d5ada0e89954688b14455b8c49b0, type: 2}
@@ -5717,8 +5712,8 @@ MonoBehaviour:
   ultIconGUI: {fileID: 37820208}
   ultIconPen: {fileID: 1434146735}
   guiEmptySprite: {fileID: 21300000, guid: 3abed30266902e54b9d39cda2e416dcf, type: 3}
-  firstCharge: {fileID: 21300000, guid: 3abed30266902e54b9d39cda2e416dcf, type: 3}
-  secondCharge: {fileID: 21300000, guid: 3abed30266902e54b9d39cda2e416dcf, type: 3}
+  firstCharge: {fileID: 21300000, guid: 9c67c30f003bf754d945afe943ecd128, type: 3}
+  secondCharge: {fileID: 21300000, guid: 2f014e3464e55be468ddc7809163831f, type: 3}
   guiFullSprite: {fileID: 21300000, guid: 3775a1ffc91b1044aaa608a773a5c8d9, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
