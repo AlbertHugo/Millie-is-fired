@@ -1,39 +1,55 @@
-using System;
+ï»¿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerUltimate : MonoBehaviour
 {
     public static bool haveUlt;
     public static int ultIndex;
-    public GameObject ultIcon1;
+
+    [Header("UI Elements")]
+    public Image ultIconGUI;        // Moldura (Image no Canvas)
+    public GameObject ultIconPen;   // Caneta (objeto da imagem interna)
+    public Sprite guiEmptySprite;   // Moldura descarregada
+    public Sprite guiFullSprite;    // Moldura carregada
+
     private float cooldown = 0f;
+    private float cooldownTime = 9f;
+    private bool isOnCooldown = false;
 
     void Start()
     {
         haveUlt = false;
-        ultIcon1.SetActive(false);
         ultIndex = 0;
+
+        // Tudo comeÃ§a escondido
+        ultIconGUI.gameObject.SetActive(false);
+        ultIconPen.SetActive(false);
     }
 
     void Update()
     {
+        // Mostra Ã­cones apenas quando o jogador tiver a ult
         if (haveUlt)
         {
-            ultIcon1.SetActive(true);
+            ultIconGUI.gameObject.SetActive(true);
+            ultIconPen.SetActive(true);
         }
 
-        // Verifica se a ult está pronta para ser ativada e se o cooldown já passou
-        if (haveUlt && cooldown <= Time.time && Input.GetKeyDown(KeyCode.X))
+        // Ativa a ult se estiver pronta
+        if (haveUlt && !isOnCooldown && Input.GetKeyDown(KeyCode.X))
         {
-            // Aplica cooldown de 10 segundos
-            cooldown = Time.time + 10f;
-
-            // Chama a função para destruir inimigos e obstáculos
             PenUltimate();
+            StartCooldown();
+        }
+
+        // Atualiza o estado visual durante o cooldown
+        if (isOnCooldown && Time.time >= cooldown)
+        {
+            EndCooldown();
         }
     }
 
-    // Função para destruir todos os inimigos e obstáculos
     void PenUltimate()
     {
         // Destruir inimigos
@@ -42,31 +58,56 @@ public class PlayerUltimate : MonoBehaviour
         {
             BasicEnemy enemy = enemyObj.GetComponent<BasicEnemy>();
             if (enemy != null)
-            {
-                enemy.TakeDamage(100, 1);  // Dano fatal
-            }
+                enemy.TakeDamage(100, 1);
         }
 
-        // Destruir obstáculos
+        // Destruir obstÃ¡culos
         GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
         foreach (GameObject obstacleObj in obstacles)
         {
             Obstacle obstacle = obstacleObj.GetComponent<Obstacle>();
             if (obstacle != null)
-            {
-                obstacle.Destruction();  // Destrói o obstáculo
-            }
+                obstacle.Destruction();
         }
 
-        // Destruir objetos com tag "Insta Kill"
+        // Destruir objetos "Insta Kill"
         GameObject[] instaKillObjects = GameObject.FindGameObjectsWithTag("Insta Kill");
         foreach (GameObject instaKillObj in instaKillObjects)
         {
             Obstacle instaKill = instaKillObj.GetComponent<Obstacle>();
             if (instaKill != null)
-            {
-                instaKill.Destruction();  // Destrói o objeto
-            }
+                instaKill.Destruction();
         }
+    }
+
+    void StartCooldown()
+    {
+        isOnCooldown = true;
+        cooldown = Time.time + cooldownTime;
+
+        // Muda a GUI (fundo) para descarregada
+        ultIconGUI.sprite = guiEmptySprite;
+    }
+
+    void EndCooldown()
+    {
+        isOnCooldown = false;
+
+        // Muda a GUI (fundo) para carregada
+        ultIconGUI.sprite = guiFullSprite;
+    }
+
+    // ðŸ”¹ Chame esta funÃ§Ã£o quando o jogador pegar a caneta
+    public void UnlockUltimate()
+    {
+        haveUlt = true;
+        ultIconGUI.gameObject.SetActive(true);
+        ultIconPen.SetActive(true);
+
+        // ComeÃ§a com o fundo descarregado
+        ultIconGUI.sprite = guiEmptySprite;
+
+        // Inicia o carregamento
+        StartCooldown();
     }
 }

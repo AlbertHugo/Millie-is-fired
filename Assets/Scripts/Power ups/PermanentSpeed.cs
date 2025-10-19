@@ -1,12 +1,15 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PermanentSpeed : MonoBehaviour
 {
     private int pointsUsed = 0;
     private int pointBank = 0;
-    private int speedCounter = 0; // conta quantas vezes a velocidade foi aumentada
+    private int speedCounter = 0;
 
     private PlayerStats playerStats;
+
+    public GameObject permanentSpeedUpgradePanel;
+    private bool isPaused = false;
 
     void Start()
     {
@@ -14,7 +17,21 @@ public class PermanentSpeed : MonoBehaviour
 
         pointsUsed = PlayerPrefs.GetInt("pointsUsed", 0);
         pointBank = PlayerPrefs.GetInt("pointBank", 0);
-        speedCounter = PlayerPrefs.GetInt("speedCounter", 0); // carrega quantos upgrades já foram feitos
+        speedCounter = PlayerPrefs.GetInt("speedCounter", 0);
+
+        if (permanentSpeedUpgradePanel != null)
+        {
+            permanentSpeedUpgradePanel.SetActive(true);
+            PauseGame();
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
+        {
+            HideUpgradePanel();
+        }
     }
 
     public void AddScoreToBank()
@@ -25,6 +42,14 @@ public class PermanentSpeed : MonoBehaviour
         playerStats.score = 0;
         PlayerPrefs.SetInt("pointBank", pointBank);
         PlayerPrefs.Save();
+    }
+
+    public void BuySpeedUpgrade()
+    {
+        if (TryBuyUpgrade(2000))
+        {
+            HideUpgradePanel();
+        }
     }
 
     public bool TryBuyUpgrade(int cost)
@@ -43,12 +68,6 @@ public class PermanentSpeed : MonoBehaviour
                 float newBaseSpeed = currentBaseSpeed + 1f;
                 baseSpeedField.SetValue(playerStats, newBaseSpeed);
                 speedCounter++;
-
-                Debug.Log("Velocidade base aumentada! Nova base: " + newBaseSpeed);
-            }
-            else
-            {
-                Debug.LogWarning("Não foi possível acessar baseSpeed — verifique se o nome está correto!");
             }
 
             PlayerPrefs.SetInt("pointBank", pointBank);
@@ -68,7 +87,6 @@ public class PermanentSpeed : MonoBehaviour
     {
         if (playerStats == null) return;
 
-        
         pointBank += pointsUsed;
 
         var baseSpeedField = playerStats.GetType().GetField("baseSpeed", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
@@ -77,11 +95,8 @@ public class PermanentSpeed : MonoBehaviour
             float currentBaseSpeed = (float)baseSpeedField.GetValue(playerStats);
             float newBaseSpeed = currentBaseSpeed - speedCounter;
             baseSpeedField.SetValue(playerStats, newBaseSpeed);
-
-            Debug.Log($"Reembolso aplicado! Velocidade base retornou de {currentBaseSpeed} para {newBaseSpeed}");
         }
 
-        
         pointsUsed = 0;
         speedCounter = 0;
 
@@ -89,5 +104,33 @@ public class PermanentSpeed : MonoBehaviour
         PlayerPrefs.SetInt("pointsUsed", pointsUsed);
         PlayerPrefs.SetInt("speedCounter", speedCounter);
         PlayerPrefs.Save();
+    }
+
+    public void HideUpgradePanel()
+    {
+        if (permanentSpeedUpgradePanel != null)
+            permanentSpeedUpgradePanel.SetActive(false);
+
+        ResumeGame();
+    }
+
+    public void ShowUpgradePanel()
+    {
+        if (permanentSpeedUpgradePanel != null)
+            permanentSpeedUpgradePanel.SetActive(true);
+
+        PauseGame();
+    }
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0f;
+        isPaused = true;
+    }
+
+    private void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
     }
 }
