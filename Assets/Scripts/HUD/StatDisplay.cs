@@ -25,7 +25,7 @@ public class StatDisplay : MonoBehaviour
 
        
         statText.text =
-            $"Damage: {(int)PlayerStats.damage}\n" +
-            $"Speed: {(int)baseSpeed}";
+            $"Damage: {PlayerStats.damage:F2}\n" +
+            $"Speed: {playerStats.speed:F2}";
     }
 }

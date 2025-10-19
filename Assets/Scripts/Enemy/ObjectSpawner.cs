@@ -7,6 +7,7 @@ public class ObjectSpawner : MonoBehaviour
     [Header("Referências")]
     public Transform player;
     public PlayerStats playerStats;
+    public PermanentSpeed permanentSpeed;
 
     [Header("Obstáculos")]
     public GameObject[] obstaclePrefabs;
@@ -131,6 +132,8 @@ public class ObjectSpawner : MonoBehaviour
     //Carrega tela de vitoria ao chegar na distância determinada. Para de spawnar tudo um pouco antes
     }else if (score >= 2000)
         {
+
+            permanentSpeed.AddScoreToBank();
             SceneManager.LoadScene("Victory");
         }
 

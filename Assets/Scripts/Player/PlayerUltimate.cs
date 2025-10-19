@@ -8,9 +8,15 @@ public class PlayerUltimate : MonoBehaviour
     public static int ultIndex;
 
     [Header("UI Elements")]
+
+    public Button ultButton;
     public Image ultIconGUI;        // Moldura (Image no Canvas)
     public GameObject ultIconPen;   // Caneta (objeto da imagem interna)
     public Sprite guiEmptySprite;   // Moldura descarregada
+
+    public Sprite firstCharge; //imagem da primeira carga
+
+    public Sprite secondCharge; //imagem da segunda carga
     public Sprite guiFullSprite;    // Moldura carregada
 
     private float cooldown = 0f;
@@ -25,6 +31,7 @@ public class PlayerUltimate : MonoBehaviour
         // Tudo começa escondido
         ultIconGUI.gameObject.SetActive(false);
         ultIconPen.SetActive(false);
+        ultButton.onClick.AddListener(PenUltimate);
     }
 
     void Update()
@@ -47,6 +54,12 @@ public class PlayerUltimate : MonoBehaviour
         if (isOnCooldown && Time.time >= cooldown)
         {
             EndCooldown();
+        }else if (isOnCooldown && cooldown - Time.time <= 3)
+        {
+            ultIconGUI.sprite = secondCharge;
+        }else if(isOnCooldown && cooldown - Time.time <= 3)
+        {
+            ultIconGUI.sprite = firstCharge;
         }
     }
 
@@ -82,6 +95,7 @@ public class PlayerUltimate : MonoBehaviour
 
     void StartCooldown()
     {
+        ultButton.interactable = false;
         isOnCooldown = true;
         cooldown = Time.time + cooldownTime;
 
@@ -91,6 +105,7 @@ public class PlayerUltimate : MonoBehaviour
 
     void EndCooldown()
     {
+        ultButton.interactable = true;
         isOnCooldown = false;
 
         // Muda a GUI (fundo) para carregada
