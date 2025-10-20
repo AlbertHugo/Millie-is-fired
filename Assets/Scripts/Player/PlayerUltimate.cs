@@ -47,7 +47,6 @@ public class PlayerUltimate : MonoBehaviour
         if (haveUlt && !isOnCooldown && Input.GetKeyDown(KeyCode.X))
         {
             PenUltimate();
-            StartCooldown();
         }
 
         // Atualiza o estado visual durante o cooldown
@@ -57,7 +56,7 @@ public class PlayerUltimate : MonoBehaviour
         }else if (isOnCooldown && cooldown - Time.time <= 3)
         {
             ultIconGUI.sprite = secondCharge;
-        }else if(isOnCooldown && cooldown - Time.time <= 3)
+        }else if(isOnCooldown && cooldown - Time.time <= 6)
         {
             ultIconGUI.sprite = firstCharge;
         }
@@ -91,6 +90,7 @@ public class PlayerUltimate : MonoBehaviour
             if (instaKill != null)
                 instaKill.Destruction();
         }
+        StartCooldown();
     }
 
     void StartCooldown()
