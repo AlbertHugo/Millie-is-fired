@@ -687,7 +687,7 @@ GameObject:
   - component: {fileID: 223379812}
   - component: {fileID: 223379811}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: UpgradePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -713,7 +713,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 966, y: -434.877}
+  m_AnchoredPosition: {x: 966, y: -770}
   m_SizeDelta: {x: -126, y: 497.891}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &223379811
@@ -728,9 +728,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077f468aabba47a40a0cab0680362cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slideDuration: 0.5
+  slideDuration: 1
   displayTime: 2
-  hiddenPosition: {x: 1029, y: 700}
+  hiddenPosition: {x: 1025, y: 1400}
   visiblePosition: {x: 1025, y: 434}
   dmgIcon: {fileID: 2081176429}
   hpIcon: {fileID: 409459893}

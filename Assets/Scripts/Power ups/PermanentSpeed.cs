@@ -124,7 +124,6 @@ public class PermanentSpeed : MonoBehaviour
 
     private void PauseGame()
     {
-        Time.timeScale = 0f;
         isPaused = true;
     }
 
