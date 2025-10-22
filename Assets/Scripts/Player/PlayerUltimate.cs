@@ -1,11 +1,13 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class PlayerUltimate : MonoBehaviour
 {
     public static bool haveUlt;
     public static int ultIndex;
+    public VisualEffect inkExplosion;
 
     [Header("UI Elements")]
 
@@ -30,6 +32,7 @@ public class PlayerUltimate : MonoBehaviour
 
         // Tudo começa escondido
         ultIconGUI.gameObject.SetActive(false);
+        inkExplosion.gameObject.SetActive(false);
         ultIconPen.SetActive(false);
         ultButton.onClick.AddListener(PenUltimate);
     }
@@ -59,12 +62,18 @@ public class PlayerUltimate : MonoBehaviour
         }else if(isOnCooldown && cooldown - Time.time <= 6)
         {
             ultIconGUI.sprite = firstCharge;
+        }else if(isOnCooldown&&cooldown - Time.time <= 7)
+        {
+            //para a animação
+            inkExplosion.Stop();
         }
     }
 
     void PenUltimate()
     {
-        // Destruir inimigos
+        // Destruir inimigos, tocar o efeito visual
+        inkExplosion.gameObject.SetActive(true);
+        inkExplosion.Play();
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemyObj in enemies)
         {
