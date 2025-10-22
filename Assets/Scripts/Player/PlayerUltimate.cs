@@ -47,7 +47,7 @@ public class PlayerUltimate : MonoBehaviour
         }
 
         // Ativa a ult se estiver pronta
-        if (haveUlt && !isOnCooldown && Input.GetKeyDown(KeyCode.X))
+        if (haveUlt && !isOnCooldown && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
         {
             PenUltimate();
         }
