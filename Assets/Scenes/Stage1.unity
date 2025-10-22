@@ -5823,6 +5823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32da68a1f89ebb4c9a7ca3c27460fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inkExplosion: {fileID: 1107292996}
   ultButton: {fileID: 37820210}
   ultIconGUI: {fileID: 37820208}
   ultIconPen: {fileID: 1434146735}
