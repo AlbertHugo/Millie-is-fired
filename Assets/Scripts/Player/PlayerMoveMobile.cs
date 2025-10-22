@@ -38,7 +38,7 @@ public class PlayerMoveMobile : MonoBehaviour
         // Aplica multiplicador de buff de velocidade
         laneChangeSpeed = laneBaseSpeed * stats.SPDBuff;
 
-        // --- CONTROLE POR TOQUE ---
+        //CONTROLE POR TOQUE
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -71,8 +71,8 @@ public class PlayerMoveMobile : MonoBehaviour
             {
                 float verticalSwipe = touch.position.y - touchStartPos.y;
 
-                // Toque rápido sem arrastar = pulo
-                if (Mathf.Abs(verticalSwipe) < 100)
+                // Só considera pulo se NÃO foi um swipe
+                if (!isSwiping && Mathf.Abs(verticalSwipe) < 100)
                 {
                     if (isGrounded && jumpTimer <= Time.time)
                     {
@@ -83,16 +83,16 @@ public class PlayerMoveMobile : MonoBehaviour
             }
         }
 
-        // --- PAUSE MENU (por botão físico ou UI) ---
+        //PAUSE MENU (por botão físico ou UI)
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePauseMenu();
         }
 
-        // --- Calcula posição alvo ---
+        //Calcula posição alvo
         targetPosition = new Vector3(currentLane * laneOffset, transform.position.y, transform.position.z);
 
-        // --- Pulo ---
+        // Pulo
         if (jumpRequested)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
