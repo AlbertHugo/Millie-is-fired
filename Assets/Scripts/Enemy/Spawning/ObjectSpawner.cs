@@ -40,9 +40,8 @@ public class ObjectSpawner : MonoBehaviour
     private bool canSpawnUlt = true;
 
     [Header("Inimigos")]
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefabs;
     private float enemySpawnInterval = 7f; // a cada X segundos aparece um
-    private float enemyTimer;
     private float timeEnemy = 0f;
     private int blockedLane = int.MinValue; // lane que deve ficar sem obstáculo
 
@@ -237,17 +236,21 @@ public class ObjectSpawner : MonoBehaviour
     void SpawnEnemy()
     {
         int lane = Random.Range(-1, 2);
+        int enemyIndex = Random.Range(0, enemyPrefabs.Length);
         Vector3 spawnPos = new Vector3(lane * laneOffset, 0.5f, player.position.z + obstacleSpawnDistance);
+        GameObject prefab = enemyPrefabs[enemyIndex];
+        GameObject enemy = Instantiate(prefab, spawnPos, Quaternion.identity);
 
-        GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        //Ajusta o inimigo para tocar o chão
+        if (enemyIndex == 0)
+        {
+            SetEnemyOnGround(enemy);
+        }
+        else
+        {
+            SetObjectOnGround(enemy);
+        }
 
-        // --- Ajusta o inimigo para tocar o chão ---
-        SetEnemyOnGround(enemy);
-
-        //atribui o player stats do enemy criado
-        BasicEnemy script = enemy.GetComponent<BasicEnemy>();
-        script.playerStats = playerStats;
-        spawnedObjects.Add(enemy);
 
         // não spawna obstáculo nessa lane
         blockedLane = lane;

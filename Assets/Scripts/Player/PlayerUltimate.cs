@@ -79,7 +79,14 @@ public class PlayerUltimate : MonoBehaviour
         {
             BasicEnemy enemy = enemyObj.GetComponent<BasicEnemy>();
             if (enemy != null)
+            {
                 enemy.TakeDamage(100, 1);
+            }
+            else
+            {
+                ChargingEnemy chargeEnemy = enemyObj.GetComponent<ChargingEnemy>();
+                chargeEnemy.TakeDamage(100, 1);
+            }
         }
 
         // Destruir obstáculos

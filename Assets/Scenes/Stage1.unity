@@ -4102,7 +4102,9 @@ MonoBehaviour:
   - {fileID: 7811013195061807264, guid: d777749a521905b49a3ba41702fa607c, type: 3}
   - {fileID: 7811013195061807264, guid: d777749a521905b49a3ba41702fa607c, type: 3}
   - {fileID: 7811013195061807264, guid: d777749a521905b49a3ba41702fa607c, type: 3}
-  enemyPrefab: {fileID: 4235519070020224029, guid: f10a391f7f0f65942b044519c6c36e2c, type: 3}
+  enemyPrefabs:
+  - {fileID: 4235519070020224029, guid: f10a391f7f0f65942b044519c6c36e2c, type: 3}
+  - {fileID: 779125221259540551, guid: c0d6ec1d4d7f5a14681896390f2c9287, type: 3}
   despawnDistance: 30
 --- !u!23 &1372150060
 MeshRenderer:
