@@ -4,10 +4,16 @@ using UnityEngine.SceneManagement;
 public class MainMenuButtons : MonoBehaviour
 {
 
-
+void Start()
+{
+    Time.timeScale=1f;
+    PlayerStats.baseATK = 0f;
+    PlayerAttack.projectile = null;
+    PlayerAttack.projectileIndex = 0;
+}
 public void StartGame()
 {     
-        // Coisa símples, só manda pro jogo
+        // Coisa sï¿½mples, sï¿½ manda pro jogo
     SceneManager.LoadScene("Stage1");
 }
 
