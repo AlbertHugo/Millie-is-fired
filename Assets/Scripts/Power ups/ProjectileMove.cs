@@ -27,7 +27,7 @@ public class ProjectileMove : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            BasicEnemy enemy = other.GetComponent<BasicEnemy>();
+            LifeController enemy = other.GetComponent<LifeController>();
             if (enemy != null)
             {
                 enemy.TakeDamage(PlayerStats.damage, selfIndex);

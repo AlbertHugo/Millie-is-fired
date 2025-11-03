@@ -77,16 +77,9 @@ public class PlayerUltimate : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemyObj in enemies)
         {
-            BasicEnemy enemy = enemyObj.GetComponent<BasicEnemy>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(100, 1);
-            }
-            else
-            {
-                ChargingEnemy chargeEnemy = enemyObj.GetComponent<ChargingEnemy>();
-                chargeEnemy.TakeDamage(100, 1);
-            }
+            LifeController enemy = enemyObj.GetComponent<LifeController>();
+            enemy.TakeDamage(100, 1);
+            
         }
 
         // Destruir obstáculos

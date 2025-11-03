@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2799309830650726237}
   - component: {fileID: 2206418075817761481}
   - component: {fileID: 8599221003185963129}
+  - component: {fileID: 4343246185548603811}
   m_Layer: 0
   m_Name: Salaryman
   m_TagString: Enemy
@@ -156,6 +157,24 @@ MonoBehaviour:
   markCounter: 0
   damagePerMark: 1
   Death: {fileID: 8300000, guid: 50f1d9e4802e9634db3b29da57414f26, type: 3}
+--- !u!114 &4343246185548603811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4235519070020224029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987ba64b8f9547f48a6ed43b2cc387ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Death: {fileID: 8300000, guid: f36063ef0a2872444bb7208bf9cef461, type: 3}
+  markCounter: 0
+  damageTaken: {fileID: 4648798240494512656}
+  playerStats: {fileID: 0}
+  damagePerMark: 1
+  enemyLife: 0
 --- !u!1 &8964919527113494425
 GameObject:
   m_ObjectHideFlags: 0

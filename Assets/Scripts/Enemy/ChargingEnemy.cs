@@ -30,9 +30,12 @@ public class ChargingEnemy : MonoBehaviour
     private PlayerStats playerStats;
     private int currentLane = 0;
     private float stateTimer = 0f;
+    LifeController lifeController;
 
     void Start()
     {
+        lifeController = GetComponent<LifeController>();
+        lifeController.SetLife(enemyLife);
         rb = GetComponent<Rigidbody>();
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
 
@@ -49,7 +52,6 @@ public class ChargingEnemy : MonoBehaviour
     {
         // Movimento base (para compensar o movimento do player)
         backwardSpeed=playerStats.speed-1f;
-        Debug.Log(backwardSpeed);
 
         // Durante a fase de "charge", ele se move para frente
         if (isCharging)
@@ -73,62 +75,5 @@ public class ChargingEnemy : MonoBehaviour
         // Mantém posição na lane
         float targetX = currentLane * laneOffset;
         float smoothX = Mathf.MoveTowards(rb.position.x, targetX, laneChangeSpeed * Time.fixedDeltaTime);
-    }
-
-    public void TakeDamage(float damage, int weaponIndex)
-    {
-        enemyLife -= damage;
-        PlayDamageVFX();
-
-        if (weaponIndex == 1)
-        {
-            markCounter += 1;
-
-            // inicia dano por segundo quando atingir 3 marcadores
-            if (markCounter >= 1 && !isTakingDot)
-            {
-                StartCoroutine(ApplyMarkDamage());
-            }
-        }
-
-        if (enemyLife <= 0)
-        {
-            RepeatableCode.PlaySound(Death, gameObject.transform.position);
-            playerStats.score += 10;
-            Destroy(gameObject);
-        }
-    }
-
-    private void PlayDamageVFX()
-    {
-        damageTaken.gameObject.SetActive(true);
-        VisualEffect vfxDamage = Instantiate(damageTaken, transform.position, Quaternion.identity);
-        vfxDamage.Play();
-        Destroy(vfxDamage.gameObject, 0.5f);
-        damageTaken.gameObject.SetActive(false);
-    }
-
-    private IEnumerator ApplyMarkDamage()
-    {
-        isTakingDot = true;
-
-        while (enemyLife > 0 && markCounter >= 1)
-        {
-            float damageThisTick = damagePerMark * markCounter * 2;
-            enemyLife -= damageThisTick;
-
-            PlayDamageVFX();
-
-            if (enemyLife <= 0)
-            {
-                playerStats.score += 100;
-                Destroy(gameObject);
-                yield break;
-            }
-
-            yield return new WaitForSeconds(1f); // aplica dano a cada 1 segundo
-        }
-
-        isTakingDot = false; // libera para poder reiniciar no futuro
     }
 }

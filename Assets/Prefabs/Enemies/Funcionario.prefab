@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2214205064985482192}
   - component: {fileID: 430367831445190422}
   - component: {fileID: 8719578068883795181}
+  - component: {fileID: 7714678054860546462}
   m_Layer: 0
   m_Name: Funcionario
   m_TagString: Enemy
@@ -108,14 +109,8 @@ MonoBehaviour:
   forwardSpeed: 3
   laneChangeSpeed: 5
   laneOffset: 3
-  damageTaken: {fileID: 3172940821119115855}
-  enemyLife: 15
-  markCounter: 0
-  damagePerMark: 1
-  playerStats: {fileID: 0}
   entrance1: {fileID: 8300000, guid: 789a3ea4cec124a4a9cdbc3b5e3ff133, type: 3}
   entrance2: {fileID: 8300000, guid: 7c78032c73fe4514fb1d2fa9225f616e, type: 3}
-  Death: {fileID: 8300000, guid: 50f1d9e4802e9634db3b29da57414f26, type: 3}
 --- !u!54 &430367831445190422
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -164,6 +159,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4029679, y: 1.6978128, z: 0.55571985}
   m_Center: {x: 0.000000029802322, y: 0.8481387, z: -0.05529973}
+--- !u!114 &7714678054860546462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779125221259540551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987ba64b8f9547f48a6ed43b2cc387ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Death: {fileID: 8300000, guid: 50f1d9e4802e9634db3b29da57414f26, type: 3}
+  markCounter: 0
+  damageTaken: {fileID: 3172940821119115855}
+  playerStats: {fileID: 0}
+  damagePerMark: 1
+  enemyLife: 0
 --- !u!1 &7595947682178302736
 GameObject:
   m_ObjectHideFlags: 0
