@@ -5,6 +5,8 @@ using System.Collections;
 public class LifeController : MonoBehaviour
 {
 
+    public GameObject damageNumbers;
+    private Vector3 textAlign;
     public AudioClip Death;
     public int markCounter = 0;
     public VisualEffect damageTaken;
@@ -18,6 +20,14 @@ public class LifeController : MonoBehaviour
         damageTaken.gameObject.SetActive(false);
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         damageTaken.gameObject.SetActive(false);
+        textAlign = new Vector3(transform.position.x+100, transform.position.y, transform.position.z);
+    }
+    private void Update()
+    {
+        if (playerStats.score >= 1998)
+        {
+            Destroy(gameObject);
+        }
     }
     public void SetLife(float life)
     {
@@ -26,6 +36,7 @@ public class LifeController : MonoBehaviour
     public void TakeDamage(float damage, int weaponIndex)
     {
         enemyLife -= damage;
+        ShowDamage(damage);
         PlayDamageVFX();
 
         if (weaponIndex == 1)
@@ -47,10 +58,16 @@ public class LifeController : MonoBehaviour
         }
     }
 
+    private void ShowDamage(float damage)
+    {
+        GameObject textShown = Instantiate(damageNumbers, transform.position, Quaternion.identity);
+        textShown.GetComponent<TextMesh>().text = damage.ToString();
+        Destroy(textShown, 1f);
+    }
     private void PlayDamageVFX()
     {
         damageTaken.gameObject.SetActive(true);
-        VisualEffect vfxDamage = Instantiate(damageTaken, transform.position, Quaternion.identity);
+        VisualEffect vfxDamage = Instantiate(damageTaken, textAlign, Quaternion.identity);
         vfxDamage.Play();
         Destroy(vfxDamage.gameObject, 0.5f);
         damageTaken.gameObject.SetActive(false);
@@ -64,6 +81,7 @@ public class LifeController : MonoBehaviour
         {
             float damageThisTick = damagePerMark * markCounter;
             enemyLife -= damageThisTick;
+            ShowDamage(damageThisTick);
 
             PlayDamageVFX();
 

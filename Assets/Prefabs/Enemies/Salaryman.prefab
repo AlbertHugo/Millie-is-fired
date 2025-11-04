@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987ba64b8f9547f48a6ed43b2cc387ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageNumbers: {fileID: 9199303280818714385, guid: 8ca1ee9bdb83bfe4080428936e22b37a, type: 3}
   Death: {fileID: 8300000, guid: f36063ef0a2872444bb7208bf9cef461, type: 3}
   markCounter: 0
   damageTaken: {fileID: 4648798240494512656}
