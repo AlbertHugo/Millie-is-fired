@@ -29,7 +29,6 @@ public class PlayerStats : MonoBehaviour
     public float ATKBuff = 1f;
     public float SPDBuff = 1f;
 
-    // Ainda preciso programar melhor a aplicação deles
     [Header("Pontuação e distância")]
     public float distance = 0f;
     public float score = 0f;
@@ -37,6 +36,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
+        SPDBuff = PlayerPrefs.GetFloat("SPDBuff", 1);
         damaged.gameObject.SetActive(false);
     }
 
@@ -51,7 +51,7 @@ public class PlayerStats : MonoBehaviour
             landMark = distance+5f;
         }
         //código de aceleração
-        if (speed <= 20)
+        if (baseSpeed <= 20)
         {
             baseSpeed += gameObject.transform.position.z / 5000;
         }

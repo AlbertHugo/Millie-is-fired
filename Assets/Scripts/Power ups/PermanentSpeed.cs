@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class PermanentSpeed : MonoBehaviour
 {
@@ -6,19 +7,32 @@ public class PermanentSpeed : MonoBehaviour
     private int pointBank = 0;
     private int speedCounter = 0;
 
+    public GameObject player;
     private PlayerStats playerStats;
-
     public GameObject permanentSpeedUpgradePanel;
+    public TextMeshProUGUI upgradeText;
+    public GameObject errorPopUp;
+
+    //caso tenha upgrade
+    public GameObject refundButton;
+    public GameObject originalButton;
+    public GameObject upgradeButton;
     private bool isPaused = false;
 
     void Start()
     {
-        playerStats = FindFirstObjectByType<PlayerStats>();
-
-        pointsUsed = PlayerPrefs.GetInt("pointsUsed", 0);
-        pointBank = PlayerPrefs.GetInt("pointBank", 0);
-        speedCounter = PlayerPrefs.GetInt("speedCounter", 0);
-
+        upgradeText.text = "[MELHORIAS :" + speedCounter + "]";
+        AddScoreToBank();
+        playerStats = player.GetComponent<PlayerStats>();
+        PlayerPrefs.GetInt("pointBank", 0);
+        PlayerPrefs.GetInt("pointsUsed", 0);
+        PlayerPrefs.GetInt("speedCounter", 0);
+        if(speedCounter >= 1)
+        {
+            originalButton.SetActive(false);
+            refundButton.SetActive(true);
+            upgradeButton.SetActive(true);
+        }
         if (permanentSpeedUpgradePanel != null)
         {
             permanentSpeedUpgradePanel.SetActive(true);
@@ -36,41 +50,28 @@ public class PermanentSpeed : MonoBehaviour
 
     public void AddScoreToBank()
     {
-        if (playerStats == null) return;
-
-        pointBank += Mathf.RoundToInt(playerStats.score);
-        playerStats.score = 0;
+        pointBank += Mathf.RoundToInt(2000);
         PlayerPrefs.SetInt("pointBank", pointBank);
         PlayerPrefs.Save();
     }
 
     public void BuySpeedUpgrade()
     {
-        if (TryBuyUpgrade(2000))
-        {
-            HideUpgradePanel();
-        }
+        TryBuyUpgrade(2000);
     }
 
     public bool TryBuyUpgrade(int cost)
     {
-        if (playerStats == null) return false;
-
-        if (pointBank >= cost)
+        if (pointBank >= cost&&speedCounter<=6)
         {
             pointBank -= cost;
             pointsUsed += cost;
 
-            var baseSpeedField = playerStats.GetType().GetField("baseSpeed", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            if (baseSpeedField != null)
-            {
-                float currentBaseSpeed = (float)baseSpeedField.GetValue(playerStats);
-                float newBaseSpeed = currentBaseSpeed + 1f;
-                baseSpeedField.SetValue(playerStats, newBaseSpeed);
-                speedCounter++;
-            }
+            playerStats.SPDBuff+=0.5f;
+            speedCounter++;
 
             PlayerPrefs.SetInt("pointBank", pointBank);
+            PlayerPrefs.SetFloat("SPDBuff", playerStats.SPDBuff);
             PlayerPrefs.SetInt("pointsUsed", pointsUsed);
             PlayerPrefs.SetInt("speedCounter", speedCounter);
             PlayerPrefs.Save();
@@ -78,29 +79,23 @@ public class PermanentSpeed : MonoBehaviour
         }
         else
         {
-            Debug.Log("Pontos insuficientes!");
+            errorPopUp.SetActive(true);
             return false;
         }
     }
 
     public void Refund()
     {
-        if (playerStats == null) return;
 
         pointBank += pointsUsed;
 
-        var baseSpeedField = playerStats.GetType().GetField("baseSpeed", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-        if (baseSpeedField != null)
-        {
-            float currentBaseSpeed = (float)baseSpeedField.GetValue(playerStats);
-            float newBaseSpeed = currentBaseSpeed - speedCounter;
-            baseSpeedField.SetValue(playerStats, newBaseSpeed);
-        }
+        playerStats.SPDBuff = 1;
 
         pointsUsed = 0;
         speedCounter = 0;
 
         PlayerPrefs.SetInt("pointBank", pointBank);
+
         PlayerPrefs.SetInt("pointsUsed", pointsUsed);
         PlayerPrefs.SetInt("speedCounter", speedCounter);
         PlayerPrefs.Save();
@@ -109,7 +104,9 @@ public class PermanentSpeed : MonoBehaviour
     public void HideUpgradePanel()
     {
         if (permanentSpeedUpgradePanel != null)
+        {
             permanentSpeedUpgradePanel.SetActive(false);
+        }
 
         ResumeGame();
     }
