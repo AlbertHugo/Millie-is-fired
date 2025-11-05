@@ -226,7 +226,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2942dc979cab5b243ba5724746c1ed43, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 419ca19e0766ee242ac29fa8ce76ae14, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -511,8 +511,8 @@ MonoBehaviour:
   upgradeText: {fileID: 901000418}
   errorPopUp: {fileID: 2092571254}
   refundButton: {fileID: 612702473}
-  originalButton: {fileID: 0}
-  upgradeButton: {fileID: 0}
+  originalButton: {fileID: 1229574165}
+  upgradeButton: {fileID: 1392427971}
 --- !u!224 &772974622
 RectTransform:
   m_ObjectHideFlags: 0

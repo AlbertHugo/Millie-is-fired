@@ -21,13 +21,13 @@ public class PermanentSpeed : MonoBehaviour
 
     void Start()
     {
-        upgradeText.text = "[MELHORIAS :" + speedCounter + "]";
         AddScoreToBank();
         playerStats = player.GetComponent<PlayerStats>();
-        PlayerPrefs.GetInt("pointBank", 0);
-        PlayerPrefs.GetInt("pointsUsed", 0);
-        PlayerPrefs.GetInt("speedCounter", 0);
-        if(speedCounter >= 1)
+        pointBank = PlayerPrefs.GetInt("pointBank", 0);
+        pointsUsed = PlayerPrefs.GetInt("pointsUsed", 0);
+        speedCounter = PlayerPrefs.GetInt("speedCounter", 0);
+        upgradeText.text = "[MELHORIAS: " + speedCounter + "]";
+        if (speedCounter >= 1)
         {
             originalButton.SetActive(false);
             refundButton.SetActive(true);
@@ -62,19 +62,21 @@ public class PermanentSpeed : MonoBehaviour
 
     public bool TryBuyUpgrade(int cost)
     {
-        if (pointBank >= cost&&speedCounter<=6)
+        if (pointBank >= cost&&speedCounter<=4)
         {
             pointBank -= cost;
             pointsUsed += cost;
 
+            playerStats.SPDBuff = PlayerPrefs.GetFloat("SPDBuff", 1);
             playerStats.SPDBuff+=0.5f;
-            speedCounter++;
+            speedCounter+=1;
 
             PlayerPrefs.SetInt("pointBank", pointBank);
             PlayerPrefs.SetFloat("SPDBuff", playerStats.SPDBuff);
             PlayerPrefs.SetInt("pointsUsed", pointsUsed);
             PlayerPrefs.SetInt("speedCounter", speedCounter);
             PlayerPrefs.Save();
+            upgradeText.text = "[MELHORIAS: " + speedCounter + "]";
             return true;
         }
         else
@@ -95,10 +97,12 @@ public class PermanentSpeed : MonoBehaviour
         speedCounter = 0;
 
         PlayerPrefs.SetInt("pointBank", pointBank);
-
+        PlayerPrefs.SetFloat("SPDBuff", playerStats.SPDBuff);
         PlayerPrefs.SetInt("pointsUsed", pointsUsed);
         PlayerPrefs.SetInt("speedCounter", speedCounter);
         PlayerPrefs.Save();
+        upgradeText.text = "[MELHORIAS: " + speedCounter + "]";
+        HideUpgradePanel();
     }
 
     public void HideUpgradePanel()
