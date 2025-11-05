@@ -3414,6 +3414,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   permanentSpeedUpgradePanel: {fileID: 859928908}
+  upgradeText: {fileID: 0}
+  errorPopUp: {fileID: 0}
+  refundButton: {fileID: 0}
+  originalButton: {fileID: 0}
+  upgradeButton: {fileID: 0}
 --- !u!1 &1270653422
 GameObject:
   m_ObjectHideFlags: 0
