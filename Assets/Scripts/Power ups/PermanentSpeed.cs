@@ -102,7 +102,6 @@ public class PermanentSpeed : MonoBehaviour
         PlayerPrefs.SetInt("speedCounter", speedCounter);
         PlayerPrefs.Save();
         upgradeText.text = "[MELHORIAS: " + speedCounter + "]";
-        HideUpgradePanel();
     }
 
     public void HideUpgradePanel()
