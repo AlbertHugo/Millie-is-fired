@@ -1211,7 +1211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2798233, y: 0, z: 0, w: 0.96005154}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 10, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3466,7 +3466,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7499345553048756267}
   playerStats: {fileID: 8671729257900120901}
-  permanentSpeed: {fileID: 0}
   obstaclePrefabs:
   - {fileID: 358745821325754041, guid: 4c231d1bbc681bd49bead7ff89a5ba32, type: 3}
   - {fileID: 2466432301181725185, guid: 5afa7420d22c9a248a39e032f197d38e, type: 3}
@@ -4529,13 +4528,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2099807968}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2798233, y: -0, z: -0, w: 0.96005154}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 10, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 32.499, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!114 &2099807971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4550,7 +4549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TrackerSettings:
     BindingMode: 4
-    PositionDamping: {x: 100, y: 1, z: 0}
+    PositionDamping: {x: 100, y: 0, z: 0}
     AngularDampingMode: 1
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1

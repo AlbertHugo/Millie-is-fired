@@ -7,7 +7,6 @@ public class ObjectSpawner : MonoBehaviour
     [Header("Referências")]
     public Transform player;
     public PlayerStats playerStats;
-    public PermanentSpeed permanentSpeed;
 
     [Header("Obstáculos")]
     public GameObject[] obstaclePrefabs;
@@ -133,7 +132,6 @@ public class ObjectSpawner : MonoBehaviour
     }else if (score >= 2000)
         {
 
-            permanentSpeed.AddScoreToBank();
             SceneManager.LoadScene("Victory");
         }
 
