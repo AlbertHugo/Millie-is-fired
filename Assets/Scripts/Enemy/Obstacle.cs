@@ -5,10 +5,12 @@ public class Obstacle : MonoBehaviour
 {
     public VisualEffect damaged;
     public AudioClip breaked;
+    private HitKill hitKill;
 
     private void Start()
     {
         damaged.gameObject.SetActive(false);
+        hitKill = GetComponent<HitKill>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -27,5 +29,9 @@ public class Obstacle : MonoBehaviour
         damaged.gameObject.SetActive(false);
         RepeatableCode.PlaySound(breaked, gameObject.transform.position);
         Destroy(gameObject);
+        if (hitKill != null)
+        {
+            hitKill.SelfDestruct();
+        }
     }
 }
