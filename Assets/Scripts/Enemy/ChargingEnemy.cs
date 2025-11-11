@@ -35,7 +35,7 @@ public class ChargingEnemy : MonoBehaviour
     void Start()
     {
         lifeController = GetComponent<LifeController>();
-        lifeController.SetLife(enemyLife);
+        lifeController.SetLife(enemyLife, 2);
         rb = GetComponent<Rigidbody>();
         playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
 

@@ -15,6 +15,10 @@ public class LifeController : MonoBehaviour
     private bool isTakingDot = false; // controle da corrotina
     public float enemyLife;
 
+    //animação
+    private int aniIndex;
+    public Animator animator;
+
     public void Start()
     {
         damageTaken.gameObject.SetActive(false);
@@ -29,8 +33,9 @@ public class LifeController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void SetLife(float life)
+    public void SetLife(float life, int animationIndex)
     {
+        aniIndex = animationIndex;
         enemyLife = life;
     }
     public void TakeDamage(float damage, int weaponIndex)
@@ -52,9 +57,9 @@ public class LifeController : MonoBehaviour
 
         if (enemyLife <= 0)
         {
+            PlayAnimation(aniIndex);
             RepeatableCode.PlaySound(Death, gameObject.transform.position);
             playerStats.score += 10;
-            Destroy(gameObject);
         }
     }
 
@@ -96,5 +101,17 @@ public class LifeController : MonoBehaviour
         }
 
         isTakingDot = false; // libera para poder reiniciar no futuro
+    }
+    private void PlayAnimation(int index)
+    {
+        if (index == 0)
+        {
+            animator.Play("FuncionarioMorrendo");
+            Destroy(gameObject, 0.5f);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

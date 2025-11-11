@@ -24,7 +24,7 @@ public class BasicEnemy : MonoBehaviour
     void Start()
     {
         lifeController = GetComponent<LifeController>();
-        lifeController.SetLife(enemyLife);
+        lifeController.SetLife(enemyLife, 0);
         entranceIndex = Random.Range(0, 3);//seleciona qual o efeito sonoro que será tocado na entrada
         //toca o som na entrada, ou não toca nada
         if (entranceIndex >= 1&&entranceIndex<2)

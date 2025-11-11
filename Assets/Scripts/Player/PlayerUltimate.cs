@@ -78,7 +78,10 @@ public class PlayerUltimate : MonoBehaviour
         foreach (GameObject enemyObj in enemies)
         {
             LifeController enemy = enemyObj.GetComponent<LifeController>();
-            enemy.TakeDamage(100, 1);
+            if (enemy!=null)
+            {
+                enemy.TakeDamage(100, 1);
+            }
             
         }
 

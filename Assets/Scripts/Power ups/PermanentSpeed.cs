@@ -68,7 +68,7 @@ public class PermanentSpeed : MonoBehaviour
             pointsUsed += cost;
 
             playerStats.SPDBuff = PlayerPrefs.GetFloat("SPDBuff", 1);
-            playerStats.SPDBuff+=0.5f;
+            playerStats.SPDBuff+=0.3f;
             speedCounter+=1;
 
             PlayerPrefs.SetInt("pointBank", pointBank);

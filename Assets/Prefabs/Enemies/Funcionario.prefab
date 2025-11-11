@@ -264,11 +264,10 @@ GameObject:
   - component: {fileID: 3857971139984671270}
   - component: {fileID: 3618085368782109112}
   - component: {fileID: 5909896313543437558}
-  - component: {fileID: 2214205064985482192}
   - component: {fileID: 430367831445190422}
   - component: {fileID: 8719578068883795181}
   - component: {fileID: 7714678054860546462}
-  - component: {fileID: 8895191946806740467}
+  - component: {fileID: 7838676974109585178}
   m_Layer: 0
   m_Name: Funcionario
   m_TagString: Enemy
@@ -349,23 +348,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2214205064985482192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779125221259540551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fea626d63d63a3a408dc4ddca362ac48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forwardSpeed: 3
-  laneChangeSpeed: 5
-  laneOffset: 3
-  entrance1: {fileID: 8300000, guid: 789a3ea4cec124a4a9cdbc3b5e3ff133, type: 3}
-  entrance2: {fileID: 8300000, guid: 7c78032c73fe4514fb1d2fa9225f616e, type: 3}
 --- !u!54 &430367831445190422
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -408,7 +390,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -433,7 +415,8 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   damagePerMark: 1
   enemyLife: 0
---- !u!114 &8895191946806740467
+  animator: {fileID: 2170616427122990951}
+--- !u!114 &7838676974109585178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -442,10 +425,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 779125221259540551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a2adbf21ccdb3c43a2013e6c2166b43, type: 3}
+  m_Script: {fileID: 11500000, guid: fea626d63d63a3a408dc4ddca362ac48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationClip: {fileID: -7318508426325921457, guid: b409a05090306de499d0d36307065913, type: 3}
+  forwardSpeed: 3
+  laneChangeSpeed: 5
+  laneOffset: 3
+  entrance1: {fileID: 8300000, guid: 789a3ea4cec124a4a9cdbc3b5e3ff133, type: 3}
+  entrance2: {fileID: 8300000, guid: 5fe9e9acd05b8b041b159d57ad6c8982, type: 3}
 --- !u!1 &814514283646398882
 GameObject:
   m_ObjectHideFlags: 0
@@ -2830,7 +2817,7 @@ GameObject:
   - component: {fileID: 2170616427122990951}
   m_Layer: 0
   m_Name: PedroHenriqueDias_FuncionarioMorrendoAnimado
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
