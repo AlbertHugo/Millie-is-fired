@@ -19,9 +19,6 @@ public class ChargingEnemy : MonoBehaviour
     [Header("Vida")]
     public VisualEffect damageTaken;
     public float enemyLife = 30f;
-    public int markCounter = 0;
-    public float damagePerMark = 1f;        // quanto cada marcador causa por segundo
-    private bool isTakingDot = false;       // controle da corrotina
     public AudioClip Death;
 
 

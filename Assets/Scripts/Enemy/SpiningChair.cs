@@ -13,7 +13,6 @@ public class SpiningChair : MonoBehaviour
     private int targetLane = 0;           // Lane que o obstáculo está indo
 
     private Rigidbody rb;
-    private float laneVelocity = 0f;      // Controla a suavização
     private float laneChangeTimer = 0f;   // Controle de tempo entre mudanças de lane
     private float laneChangeInterval = 0.5f; // Tempo entre trocas automáticas de lane
     float targetX;

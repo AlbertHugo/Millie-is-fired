@@ -18,6 +18,7 @@ public class ObjectSpawner : MonoBehaviour
     [Header("Chão")]
     public GameObject groundPrefab;
     public GameObject leftSide;
+    public GameObject rightSide;
     private float groundLength = 8f;
     private int groundAhead = 10; // quantos blocos de chão ficam na frente do player
     private Quaternion groundRotation = Quaternion.Euler(new Vector3 (-90, 0, 0));
@@ -170,7 +171,9 @@ public class ObjectSpawner : MonoBehaviour
         spawnPos = new Vector3(-24f, -0.7f, nextGroundZ);
         obj = Instantiate(leftSide, spawnPos, groundRotation);
         spawnedObjects.Add(obj);
-        //adicionar Destroy(groundPrefab, 20f); quando trocar o obj para um prefab
+        spawnPos = new Vector3(27f, -0.7f, nextGroundZ);
+        obj = Instantiate(rightSide, spawnPos, groundRotation);
+        spawnedObjects.Add(obj);
 
         nextGroundZ += groundLength;
     }

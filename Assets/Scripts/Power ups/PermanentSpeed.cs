@@ -18,6 +18,7 @@ public class PermanentSpeed : MonoBehaviour
     public GameObject originalButton;
     public GameObject upgradeButton;
     private bool isPaused = false;
+    public Animator animator;
 
     void Start()
     {
@@ -82,6 +83,7 @@ public class PermanentSpeed : MonoBehaviour
         else
         {
             errorPopUp.SetActive(true);
+            animator.Play("ErrorPopUp");
             return false;
         }
     }

@@ -536,6 +536,7 @@ MonoBehaviour:
   refundButton: {fileID: 612702473}
   originalButton: {fileID: 1229574165}
   upgradeButton: {fileID: 1392427971}
+  animator: {fileID: 1387511765}
 --- !u!224 &772974622
 RectTransform:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class IngameUI : MonoBehaviour
     public Transform playerTransform;
     public TextMeshProUGUI scoreText;
     public GameObject settingsMenu;
+    public Animator animator;
 
     // Update is called once per frame
     void Update()
@@ -35,6 +36,7 @@ public class IngameUI : MonoBehaviour
     public void GoToSettings()
     {
        settingsMenu.SetActive(!settingsMenu.activeSelf);
+        animator.Play("ConfigPausePopUp");
     }
 
     

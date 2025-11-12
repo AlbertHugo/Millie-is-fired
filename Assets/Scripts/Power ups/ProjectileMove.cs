@@ -40,7 +40,6 @@ public class ProjectileMove : MonoBehaviour
         }
         else if (other.gameObject.tag!="Player")
         {
-            Debug.Log("Colisão detectada");
             Destroy(gameObject);
         }
     }
