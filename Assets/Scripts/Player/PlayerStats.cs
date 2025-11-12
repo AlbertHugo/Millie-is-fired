@@ -115,4 +115,5 @@ public class PlayerStats : MonoBehaviour
             SceneManager.LoadScene("Defeat");
         }
     }
+
 }
