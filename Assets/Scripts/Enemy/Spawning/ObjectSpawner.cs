@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEditor.Search;
 
 public class ObjectSpawner : MonoBehaviour
 {
@@ -152,7 +153,12 @@ public class ObjectSpawner : MonoBehaviour
         int lane = Random.Range(-1, 2); // -1, 0, 1
         // se for a lane bloqueada por inimigo, pula
         if (lane == blockedLane) return;
-        GameObject prefab = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+        int objIndex = Random.Range(0, obstaclePrefabs.Length);
+        GameObject prefab = obstaclePrefabs[objIndex];
+        if (objIndex == 6)
+        {
+            lane = 0;
+        }
         Vector3 spawnPos = new Vector3(lane * laneOffset, 0, player.position.z + obstacleSpawnDistance);
 
         GameObject obj = Instantiate(prefab, spawnPos, Quaternion.identity);
@@ -171,7 +177,7 @@ public class ObjectSpawner : MonoBehaviour
         spawnPos = new Vector3(-24f, -0.7f, nextGroundZ);
         obj = Instantiate(leftSide, spawnPos, groundRotation);
         spawnedObjects.Add(obj);
-        spawnPos = new Vector3(27f, -0.7f, nextGroundZ);
+        spawnPos = new Vector3(26f, -0.7f, nextGroundZ);
         obj = Instantiate(rightSide, spawnPos, groundRotation);
         spawnedObjects.Add(obj);
 
