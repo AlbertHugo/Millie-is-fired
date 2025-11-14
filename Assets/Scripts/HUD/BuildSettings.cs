@@ -73,7 +73,8 @@ public class BuildSettings : MonoBehaviour
             }
 
             if (chosePen)
-                Pen.SetActive(true);
+                PlayerUltimate.haveUlt = true;
+            PlayerUltimate.ultIndex = 1;
         }
 
         RefreshButtons();
@@ -125,6 +126,7 @@ public class BuildSettings : MonoBehaviour
 
     public void BuildPen()
     {
+        Pen.SetActive(true);
         chosePen = true;
         PlayerPrefs.SetInt("chosePen", 1);
         PlayerUltimate.haveUlt = true;
@@ -184,9 +186,12 @@ public class BuildSettings : MonoBehaviour
         btnStapler.SetActive(!anyWeaponChosen || choseStapler);
         btnPaper.SetActive(!anyWeaponChosen || chosePaper);
 
-
-        PlayerUltimate.haveUlt = false; 
-        PlayerUltimate.ultIndex = 0;
+        btnPen.SetActive(!chosePen);
+        if (!chosePen)
+        {
+            PlayerUltimate.haveUlt = false;
+            PlayerUltimate.ultIndex = 0;
+        }
     }
 
     public void HideBuildPanel()
