@@ -27,8 +27,10 @@ public class PlayerUltimate : MonoBehaviour
 
     void Start()
     {
-        haveUlt = false;
-        ultIndex = 0;
+        if(ultIndex==0)
+        {
+            haveUlt=false;
+        }
 
         // Tudo começa escondido
         ultIconGUI.gameObject.SetActive(false);

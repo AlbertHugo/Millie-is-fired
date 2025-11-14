@@ -105,7 +105,8 @@ public class BuildSettings : MonoBehaviour
 
     void BuildPen()
     {
-        chosePen = true;
+        PlayerUltimate.haveUlt=true;
+        PlayerUltimate.ultIndex=1;
     }
 
 
@@ -117,7 +118,8 @@ public class BuildSettings : MonoBehaviour
 
         PlayerAttack.projectile = null;
 
-        chosePen = false;
+        PlayerUltimate.haveUlt=false;;
+        PlayerUltimate.ultIndex=0;
         choseDamage = false;
         choseHP = false;
         choseSpeed = false;

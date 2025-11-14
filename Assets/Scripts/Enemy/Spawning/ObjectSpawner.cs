@@ -104,7 +104,7 @@ public class ObjectSpawner : MonoBehaviour
             spawnDistance = 4f;
         }
 
-        if (distance >= spawnUlt && canSpawnUlt)
+        if (distance >= spawnUlt && canSpawnUlt&&PlayerUltimate.haveUlt==false)
         {
            SpawnUlt();
            canSpawnUlt= false;
