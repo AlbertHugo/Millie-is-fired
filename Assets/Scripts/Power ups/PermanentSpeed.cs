@@ -19,6 +19,7 @@ public class PermanentSpeed : MonoBehaviour
     public GameObject upgradeButton;
     private bool isPaused = false;
     public Animator animator;
+    public TextMeshProUGUI errorText;
 
     void Start()
     {
@@ -27,7 +28,7 @@ public class PermanentSpeed : MonoBehaviour
         pointBank = PlayerPrefs.GetInt("pointBank", 0);
         pointsUsed = PlayerPrefs.GetInt("pointsUsed", 0);
         speedCounter = PlayerPrefs.GetInt("speedCounter", 0);
-        upgradeText.text = "[MELHORIAS: " + speedCounter + "]";
+        upgradeText.text = "[UPGRADES: " + speedCounter + "]";
         if (speedCounter >= 1)
         {
             originalButton.SetActive(false);
@@ -63,7 +64,7 @@ public class PermanentSpeed : MonoBehaviour
 
     public bool TryBuyUpgrade(int cost)
     {
-        if (pointBank >= cost&&speedCounter<=4)
+        if (pointBank >= cost)
         {
             pointBank -= cost;
             pointsUsed += cost;
@@ -80,8 +81,16 @@ public class PermanentSpeed : MonoBehaviour
             upgradeText.text = "[MELHORIAS: " + speedCounter + "]";
             return true;
         }
+        else if(speedCounter<=4)
+        {
+            errorText.text="YOU REACHED THE MAX UPGRADE!";
+            errorPopUp.SetActive(true);
+            animator.Play("ErrorPopUp");
+            return false;
+        }
         else
         {
+            errorText.text="NOT ENOUGH POINTS!";
             errorPopUp.SetActive(true);
             animator.Play("ErrorPopUp");
             return false;
