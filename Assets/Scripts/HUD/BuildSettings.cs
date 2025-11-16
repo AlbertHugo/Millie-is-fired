@@ -33,6 +33,8 @@ public class BuildSettings : MonoBehaviour
 
     public GameObject btnPen;
 
+    public ItemInfoPanel infoPanel;
+
     private void Start()
     {
 
@@ -87,6 +89,7 @@ public class BuildSettings : MonoBehaviour
         choseDamage = true;
         PlayerPrefs.SetInt("choseDamage", 1);
         RefreshButtons();
+        infoPanel.ShowInfo("Damage");
     }
 
     public void BuildHP()
@@ -94,6 +97,7 @@ public class BuildSettings : MonoBehaviour
         choseHP = true;
         PlayerPrefs.SetInt("choseHP", 1);
         RefreshButtons();
+        infoPanel.ShowInfo("HP");
     }
 
     public void BuildSpeed()
@@ -101,6 +105,7 @@ public class BuildSettings : MonoBehaviour
         choseSpeed = true;
         PlayerPrefs.SetInt("choseSpeed", 1);
         RefreshButtons();
+        infoPanel.ShowInfo("Speed");
     }
 
     public void BuildRuler()
@@ -108,6 +113,8 @@ public class BuildSettings : MonoBehaviour
         choseRuler = true;
         PlayerPrefs.SetInt("choseRuler", 1);
         RefreshButtons();
+        infoPanel.ShowInfo("Ruler");
+
     }
 
     public void BuildStapler()
@@ -115,6 +122,7 @@ public class BuildSettings : MonoBehaviour
         choseStapler = true;
         PlayerPrefs.SetInt("choseStapler", 1);
         RefreshButtons();
+        infoPanel.ShowInfo("Stapler");
     }
 
     public void BuildPaper()
@@ -122,6 +130,7 @@ public class BuildSettings : MonoBehaviour
         chosePaper = true;
         PlayerPrefs.SetInt("chosePaper", 1);
         RefreshButtons();
+        infoPanel.ShowInfo("Paper");
     }
 
     public void BuildPen()
@@ -132,6 +141,7 @@ public class BuildSettings : MonoBehaviour
         PlayerUltimate.haveUlt = true;
         PlayerUltimate.ultIndex = 1;
         RefreshButtons();
+        infoPanel.ShowInfo("Pen");
     }
 
 
@@ -168,6 +178,7 @@ public class BuildSettings : MonoBehaviour
         PlayerPrefs.Save();
 
         RefreshButtons();
+
     }
 
     void RefreshButtons()
