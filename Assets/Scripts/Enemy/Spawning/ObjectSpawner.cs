@@ -18,11 +18,9 @@ public class ObjectSpawner : MonoBehaviour
 
     [Header("Chão")]
     public GameObject groundPrefab;
-    public GameObject leftSide;
-    public GameObject rightSide;
     private float groundLength = 8f;
     private int groundAhead = 10; // quantos blocos de chão ficam na frente do player
-    private Quaternion groundRotation = Quaternion.Euler(new Vector3 (-90, 0, 0));
+    private Quaternion groundRotation = Quaternion.Euler(new Vector3 (0, 0, 0));
 
     [Header("PowerUps")]
     public GameObject[] powerUpPrefabs; // deve ter exatamente 3 prefabs (um por pista)
@@ -171,14 +169,8 @@ public class ObjectSpawner : MonoBehaviour
     void SpawnGround()
     {
         //Fica spawnando o chão
-        Vector3 spawnPos = new Vector3(0, -0.7f, nextGroundZ);
+        Vector3 spawnPos = new Vector3(17.97f, 0, nextGroundZ);
         GameObject obj = Instantiate(groundPrefab, spawnPos, groundRotation);
-        spawnedObjects.Add(obj);
-        spawnPos = new Vector3(-24f, -0.7f, nextGroundZ);
-        obj = Instantiate(leftSide, spawnPos, groundRotation);
-        spawnedObjects.Add(obj);
-        spawnPos = new Vector3(26f, -0.7f, nextGroundZ);
-        obj = Instantiate(rightSide, spawnPos, groundRotation);
         spawnedObjects.Add(obj);
 
         nextGroundZ += groundLength;
