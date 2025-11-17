@@ -169,7 +169,7 @@ public class ObjectSpawner : MonoBehaviour
     void SpawnGround()
     {
         //Fica spawnando o chão
-        Vector3 spawnPos = new Vector3(17.97f, 0, nextGroundZ);
+        Vector3 spawnPos = new Vector3(-3.5f, -0.7f, nextGroundZ);
         GameObject obj = Instantiate(groundPrefab, spawnPos, groundRotation);
         spawnedObjects.Add(obj);
 
