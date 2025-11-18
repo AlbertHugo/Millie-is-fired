@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.VFX;
 
 public class Obstacle : MonoBehaviour
 {
@@ -23,7 +22,7 @@ public class Obstacle : MonoBehaviour
     {
         damaged.gameObject.SetActive(true);
         GameObject vfxDamage = GameObject.Instantiate(damaged, gameObject.transform.position, Quaternion.identity);
-        GameObject.Destroy(vfxDamage.gameObject, 0.5f);
+        Destroy(vfxDamage.gameObject, 0.5f);
         RepeatableCode.PlaySound(breaked, gameObject.transform.position);
         Destroy(gameObject);
         if (hitKill != null)
