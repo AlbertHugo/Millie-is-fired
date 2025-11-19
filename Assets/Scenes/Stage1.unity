@@ -19133,9 +19133,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 220611803504278459, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 220611803504278459, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 1531645717}
+    - target: {fileID: 1984291398673199929, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337060685339265051, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+      propertyPath: inkSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 96a2b8f82c8c0cc4da5d25a947ddc8dd, type: 3}
     - target: {fileID: 2337060685339265051, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
       propertyPath: ultButton
       value: 

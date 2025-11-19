@@ -8,6 +8,7 @@ public class PlayerUltimate : MonoBehaviour
     public static bool haveUlt;
     public static int ultIndex;
     public VisualEffect inkExplosion;
+    public AudioClip inkSound;
 
     [Header("UI Elements")]
 
@@ -74,6 +75,7 @@ public class PlayerUltimate : MonoBehaviour
     void PenUltimate()
     {
         // Destruir inimigos, tocar o efeito visual
+        RepeatableCode.PlaySound(inkSound, gameObject.transform.position);
         inkExplosion.gameObject.SetActive(true);
         inkExplosion.Play();
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");

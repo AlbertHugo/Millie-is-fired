@@ -3253,12 +3253,12 @@ RectTransform:
   m_Children:
   - {fileID: 1427129597}
   - {fileID: 1393876889}
+  - {fileID: 1862900705}
   - {fileID: 1478121019}
+  - {fileID: 969609830}
   - {fileID: 1931953490}
   - {fileID: 1423249026}
   - {fileID: 19222434}
-  - {fileID: 1862900705}
-  - {fileID: 969609830}
   - {fileID: 743180494}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
