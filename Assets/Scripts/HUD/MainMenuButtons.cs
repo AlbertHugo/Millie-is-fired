@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtons : MonoBehaviour
 {
-
-void Start()
+    public GameObject buildPanel;
+    void Start()
 {
     Time.timeScale=1f;
     PlayerStats.baseATK = 0f;
@@ -30,8 +30,10 @@ public void StartGame()
         Application.Quit();
     }
 
-
-
+    public void ShowBuildPanel()
+    {
+        buildPanel.SetActive(true);
+    }
 }
 
 

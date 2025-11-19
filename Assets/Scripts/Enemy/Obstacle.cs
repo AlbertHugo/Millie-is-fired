@@ -1,15 +1,13 @@
 using UnityEngine;
-using UnityEngine.VFX;
 
 public class Obstacle : MonoBehaviour
 {
-    public VisualEffect damaged;
+    public GameObject damaged;
     public AudioClip breaked;
     private HitKill hitKill;
 
     private void Start()
     {
-        damaged.gameObject.SetActive(false);
         hitKill = GetComponent<HitKill>();
     }
 
@@ -23,10 +21,8 @@ public class Obstacle : MonoBehaviour
     public void Destruction()
     {
         damaged.gameObject.SetActive(true);
-        VisualEffect vfxDamage = GameObject.Instantiate(damaged, gameObject.transform.position, Quaternion.identity);
-        vfxDamage.Play();
-        GameObject.Destroy(vfxDamage.gameObject, 1.5f);
-        damaged.gameObject.SetActive(false);
+        GameObject vfxDamage = GameObject.Instantiate(damaged, gameObject.transform.position, Quaternion.identity);
+        Destroy(vfxDamage.gameObject, 0.5f);
         RepeatableCode.PlaySound(breaked, gameObject.transform.position);
         Destroy(gameObject);
         if (hitKill != null)
