@@ -3401,6 +3401,7 @@ MonoBehaviour:
   musicSlider: {fileID: 1704329532}
   sfxSlider: {fileID: 1905683446}
   masterMixer: {fileID: 24100000, guid: c362d55e86166d44b938bf2c771ceb23, type: 2}
+  sfx: {fileID: 0}
 --- !u!114 &344477500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7547,6 +7548,7 @@ GameObject:
   - component: {fileID: 741950579}
   - component: {fileID: 741950578}
   - component: {fileID: 741950577}
+  - component: {fileID: 741950580}
   m_Layer: 5
   m_Name: PanelVolume
   m_TagString: Untagged
@@ -7619,6 +7621,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &741950580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741950576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9e77a72a519c24b9323c9bcbbcf2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUp: {fileID: 8300000, guid: 7013d801e60ccc249b35cb36e04e4604, type: 3}
 --- !u!1 &742020826
 GameObject:
   m_ObjectHideFlags: 0
@@ -13916,6 +13931,8 @@ GameObject:
   - component: {fileID: 1531645719}
   - component: {fileID: 1531645718}
   - component: {fileID: 1531645721}
+  - component: {fileID: 1531645722}
+  - component: {fileID: 1531645723}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -14006,6 +14023,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1531645722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531645717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb075ee725a4e4a4ebe71f202128d2e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 65fff500dfd167748b6e27d7562979b3, type: 3}
+--- !u!114 &1531645723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531645717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9e77a72a519c24b9323c9bcbbcf2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUp: {fileID: 8300000, guid: 7013d801e60ccc249b35cb36e04e4604, type: 3}
 --- !u!1 &1546477542
 GameObject:
   m_ObjectHideFlags: 0
@@ -16083,6 +16126,7 @@ GameObject:
   - component: {fileID: 1777544136}
   - component: {fileID: 1777544135}
   - component: {fileID: 1777544134}
+  - component: {fileID: 1777544137}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -16216,6 +16260,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777544132}
   m_CullTransparentMesh: 1
+--- !u!114 &1777544137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777544132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb075ee725a4e4a4ebe71f202128d2e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 65fff500dfd167748b6e27d7562979b3, type: 3}
 --- !u!1 &1800287797
 GameObject:
   m_ObjectHideFlags: 0
@@ -19134,7 +19191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 220611803504278459, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 220611803504278459, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
       propertyPath: pauseMenu
@@ -19142,7 +19199,7 @@ PrefabInstance:
       objectReference: {fileID: 1531645717}
     - target: {fileID: 1984291398673199929, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2337060685339265051, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
       propertyPath: inkSound

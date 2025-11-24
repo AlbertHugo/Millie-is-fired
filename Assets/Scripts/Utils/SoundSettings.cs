@@ -11,9 +11,12 @@ public class SoundSettings : MonoBehaviour
 
     [Header("Audio Mixer")]
     [SerializeField] private AudioMixer masterMixer;
+    public AudioMixerGroup sfx;
 
     private void Start()
     {
+        //atribui o canal de SFX aos audio sources temporários
+        RepeatableCode.sfxMixer = sfx;
         // Carrega valores salvos (ou 100 se não houver)
         float masterVol = PlayerPrefs.GetFloat("SavedMasterVolume", 100);
         float musicVol = PlayerPrefs.GetFloat("SavedMusicVolume", 100);
@@ -31,8 +34,10 @@ public class SoundSettings : MonoBehaviour
         if (value < 1)
             value = 0.001f; 
 
-
-        RefreshSlider(target, value);
+        if(masterSlider != null)
+        {
+            RefreshSlider(target, value);
+        }
 
         PlayerPrefs.SetFloat($"Saved{target}Volume", value);
 

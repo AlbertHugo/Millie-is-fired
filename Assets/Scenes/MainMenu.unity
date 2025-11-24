@@ -947,6 +947,7 @@ GameObject:
   - component: {fileID: 743180497}
   - component: {fileID: 743180496}
   - component: {fileID: 743180495}
+  - component: {fileID: 743180498}
   m_Layer: 5
   m_Name: BuildPanel
   m_TagString: Untagged
@@ -1047,6 +1048,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743180493}
   m_CullTransparentMesh: 0
+--- !u!114 &743180498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743180493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9e77a72a519c24b9323c9bcbbcf2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUp: {fileID: 8300000, guid: 7013d801e60ccc249b35cb36e04e4604, type: 3}
 --- !u!1 &778542331
 GameObject:
   m_ObjectHideFlags: 0
@@ -2818,7 +2832,7 @@ AudioSource:
   m_GameObject: {fileID: 1777496649}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5487914315805654464, guid: c362d55e86166d44b938bf2c771ceb23, type: 2}
   m_audioClip: {fileID: 8300000, guid: e9c25b608f62fd345a1daa803c1008a3, type: 3}
   m_Resource: {fileID: 8300000, guid: e9c25b608f62fd345a1daa803c1008a3, type: 3}
   m_PlayOnAwake: 1
@@ -3169,6 +3183,7 @@ GameObject:
   - component: {fileID: 2045272305}
   - component: {fileID: 2045272304}
   - component: {fileID: 2045272308}
+  - component: {fileID: 2045272309}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3280,6 +3295,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSound: {fileID: 8300000, guid: 65fff500dfd167748b6e27d7562979b3, type: 3}
+--- !u!114 &2045272309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045272303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3c85996c4a69847a9b605ced94d5aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterSlider: {fileID: 0}
+  musicSlider: {fileID: 0}
+  sfxSlider: {fileID: 0}
+  masterMixer: {fileID: 24100000, guid: c362d55e86166d44b938bf2c771ceb23, type: 2}
+  sfx: {fileID: 618433368114114454, guid: c362d55e86166d44b938bf2c771ceb23, type: 2}
 --- !u!1 &2077883748
 GameObject:
   m_ObjectHideFlags: 0

@@ -918,6 +918,7 @@ MonoBehaviour:
   musicSlider: {fileID: 1479330349}
   sfxSlider: {fileID: 489449233}
   masterMixer: {fileID: 24100000, guid: c362d55e86166d44b938bf2c771ceb23, type: 2}
+  sfx: {fileID: 618433368114114454, guid: c362d55e86166d44b938bf2c771ceb23, type: 2}
 --- !u!114 &433105300
 MonoBehaviour:
   m_ObjectHideFlags: 0

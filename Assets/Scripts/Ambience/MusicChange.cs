@@ -9,13 +9,13 @@ public class MusicChange : MonoBehaviour
 
     void Start()
     {
-        entranceIndex = Random.Range(0, 2);//seleciona qual o música que será tocada na entrada
+        entranceIndex = Random.Range(0, 99);//seleciona qual o música que será tocada na entrada
         //toca o som na entrada, ou não toca nada
-        if (entranceIndex <= 1)
+        if (entranceIndex <= 74)
         {
             PlaySound(entrance1);
         }
-        else if(entranceIndex == 0)
+        else if(entranceIndex >= 75)
         {
             PlaySound(entrance2);
         }
