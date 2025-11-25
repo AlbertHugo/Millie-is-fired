@@ -34,6 +34,9 @@ public class PlayerStats : MonoBehaviour
     public float score = 0f;
     private float landMark = 5f;
 
+    [Header("Interação com ult da tesoura")]
+    public bool lifeLock = false;
+
     private void Start()
     {
         SPDBuff = PlayerPrefs.GetFloat("SPDBuff", 1);
@@ -61,6 +64,10 @@ public class PlayerStats : MonoBehaviour
         life = baseLife + HPBuff;
         //dano também é multiplicado
         damage = baseATK * ATKBuff;
+        if (lifeLock)
+        {
+            life = 1;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

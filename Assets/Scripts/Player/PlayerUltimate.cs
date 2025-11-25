@@ -10,6 +10,9 @@ public class PlayerUltimate : MonoBehaviour
     public VisualEffect inkExplosion;
     public AudioClip inkSound;
 
+    //referências
+    PlayerStats playerStats;
+
     [Header("UI Elements")]
 
     public Button ultButton;
@@ -28,6 +31,7 @@ public class PlayerUltimate : MonoBehaviour
 
     void Start()
     {
+        playerStats = GetComponent<PlayerStats>();
         if(ultIndex==0)
         {
             haveUlt=false;
@@ -47,12 +51,26 @@ public class PlayerUltimate : MonoBehaviour
         {
             ultIconGUI.gameObject.SetActive(true);
             ultIconPen.SetActive(true);
+            if (ultIndex == 1)
+            {
+                ultButton.onClick.AddListener(PenUltimate);
+            }else if (ultIndex == 2)
+            {
+                ultButton.onClick.AddListener(ScissorUltimate);
+            }
         }
 
         // Ativa a ult se estiver pronta
         if (haveUlt && !isOnCooldown && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
         {
-            PenUltimate();
+            if (ultIndex == 1)
+            {
+                PenUltimate();
+            }
+            else if (ultIndex == 2)
+            {
+                ScissorUltimate();
+            }
         }
 
         // Atualiza o estado visual durante o cooldown
@@ -107,6 +125,12 @@ public class PlayerUltimate : MonoBehaviour
                 instaKill.Destruction();
         }
         StartCooldown();
+    }
+
+    void ScissorUltimate()
+    {
+        playerStats.ATKBuff += 2;
+        playerStats.lifeLock = true;
     }
 
     void StartCooldown()

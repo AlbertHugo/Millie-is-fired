@@ -1,22 +1,20 @@
 using UnityEngine;
 
-public class Pen : MonoBehaviour
+public class Scissor : MonoBehaviour
 {
-    private Vector3 spin = new Vector3 (0, 10, 0);
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Destroy(gameObject, 20f);
     }
-    private void FixedUpdate()
-    {
-        transform.Rotate(spin);
-    }
+
+    // Update is called once per frame
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             PlayerUltimate.haveUlt = true;
-            PlayerUltimate.ultIndex = 1;
+            PlayerUltimate.ultIndex = 2;
             Destroy(gameObject);
         }
     }
