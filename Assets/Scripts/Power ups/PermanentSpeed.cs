@@ -81,7 +81,7 @@ public class PermanentSpeed : MonoBehaviour
             upgradeText.text = "[MELHORIAS: " + speedCounter + "]";
             return true;
         }
-        else if(speedCounter<=4)
+        else if(speedCounter>=4)
         {
             errorText.text="YOU REACHED THE MAX UPGRADE!";
             errorPopUp.SetActive(true);

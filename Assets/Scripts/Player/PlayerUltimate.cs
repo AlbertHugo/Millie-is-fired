@@ -77,10 +77,10 @@ public class PlayerUltimate : MonoBehaviour
         if (isOnCooldown && Time.time >= cooldown)
         {
             EndCooldown();
-        }else if (isOnCooldown && cooldown - Time.time <= 3)
+        }else if (isOnCooldown && cooldown - Time.time <= cooldownTime/3)
         {
             ultIconGUI.sprite = secondCharge;
-        }else if(isOnCooldown && cooldown - Time.time <= 6)
+        }else if(isOnCooldown && cooldown - Time.time <= ((cooldownTime/3)*2))
         {
             ultIconGUI.sprite = firstCharge;
         }else if(isOnCooldown&&cooldown - Time.time <= 7)
@@ -124,6 +124,7 @@ public class PlayerUltimate : MonoBehaviour
             if (instaKill != null)
                 instaKill.Destruction();
         }
+        cooldownTime = 9f;
         StartCooldown();
     }
 
@@ -131,6 +132,8 @@ public class PlayerUltimate : MonoBehaviour
     {
         playerStats.ATKBuff += 2;
         playerStats.lifeLock = true;
+        cooldownTime = 9999f;
+        StartCooldown();
     }
 
     void StartCooldown()

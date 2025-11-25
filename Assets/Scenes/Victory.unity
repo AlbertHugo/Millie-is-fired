@@ -551,7 +551,7 @@ MonoBehaviour:
   originalButton: {fileID: 1229574165}
   upgradeButton: {fileID: 1392427971}
   animator: {fileID: 1387511765}
-  errorText: {fileID: 0}
+  errorText: {fileID: 2060557195}
 --- !u!224 &772974622
 RectTransform:
   m_ObjectHideFlags: 0

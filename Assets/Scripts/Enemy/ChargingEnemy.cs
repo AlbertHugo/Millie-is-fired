@@ -7,7 +7,7 @@ public class ChargingEnemy : MonoBehaviour
 {
     [Header("Velocidades")]
     private float laneOffset = 3f;            // Distância entre as pistas
-    private float backwardSpeed;         // Velocidade para compensar o movimento do player
+    private float backwardSpeed = 50f;         // Velocidade para compensar o movimento do player
     private float chargeSpeed = 20f;          // Velocidade do avanço quando ataca
     private float laneChangeSpeed = 5f;       // (Opcional, caso queira suavizar o alinhamento)
     
@@ -18,7 +18,7 @@ public class ChargingEnemy : MonoBehaviour
 
     [Header("Vida")]
     public VisualEffect damageTaken;
-    public float enemyLife = 30f;
+    public float enemyLife = 40f;
     public AudioClip Death;
 
 
