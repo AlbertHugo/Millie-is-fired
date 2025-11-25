@@ -52,20 +52,10 @@ public class PlayerMove : MonoBehaviour
             jumpTimer = Time.time+1f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        //impede o jogo de continuar pausado
+        if (pauseMenuActive == false)
         {
-            if (pauseMenuActive == false)
-            {
-                Time.timeScale = 0f;
-                pauseMenu.SetActive(!pauseMenu.activeSelf);
-                pauseMenuActive = true;
-            }
-            else
-            {
-                Time.timeScale = 1f;
-                pauseMenuActive = false;
-                pauseMenu.SetActive(!pauseMenu.activeSelf);
-            }
+            Time.timeScale = 1f;
         }
     }
 
