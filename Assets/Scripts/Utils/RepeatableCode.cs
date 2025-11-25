@@ -15,7 +15,16 @@ public class RepeatableCode : MonoBehaviour
         AudioSource aSource = tempGO.AddComponent<AudioSource>();
         aSource.outputAudioMixerGroup = sfxMixer;
         aSource.clip = clip;
-        aSource.PlayOneShot(clip);
+        if (Time.timeScale > 0.2f)
+        {
+            aSource.PlayOneShot(clip);
+        }
+        else
+        {
+            Time.timeScale = 0.1f;
+            aSource.PlayOneShot(clip);
+            Time.timeScale = 0f;
+        }
         GameObject.Destroy(tempGO, clip.length);
     }
 }

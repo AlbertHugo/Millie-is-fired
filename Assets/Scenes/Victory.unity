@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 646490276}
   - component: {fileID: 646490275}
   - component: {fileID: 646490277}
+  - component: {fileID: 646490278}
   m_Layer: 5
   m_Name: VictoryPanel
   m_TagString: Untagged
@@ -364,6 +365,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &646490278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646490273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9e77a72a519c24b9323c9bcbbcf2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUp: {fileID: 8300000, guid: 7013d801e60ccc249b35cb36e04e4604, type: 3}
 --- !u!1 &766641289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,6 +1363,7 @@ GameObject:
   - component: {fileID: 1387511764}
   - component: {fileID: 1387511763}
   - component: {fileID: 1387511765}
+  - component: {fileID: 1387511766}
   m_Layer: 5
   m_Name: PermanentSpeedUpgrade
   m_TagString: Untagged
@@ -1443,6 +1458,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1387511766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387511761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9e77a72a519c24b9323c9bcbbcf2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUp: {fileID: 8300000, guid: 7013d801e60ccc249b35cb36e04e4604, type: 3}
 --- !u!1 &1392427971
 GameObject:
   m_ObjectHideFlags: 0
@@ -2401,6 +2429,7 @@ GameObject:
   - component: {fileID: 2092571255}
   - component: {fileID: 2092571257}
   - component: {fileID: 2092571256}
+  - component: {fileID: 2092571258}
   m_Layer: 5
   m_Name: ErrorPopUP
   m_TagString: Untagged
@@ -2466,6 +2495,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092571254}
   m_CullTransparentMesh: 1
+--- !u!114 &2092571258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092571254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9e77a72a519c24b9323c9bcbbcf2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUp: {fileID: 8300000, guid: 7013d801e60ccc249b35cb36e04e4604, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
