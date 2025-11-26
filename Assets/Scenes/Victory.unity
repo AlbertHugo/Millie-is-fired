@@ -435,7 +435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: META ATINGIDA!!!
+  m_text: GOAL ACHIEVED!!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea62d5ada0e89954688b14455b8c49b0, type: 2}
   m_sharedMaterial: {fileID: -1267909969813723275, guid: ea62d5ada0e89954688b14455b8c49b0, type: 2}
@@ -863,7 +863,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[MELHORIAS : 0]'
+  m_text: '[UPGRADES : 0]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea62d5ada0e89954688b14455b8c49b0, type: 2}
   m_sharedMaterial: {fileID: -1267909969813723275, guid: ea62d5ada0e89954688b14455b8c49b0, type: 2}
