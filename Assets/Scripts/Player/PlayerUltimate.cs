@@ -7,8 +7,13 @@ public class PlayerUltimate : MonoBehaviour
 {
     public static bool haveUlt;
     public static int ultIndex;
+
+    [Header("Caneta")]
     public VisualEffect inkExplosion;
     public AudioClip inkSound;
+
+    [Header("Tesoura")]
+    public AudioClip scissorSound;
 
     //referências
     PlayerStats playerStats;
@@ -130,6 +135,7 @@ public class PlayerUltimate : MonoBehaviour
 
     void ScissorUltimate()
     {
+        RepeatableCode.PlaySound(scissorSound, gameObject.transform.position);
         playerStats.ATKBuff += 2;
         playerStats.lifeLock = true;
         cooldownTime = 9999f;

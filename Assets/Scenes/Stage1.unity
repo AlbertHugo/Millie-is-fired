@@ -19391,6 +19391,10 @@ PrefabInstance:
       propertyPath: ultIconPen
       value: 
       objectReference: {fileID: 1434146735}
+    - target: {fileID: 2337060685339265051, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+      propertyPath: scissorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c05a4d0aed461ca4bad3ba61f3b47248, type: 3}
     - target: {fileID: 7504740577030883180, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
       propertyPath: hpIcon
       value: 
