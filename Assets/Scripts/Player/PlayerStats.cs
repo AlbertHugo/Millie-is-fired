@@ -72,6 +72,14 @@ public class PlayerStats : MonoBehaviour
             verifyLock = true;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Barrier")
+        {
+            TakeDamage(1);
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         //Dano de objeto básico

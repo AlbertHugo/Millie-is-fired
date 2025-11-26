@@ -296,6 +296,10 @@ public class ObjectSpawner : MonoBehaviour
         if (hasChoosedLane == false)
         {
             lineLane = Random.Range(-1, 2); // -1, 0, 1
+            while(lineLane == 0)
+            {
+                lineLane = Random.Range(-1, 2);
+            }
             laneBlocked = lineLane;
             hasChoosedLane = true;
         }
