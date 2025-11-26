@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damaged: {fileID: 1902479869573210843, guid: ed1392e715cc7f744aa3cc4ae0c2e7a4, type: 3}
-  breaked: {fileID: 8300000, guid: da324e14c74b1f24e9838835c0d6f6bd, type: 3}
+  breaked: {fileID: 8300000, guid: c0dfbc1863898b945a918b534c4aa24d, type: 3}
 --- !u!54 &7831717585092079287
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,13 +1,15 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
-using UnityEditor.Search;
+using UnityEngine.UIElements;
 
 public class ObjectSpawner : MonoBehaviour
 {
     [Header("Referências")]
     public Transform player;
     public PlayerStats playerStats;
+    float distance;
+    float score;
 
     [Header("Obstáculos")]
     public GameObject[] obstaclePrefabs;
@@ -45,6 +47,13 @@ public class ObjectSpawner : MonoBehaviour
     private float timeEnemy = 0f;
     private int blockedLane = int.MinValue; // lane que deve ficar sem obstáculo
 
+    [Header("Linha de obstáculo")]
+    public GameObject laneObstacle;
+    bool hasChoosedLane = false;
+    int lineLane;
+    int laneBlocked;
+    float blockTimer = 0.5f;
+    bool timerIncreasing = true;
 
     [Header("Limpeza")]
     public float despawnDistance = 30f; // distância atrás do player para destruir objetos
@@ -55,6 +64,9 @@ public class ObjectSpawner : MonoBehaviour
 
     void Start()
     {
+        laneBlocked = -5;
+        hasChoosedLane = false;
+        timerIncreasing = true;
         // cria blocos iniciais de chão
         nextGroundZ = 0f;
         for (int i = 0; i < groundAhead; i++)
@@ -67,9 +79,8 @@ public class ObjectSpawner : MonoBehaviour
 
     void Update()
     {
-        float distance = playerStats.distance; //distância percorrida
-        float score = playerStats.score;//pontuação
-
+        distance = playerStats.distance; //distância percorrida
+        score = playerStats.score;//pontuação
         //aumento gradual de dificuldade
         if (playerStats.speed <= 10 && playerStats.speed >= 5)
         {
@@ -82,6 +93,21 @@ public class ObjectSpawner : MonoBehaviour
         if (playerStats.speed >= 12)
         {
             enemySpawnInterval = 3f;
+        }
+
+        if (timerIncreasing==true)
+        {
+            blockTimer = Time.time + 0.5f;
+        }
+        //bloqueia uma lane durante alguns metros
+        if(score >= 1000 && score <= 1500)
+        {
+            timerIncreasing = false;
+            if (Time.time >= blockTimer)
+            {
+                SpawnLine();
+                blockTimer = Time.time+0.5f;
+            }
         }
 
     if (score < 1900f)
@@ -149,8 +175,10 @@ public class ObjectSpawner : MonoBehaviour
     {
 
         int lane = Random.Range(-1, 2); // -1, 0, 1
-        // se for a lane bloqueada por inimigo, pula
-        if (lane == blockedLane) return;
+        while (lane == laneBlocked)
+        {
+            lane = Random.Range(-1, 2);
+        }
         int objIndex = Random.Range(0, obstaclePrefabs.Length);
         GameObject prefab = obstaclePrefabs[objIndex];
         if (objIndex == 6)
@@ -239,6 +267,10 @@ public class ObjectSpawner : MonoBehaviour
     void SpawnEnemy()
     {
         int lane = Random.Range(-1, 2);
+        while (lane == laneBlocked)
+        {
+            lane = Random.Range(-1, 2);
+        }
         int enemyIndex = Random.Range(0, enemyPrefabs.Length);
         Vector3 spawnPos = new Vector3(lane * laneOffset, 0.5f, player.position.z + obstacleSpawnDistance);
         GameObject prefab = enemyPrefabs[enemyIndex];
@@ -259,6 +291,25 @@ public class ObjectSpawner : MonoBehaviour
         blockedLane = lane;
     }
 
+    void SpawnLine()
+    {
+        if (hasChoosedLane == false)
+        {
+            lineLane = Random.Range(-1, 2); // -1, 0, 1
+            laneBlocked = lineLane;
+            hasChoosedLane = true;
+        }
+        // se for a lane bloqueada por inimigo, pula
+        if (lineLane == blockedLane) return;
+        GameObject prefab = laneObstacle;
+        Vector3 spawnPos = new Vector3(lineLane * laneOffset, 0, player.position.z + obstacleSpawnDistance);
+
+        GameObject obj = Instantiate(prefab, spawnPos, Quaternion.identity);
+
+        //ajuste para tocar no chão
+        SetObjectOnGround(obj);
+        spawnedObjects.Add(obj);
+    }
     void CleanupObjects()
     {
         for (int i = spawnedObjects.Count - 1; i >= 0; i--)

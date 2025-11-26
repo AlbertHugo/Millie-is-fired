@@ -12,6 +12,7 @@ TagManager:
   - DamageBuff
   - Enemy
   - Projectile
+  - Barrier
   layers:
   - Default
   - TransparentFX

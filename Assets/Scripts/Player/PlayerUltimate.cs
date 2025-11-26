@@ -8,6 +8,10 @@ public class PlayerUltimate : MonoBehaviour
     public static bool haveUlt;
     public static int ultIndex;
     public VisualEffect inkExplosion;
+    public AudioClip inkSound;
+
+    //referências
+    PlayerStats playerStats;
 
     [Header("UI Elements")]
 
@@ -27,6 +31,7 @@ public class PlayerUltimate : MonoBehaviour
 
     void Start()
     {
+        playerStats = GetComponent<PlayerStats>();
         if(ultIndex==0)
         {
             haveUlt=false;
@@ -46,22 +51,36 @@ public class PlayerUltimate : MonoBehaviour
         {
             ultIconGUI.gameObject.SetActive(true);
             ultIconPen.SetActive(true);
+            if (ultIndex == 1)
+            {
+                ultButton.onClick.AddListener(PenUltimate);
+            }else if (ultIndex == 2)
+            {
+                ultButton.onClick.AddListener(ScissorUltimate);
+            }
         }
 
         // Ativa a ult se estiver pronta
         if (haveUlt && !isOnCooldown && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
         {
-            PenUltimate();
+            if (ultIndex == 1)
+            {
+                PenUltimate();
+            }
+            else if (ultIndex == 2)
+            {
+                ScissorUltimate();
+            }
         }
 
         // Atualiza o estado visual durante o cooldown
         if (isOnCooldown && Time.time >= cooldown)
         {
             EndCooldown();
-        }else if (isOnCooldown && cooldown - Time.time <= 3)
+        }else if (isOnCooldown && cooldown - Time.time <= cooldownTime/3)
         {
             ultIconGUI.sprite = secondCharge;
-        }else if(isOnCooldown && cooldown - Time.time <= 6)
+        }else if(isOnCooldown && cooldown - Time.time <= ((cooldownTime/3)*2))
         {
             ultIconGUI.sprite = firstCharge;
         }else if(isOnCooldown&&cooldown - Time.time <= 7)
@@ -74,6 +93,7 @@ public class PlayerUltimate : MonoBehaviour
     void PenUltimate()
     {
         // Destruir inimigos, tocar o efeito visual
+        RepeatableCode.PlaySound(inkSound, gameObject.transform.position);
         inkExplosion.gameObject.SetActive(true);
         inkExplosion.Play();
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -104,6 +124,15 @@ public class PlayerUltimate : MonoBehaviour
             if (instaKill != null)
                 instaKill.Destruction();
         }
+        cooldownTime = 9f;
+        StartCooldown();
+    }
+
+    void ScissorUltimate()
+    {
+        playerStats.ATKBuff += 2;
+        playerStats.lifeLock = true;
+        cooldownTime = 9999f;
         StartCooldown();
     }
 
