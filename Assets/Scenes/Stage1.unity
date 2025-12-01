@@ -14473,6 +14473,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555104636}
   m_Mesh: {fileID: 2477945610639924377, guid: e38660e2dd39e1c4d9105ef0bcc6befc, type: 3}
+--- !u!1001 &1581193127
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5576881114677335826, guid: 846dedcd5b694b4499a89c32605e3360, type: 3}
+      propertyPath: m_Name
+      value: Scissor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047517823669175070, guid: 846dedcd5b694b4499a89c32605e3360, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047517823669175070, guid: 846dedcd5b694b4499a89c32605e3360, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2720845
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047517823669175070, guid: 846dedcd5b694b4499a89c32605e3360, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047517823669175070, guid: 846dedcd5b694b4499a89c32605e3360, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047517823669175070, guid: 846dedcd5b694b4499a89c32605e3360, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047517823669175070, guid: 846dedcd5b694b4499a89c32605e3360, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047517823669175070, guid: 846dedcd5b694b4499a89c32605e3360, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047517823669175070, guid: 846dedcd5b694b4499a89c32605e3360, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047517823669175070, guid: 846dedcd5b694b4499a89c32605e3360, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047517823669175070, guid: 846dedcd5b694b4499a89c32605e3360, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 846dedcd5b694b4499a89c32605e3360, type: 3}
 --- !u!1 &1592879039
 GameObject:
   m_ObjectHideFlags: 0
@@ -16299,7 +16356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1777544133
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19392,9 +19449,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1434146735}
     - target: {fileID: 2337060685339265051, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+      propertyPath: globalVolume
+      value: 
+      objectReference: {fileID: 832575518}
+    - target: {fileID: 2337060685339265051, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
       propertyPath: scissorSound
       value: 
       objectReference: {fileID: 8300000, guid: c05a4d0aed461ca4bad3ba61f3b47248, type: 3}
+    - target: {fileID: 2337060685339265051, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+      propertyPath: vignetteColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337060685339265051, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+      propertyPath: vignetteColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337060685339265051, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+      propertyPath: vignetteColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7504740577030883180, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
       propertyPath: hpIcon
       value: 
@@ -20591,5 +20664,6 @@ SceneRoots:
   - {fileID: 5468307843916457774}
   - {fileID: 7128314832143481889}
   - {fileID: 4201482791999756812}
+  - {fileID: 1581193127}
   - {fileID: 4445212133015833866}
   - {fileID: 7624327725145065651}

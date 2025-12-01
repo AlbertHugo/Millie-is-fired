@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.VFX;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerUltimate : MonoBehaviour
 {
@@ -14,6 +16,12 @@ public class PlayerUltimate : MonoBehaviour
 
     [Header("Tesoura")]
     public AudioClip scissorSound;
+    public Volume globalVolume;
+    private bool scissorActive = false;
+    private float vignetteTimer = 0f;
+    private Vignette vignette;
+    private float secondCount;
+    public Color vignetteColor;
 
     //referências
     PlayerStats playerStats;
@@ -37,6 +45,7 @@ public class PlayerUltimate : MonoBehaviour
     void Start()
     {
         playerStats = GetComponent<PlayerStats>();
+        scissorActive = false;
         if(ultIndex==0)
         {
             haveUlt=false;
@@ -93,6 +102,25 @@ public class PlayerUltimate : MonoBehaviour
             //para a animação
             inkExplosion.Stop();
         }
+
+        //efeito visual da tesoura
+        if (scissorActive)
+        {
+            if(globalVolume.profile.TryGet<Vignette>(out vignette))
+            {
+                vignette.color.value = vignetteColor;
+                if (Time.time >= vignetteTimer&&vignette.intensity.value<=0.5)
+                {
+                    vignette.intensity.value += 0.01f;
+                    vignetteTimer = Time.time+0.1f;
+                }
+                else if(Time.time >= vignetteTimer&& vignette.intensity.value>=0.1)
+                {
+                    vignette.intensity.value -= 0.01f;
+                    vignetteTimer = Time.time+0.1f;
+                }
+            }
+        }
     }
 
     void PenUltimate()
@@ -139,6 +167,8 @@ public class PlayerUltimate : MonoBehaviour
         playerStats.ATKBuff += 2;
         playerStats.lifeLock = true;
         cooldownTime = 9999f;
+        scissorActive = true;
+        vignetteTimer = Time.time + 0.5f;
         StartCooldown();
     }
 
