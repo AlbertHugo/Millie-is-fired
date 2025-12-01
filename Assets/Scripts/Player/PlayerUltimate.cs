@@ -20,7 +20,7 @@ public class PlayerUltimate : MonoBehaviour
     private bool scissorActive = false;
     private float vignetteTimer = 0f;
     private Vignette vignette;
-    private float secondCount;
+    private bool isDecrasingVignnete = false;
     public Color vignetteColor;
 
     //referências
@@ -108,16 +108,23 @@ public class PlayerUltimate : MonoBehaviour
         {
             if(globalVolume.profile.TryGet<Vignette>(out vignette))
             {
+                Debug.Log(vignette.intensity.value);
                 vignette.color.value = vignetteColor;
-                if (Time.time >= vignetteTimer&&vignette.intensity.value<=0.5)
+                if (Time.time >= vignetteTimer && vignette.intensity.value <= 0.5f && isDecrasingVignnete == false)
                 {
                     vignette.intensity.value += 0.01f;
-                    vignetteTimer = Time.time+0.1f;
+                    vignetteTimer = Time.time + 0.05f;
                 }
-                else if(Time.time >= vignetteTimer&& vignette.intensity.value>=0.1)
+                else if (Time.time >= vignetteTimer && vignette.intensity.value > 0.38f)
                 {
+                    Debug.Log(isDecrasingVignnete);
+                    isDecrasingVignnete = true;
                     vignette.intensity.value -= 0.01f;
-                    vignetteTimer = Time.time+0.1f;
+                    vignetteTimer = Time.time + 0.05f;
+                }
+                else if (vignette.intensity.value <= 0.38f)
+                {
+                    isDecrasingVignnete = false;
                 }
             }
         }
