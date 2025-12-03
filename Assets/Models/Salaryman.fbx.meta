@@ -3,7 +3,22 @@ guid: ab834ed4466122942a67a0659dfda901
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: AtlasColor
+    second: {fileID: 2800000, guid: 72952e0a274024f46bc2dac5ac4d70c6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: SalarymanMetal
+    second: {fileID: 2800000, guid: b4bb3a01aec46da4c8555cf19c3221e7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: SalarymanRoughness
+    second: {fileID: 2800000, guid: e9f6aa9e797d71445837153b7072a024, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

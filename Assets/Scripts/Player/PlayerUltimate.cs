@@ -32,7 +32,8 @@ public class PlayerUltimate : MonoBehaviour
     public Image ultIconGUI;        // Moldura (Image no Canvas)
 
     public GameObject ultIconPen;   // Caneta (objeto da imagem interna)
-    public GameObject ultIconScissor;// Tesoura
+    public Image ultIconScissor;// Tesoura
+    public Sprite brokenScissor;
     public Sprite guiEmptySprite;   // Moldura descarregada
 
     public Sprite firstCharge; //imagem da primeira carga
@@ -57,7 +58,7 @@ public class PlayerUltimate : MonoBehaviour
         ultIconGUI.gameObject.SetActive(false);
         inkExplosion.gameObject.SetActive(false);
         ultIconPen.SetActive(false);
-        ultIconScissor.SetActive(false);
+        ultIconScissor.gameObject.SetActive(false);
         ultButton.onClick.AddListener(PenUltimate);
     }
 
@@ -179,6 +180,7 @@ public class PlayerUltimate : MonoBehaviour
         cooldownTime = 9999f;
         scissorActive = true;
         vignetteTimer = Time.time + 0.5f;
+        ultIconScissor.sprite = brokenScissor;
         StartCooldown();
     }
 
@@ -206,7 +208,14 @@ public class PlayerUltimate : MonoBehaviour
     {
         haveUlt = true;
         ultIconGUI.gameObject.SetActive(true);
-        ultIconPen.SetActive(true);
+        if (ultIndex == 1)
+        {
+            ultIconPen.SetActive(true);
+        }
+        else if (ultIndex == 2)
+        {
+            ultIconScissor.gameObject.SetActive(true);
+        }
 
         // Começa com o fundo descarregado
         ultIconGUI.sprite = guiEmptySprite;

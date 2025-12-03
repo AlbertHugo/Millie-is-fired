@@ -28,6 +28,7 @@ public class ChargingEnemy : MonoBehaviour
     private int currentLane = 0;
     private float stateTimer = 0f;
     LifeController lifeController;
+    public Animator animator;
 
     void Start()
     {
@@ -57,6 +58,10 @@ public class ChargingEnemy : MonoBehaviour
             Vector3 forwardMove = Vector3.forward * backwardSpeed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + forwardMove);
             // Verifica se o ataque terminou
+            if (Time.time > stateTimer-1f)
+            {
+                PlayAnimation();
+            }
             if (Time.time >= stateTimer)
             {
                 isCharging = false;
@@ -73,4 +78,13 @@ public class ChargingEnemy : MonoBehaviour
         float targetX = currentLane * laneOffset;
         float smoothX = Mathf.MoveTowards(rb.position.x, targetX, laneChangeSpeed * Time.fixedDeltaTime);
     }
-}
+
+    private void PlayAnimation()
+    {
+        if (animator != null)
+        {
+            animator.Play("ChargingAttack");
+        }
+    }
+
+    }

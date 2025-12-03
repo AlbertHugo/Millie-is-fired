@@ -385,7 +385,7 @@ public class ObjectSpawner : MonoBehaviour
         }
 
         // Altura do chão
-        float groundY = -1.9f;
+        float groundY = -0.7f;
 
         // Diferença necessária para encostar no chão
         float offsetY = groundY - lowestY;
