@@ -41,7 +41,11 @@ public class PlayerMoveMobile : MonoBehaviour
         //CONTROLE POR TOQUE
         if (Input.touchCount > 0)
         {
+            
             Touch touch = Input.GetTouch(0);
+
+            if (EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+            return;
 
             // Início do toque
             if (touch.phase == TouchPhase.Began)

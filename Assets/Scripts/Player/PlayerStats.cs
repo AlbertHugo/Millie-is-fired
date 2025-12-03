@@ -3,6 +3,7 @@ using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.VFX;
+using UnityEngine.EventSystems;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -38,10 +39,23 @@ public class PlayerStats : MonoBehaviour
     public bool lifeLock = false;
     private bool verifyLock = false;
 
+    //cheat
+    private bool isCheating = false;
+
+    private int tapCount = 0;
+    private float lastTapTime = 0f;
+    private float maxTapInterval = 0.4f;
+
     private void Start()
     {
+        isCheating=false;
         SPDBuff = PlayerPrefs.GetFloat("SPDBuff", 1);
         damaged.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        DetectCheatTaps();
     }
 
     private void FixedUpdate()
@@ -139,4 +153,44 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+        private void DetectCheatTaps()
+    {
+        bool inputDetected = false;
+
+        // PC (mouse)
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (!EventSystem.current.IsPointerOverGameObject())
+                inputDetected = true;
+        }
+
+        // Mobile (touch)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+                inputDetected = true;
+        }
+
+        if (!inputDetected)
+            return;
+
+        // Se o intervalo entre toques foi curto, conta como sequência
+        if (Time.time - lastTapTime <= maxTapInterval)
+        {
+            tapCount++;
+        }
+        else
+        {
+            tapCount = 1; // reinicia sequência
+        }
+
+        lastTapTime = Time.time;
+
+        // Ativa cheat ao atingir 4 toques
+        if (tapCount >= 4)
+        {
+            isCheating = true;
+            tapCount = 0; // reset
+        }
+    }
 }
