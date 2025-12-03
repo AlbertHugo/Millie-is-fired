@@ -30,7 +30,9 @@ public class PlayerUltimate : MonoBehaviour
 
     public Button ultButton;
     public Image ultIconGUI;        // Moldura (Image no Canvas)
+
     public GameObject ultIconPen;   // Caneta (objeto da imagem interna)
+    public GameObject ultIconScissor;// Tesoura
     public Sprite guiEmptySprite;   // Moldura descarregada
 
     public Sprite firstCharge; //imagem da primeira carga
@@ -55,6 +57,7 @@ public class PlayerUltimate : MonoBehaviour
         ultIconGUI.gameObject.SetActive(false);
         inkExplosion.gameObject.SetActive(false);
         ultIconPen.SetActive(false);
+        ultIconScissor.SetActive(false);
         ultButton.onClick.AddListener(PenUltimate);
     }
 
@@ -64,13 +67,14 @@ public class PlayerUltimate : MonoBehaviour
         if (haveUlt)
         {
             ultIconGUI.gameObject.SetActive(true);
-            ultIconPen.SetActive(true);
             if (ultIndex == 1)
             {
                 ultButton.onClick.AddListener(PenUltimate);
+                ultIconPen.gameObject.SetActive(true);
             }else if (ultIndex == 2)
             {
                 ultButton.onClick.AddListener(ScissorUltimate);
+                ultIconScissor.gameObject.SetActive(true);
             }
         }
 
@@ -108,7 +112,6 @@ public class PlayerUltimate : MonoBehaviour
         {
             if(globalVolume.profile.TryGet<Vignette>(out vignette))
             {
-                Debug.Log(vignette.intensity.value);
                 vignette.color.value = vignetteColor;
                 if (Time.time >= vignetteTimer && vignette.intensity.value <= 0.5f && isDecrasingVignnete == false)
                 {

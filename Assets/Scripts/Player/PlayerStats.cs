@@ -1,9 +1,10 @@
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.VFX;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -39,9 +40,9 @@ public class PlayerStats : MonoBehaviour
     public bool lifeLock = false;
     private bool verifyLock = false;
 
-    //cheat
+    [Header("Cheat")]
     private bool isCheating = false;
-
+    public TextMeshProUGUI cheatText;
     private int tapCount = 0;
     private float lastTapTime = 0f;
     private float maxTapInterval = 0.4f;
@@ -99,11 +100,25 @@ public class PlayerStats : MonoBehaviour
         //Dano de objeto básico
         if (other.gameObject.tag == "Obstacle"||other.gameObject.tag == "Enemy")
         {
-            TakeDamage(1);
+            if (isCheating)
+            {
+                TakeDamage(0);
+            }
+            else
+            {
+                TakeDamage(1);
+            }
         //Dano de morte imediata
         }else if (other.gameObject.tag == "Insta Kill")
         {
-            TakeDamage(life);
+            if (isCheating)
+            {
+                TakeDamage(0);
+            }
+            else
+            {
+                TakeDamage(life);
+            }
         }
 
         //Colisões com power ups
@@ -190,6 +205,7 @@ public class PlayerStats : MonoBehaviour
         if (tapCount >= 4)
         {
             isCheating = true;
+            cheatText.gameObject.SetActive(true);
             tapCount = 0; // reset
         }
     }
