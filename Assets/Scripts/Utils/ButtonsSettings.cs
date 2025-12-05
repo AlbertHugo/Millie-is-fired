@@ -5,6 +5,7 @@ public class ButtonsSettings : MonoBehaviour
 {
     public GameObject canvasAudio;
     public GameObject settingsMenu;
+    
 
     public void ShowCanvasAudio()
     {
@@ -16,9 +17,14 @@ public class ButtonsSettings : MonoBehaviour
         canvasAudio.SetActive(false);
     }
 
-    public void MainMenu()
+    public void HideSettings()
     {
-        SceneManager.LoadScene("MainMenu");
+        settingsMenu.SetActive(false);
+    }
+
+    public void showSettings()
+    {
+        settingsMenu.SetActive(true);
     }
 
     public void esconderSettings()
