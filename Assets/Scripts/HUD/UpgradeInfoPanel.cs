@@ -14,7 +14,7 @@ public class ItemInfoPanel : MonoBehaviour
     private void Awake()
     {
         // EXEMPLO COMPLETO COM PLACEHOLDERS
-        itemDescriptions = new string[7];
+        itemDescriptions = new string[8];
 
         itemDescriptions[0] = "Simple and direct! A damage up that increases the amount of damage your projectiles do.";
         itemDescriptions[1] = "More HP means more chances to get that paycheck, am I right?";
@@ -25,6 +25,7 @@ public class ItemInfoPanel : MonoBehaviour
         itemDescriptions[5] = "Ah, the paper... A destroyer of instant-death obstacles, but it deals less damage in general.";
 
         itemDescriptions[6] = "THE PEN! In one simple signature, you wipe all obstacles from the screen! Takes time to recharge, though.";
+        itemDescriptions[7] = "With all these budget cuts, it's now OUR time to make some! It's a one-time-use ultimate that caps your HP to one, but your damage is MASSIVELY increased! High risk, high reward.";
     }
 
     public void ShowInfo(string itemID)
@@ -56,6 +57,7 @@ public class ItemInfoPanel : MonoBehaviour
             case "Paper": return 5;
 
             case "Pen": return 6;
+            case "Scissors": return 7;
         }
 
         return -1;

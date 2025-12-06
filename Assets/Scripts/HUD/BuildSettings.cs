@@ -17,10 +17,12 @@ public class BuildSettings : MonoBehaviour
 
     public GameObject Pen;
     bool chosePen = false;
+    bool choseScissors = false;
 
     public GameObject paper;
     public GameObject ruler;
     public GameObject stapler;
+    public GameObject Scissors;
 
     [Header("UI Buttons")]
     public GameObject btnDamage;
@@ -32,12 +34,14 @@ public class BuildSettings : MonoBehaviour
     public GameObject btnPaper;
 
     public GameObject btnPen;
+    public GameObject btnScissors;
 
     public ItemInfoPanel infoPanel;
+    
 
     private void Start()
     {
-
+       
         choseDamage = PlayerPrefs.GetInt("choseDamage", 0) == 1;
         choseHP = PlayerPrefs.GetInt("choseHP", 0) == 1;
         choseSpeed = PlayerPrefs.GetInt("choseSpeed", 0) == 1;
@@ -47,6 +51,7 @@ public class BuildSettings : MonoBehaviour
         choseRuler = PlayerPrefs.GetInt("choseRuler", 0) == 1;
 
         chosePen = PlayerPrefs.GetInt("chosePen", 0) == 1;
+        choseScissors = PlayerPrefs.GetInt("choseScissors", 0) == 1;
 
         if (player != null)
         {
@@ -75,14 +80,20 @@ public class BuildSettings : MonoBehaviour
             }
 
             if (chosePen)
+            {
                 PlayerUltimate.haveUlt = true;
-            PlayerUltimate.ultIndex = 1;
+                PlayerUltimate.ultIndex = 1;
+            }
+
+            if (choseScissors)
+            {
+                PlayerUltimate.haveUlt = true;
+                PlayerUltimate.ultIndex = 2;
+            }
         }
 
         RefreshButtons();
     }
-
-
 
     public void BuildDamage()
     {
@@ -114,6 +125,7 @@ public class BuildSettings : MonoBehaviour
         PlayerPrefs.SetInt("choseRuler", 1);
         RefreshButtons();
         infoPanel.ShowInfo("Ruler");
+        PlayerPrefs.SetInt("DisableWeaponSpawn", 1);
 
     }
 
@@ -123,6 +135,8 @@ public class BuildSettings : MonoBehaviour
         PlayerPrefs.SetInt("choseStapler", 1);
         RefreshButtons();
         infoPanel.ShowInfo("Stapler");
+        PlayerPrefs.SetInt("DisableWeaponSpawn", 1);
+
     }
 
     public void BuildPaper()
@@ -131,6 +145,8 @@ public class BuildSettings : MonoBehaviour
         PlayerPrefs.SetInt("chosePaper", 1);
         RefreshButtons();
         infoPanel.ShowInfo("Paper");
+        PlayerPrefs.SetInt("DisableWeaponSpawn", 1);
+
     }
 
     public void BuildPen()
@@ -138,10 +154,27 @@ public class BuildSettings : MonoBehaviour
         Pen.SetActive(true);
         chosePen = true;
         PlayerPrefs.SetInt("chosePen", 1);
+
         PlayerUltimate.haveUlt = true;
         PlayerUltimate.ultIndex = 1;
+
         RefreshButtons();
         infoPanel.ShowInfo("Pen");
+        PlayerPrefs.SetInt("DisableUltSpawn", 1);
+    }
+
+    public void BuildScissors()
+    {
+        Scissors.SetActive(true);
+        choseScissors = true;
+        PlayerPrefs.SetInt("choseScissors", 1);
+
+        PlayerUltimate.haveUlt = true;
+        PlayerUltimate.ultIndex = 2;
+
+        RefreshButtons();
+        infoPanel.ShowInfo("Scissors");
+        PlayerPrefs.SetInt("DisableUltSpawn", 1);
     }
 
 
@@ -157,6 +190,7 @@ public class BuildSettings : MonoBehaviour
         PlayerAttack.projectile = null;
 
         chosePen = false;
+        choseScissors = false;
         choseDamage = false;
         choseHP = false;
         choseSpeed = false;
@@ -164,6 +198,9 @@ public class BuildSettings : MonoBehaviour
         chosePaper = false;
         choseStapler = false;
         choseRuler = false;
+
+        PlayerPrefs.SetInt("DisableWeaponSpawn", 0);
+        PlayerPrefs.SetInt("DisableUltSpawn", 0);
 
         PlayerPrefs.DeleteKey("choseDamage");
         PlayerPrefs.DeleteKey("choseHP");
@@ -174,22 +211,21 @@ public class BuildSettings : MonoBehaviour
         PlayerPrefs.DeleteKey("choseRuler");
 
         PlayerPrefs.DeleteKey("chosePen");
+        PlayerPrefs.DeleteKey("choseScissors");
 
         PlayerPrefs.Save();
 
         RefreshButtons();
-
     }
+
 
     void RefreshButtons()
     {
-
         bool anyUpgradeChosen = choseDamage || choseHP || choseSpeed;
 
         btnDamage.SetActive(!anyUpgradeChosen || choseDamage);
         btnHP.SetActive(!anyUpgradeChosen || choseHP);
         btnSpeed.SetActive(!anyUpgradeChosen || choseSpeed);
-
 
         bool anyWeaponChosen = choseRuler || choseStapler || chosePaper;
 
@@ -197,13 +233,19 @@ public class BuildSettings : MonoBehaviour
         btnStapler.SetActive(!anyWeaponChosen || choseStapler);
         btnPaper.SetActive(!anyWeaponChosen || chosePaper);
 
-        btnPen.SetActive(!chosePen);
-        if (!chosePen)
+        bool anyUltChosen = chosePen || choseScissors;
+
+        btnPen.SetActive(!anyUltChosen || chosePen);
+        btnScissors.SetActive(!anyUltChosen || choseScissors);
+
+        if (!chosePen && !choseScissors)
         {
             PlayerUltimate.haveUlt = false;
             PlayerUltimate.ultIndex = 0;
         }
     }
+
+
 
     public void HideBuildPanel()
     {

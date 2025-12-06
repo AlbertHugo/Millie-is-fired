@@ -11,6 +11,9 @@ public class ObjectSpawner : MonoBehaviour
     float distance;
     float score;
 
+    public bool disableWeaponSpawn = false;
+    public bool disableUltSpawn = false;
+
     [Header("Obstáculos")]
     public GameObject[] obstaclePrefabs;
     public float obstacleSpawnDistance = 40f;
@@ -64,6 +67,8 @@ public class ObjectSpawner : MonoBehaviour
 
     void Start()
     {
+        disableWeaponSpawn = PlayerPrefs.GetInt("DisableWeaponSpawn", 0) == 1;
+        disableUltSpawn = PlayerPrefs.GetInt("DisableUltSpawn", 0) == 1;
         laneBlocked = -5;
         hasChoosedLane = false;
         timerIncreasing = true;
@@ -121,19 +126,24 @@ public class ObjectSpawner : MonoBehaviour
             nextPowerUpDistance += repeatEvery;
         }
 
-        //spawn de armas
-        if (distance >= spawnDistance && spawnDistance > 5f)
-        {
-            SpawnWeapon();
-            spawnDistance = 4f;
-        }
+            //spawn de armas
+            if (!disableWeaponSpawn)
+            {
+                if (distance >= spawnDistance && spawnDistance > 5f)
+                {
+                    SpawnWeapon();
+                    spawnDistance = 4f;
+                }
+            }
 
-        if (distance >= spawnUlt && canSpawnUlt&&PlayerUltimate.haveUlt==false)
-        {
-           SpawnUlt();
-           canSpawnUlt= false;
-        }
-
+            if (!disableUltSpawn)
+            {
+                if (distance >= spawnUlt && canSpawnUlt && PlayerUltimate.haveUlt == false)
+                {
+                    SpawnUlt();
+                    canSpawnUlt = false;
+                }
+            }
             // Inimigos
             if (player.position.z > obstacleBlockEndZ)
             {

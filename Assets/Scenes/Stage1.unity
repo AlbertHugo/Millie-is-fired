@@ -5184,6 +5184,7 @@ MonoBehaviour:
   paper: {fileID: 7681833815104004737, guid: 54785a05126e9fb4585c25c509a8433b, type: 3}
   ruler: {fileID: 6202456332679273314, guid: cbda5f6dfc0ada64386d729dfd0bd46b, type: 3}
   stapler: {fileID: 2302271282251570536, guid: 0722a528bf8b8724cbcd41974f0f4bf8, type: 3}
+  Scissors: {fileID: 5576881114677335826, guid: 846dedcd5b694b4499a89c32605e3360, type: 3}
   btnDamage: {fileID: 1490948614}
   btnHP: {fileID: 1490948614}
   btnSpeed: {fileID: 1490948614}
@@ -5191,6 +5192,7 @@ MonoBehaviour:
   btnStapler: {fileID: 1490948614}
   btnPaper: {fileID: 1490948614}
   btnPen: {fileID: 1490948614}
+  btnScissors: {fileID: 1490948614}
   infoPanel: {fileID: 0}
 --- !u!1 &481617709
 GameObject:
@@ -12467,6 +12469,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7499345553048756267}
   playerStats: {fileID: 8671729257900120901}
+  disableWeaponSpawn: 0
+  disableUltSpawn: 0
   obstaclePrefabs:
   - {fileID: 358745821325754041, guid: 4c231d1bbc681bd49bead7ff89a5ba32, type: 3}
   - {fileID: 2466432301181725185, guid: 5afa7420d22c9a248a39e032f197d38e, type: 3}
