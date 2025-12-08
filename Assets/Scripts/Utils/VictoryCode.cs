@@ -6,6 +6,7 @@ public class VictoryCode : MonoBehaviour
 {
 
     public GameObject upgradeScreen;
+    public GameObject creditsScreen;
     public Button backButton;
     private float popUpTimer;
     private bool popUpSpawned;
@@ -16,6 +17,7 @@ public class VictoryCode : MonoBehaviour
         upgradeScreen.SetActive(false);
         popUpTimer = Time.time + 0.5f;
         backButton.onClick.AddListener(BackToMenu);
+        creditsScreen.SetActive(true);
     }
 
     void FixedUpdate()
@@ -30,5 +32,10 @@ public class VictoryCode : MonoBehaviour
     private void BackToMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void HideCredits()
+    {
+        creditsScreen.SetActive(false);
     }
 }
