@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
     private float laneBaseSpeed = 7f;
     private float jumpForce = 8f;       // força do pulo
     private float jumpTimer = 0f;
+    public Animator animator;
 
     [Header("Pistas")]
     public float laneOffset = 3f; // distância entre pistas
@@ -47,6 +48,7 @@ public class PlayerMove : MonoBehaviour
         // Pulo
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded&&jumpTimer<=Time.time)
         {
+            animator.Play("Armature_Jump");
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
             jumpTimer = Time.time+1f;

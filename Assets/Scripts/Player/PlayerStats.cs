@@ -17,6 +17,8 @@ public class PlayerStats : MonoBehaviour
     public GameObject hpIcon;
     public GameObject spdIcon;
 
+    public Animator animator;
+
     [Header("Atributos do Jogador")]
     public float life = 3f;
     private float baseLife = 3f;
@@ -160,7 +162,8 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Defeat");
+            animator.Play("Armature_Death");
+            Invoke("LoadDefeat", 1f);
         }
         if (verifyLock)
         {
@@ -168,7 +171,12 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-        private void DetectCheatTaps()
+    void LoadDefeat()
+    {
+        SceneManager.LoadScene("Defeat");
+    }
+
+    private void DetectCheatTaps()
     {
         bool inputDetected = false;
 

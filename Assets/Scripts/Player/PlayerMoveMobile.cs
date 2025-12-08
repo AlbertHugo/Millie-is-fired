@@ -8,6 +8,7 @@ public class PlayerMoveMobile : MonoBehaviour
     private float laneBaseSpeed = 8f;
     private float jumpForce = 8f;       // força do pulo
     private float jumpTimer = 0f;
+    public Animator animator;
 
     [Header("Pistas")]
     public float laneOffset = 3f;       // distância entre as pistas
@@ -81,6 +82,7 @@ public class PlayerMoveMobile : MonoBehaviour
                 {
                     if (isGrounded && jumpTimer <= Time.time)
                     {
+                        animator.Play("Armature_Jump");
                         jumpRequested = true;
                         jumpTimer = Time.time + 1f; // tempo mínimo entre pulos
                     }

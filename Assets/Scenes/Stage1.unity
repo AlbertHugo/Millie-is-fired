@@ -19022,6 +19022,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103984968}
   m_Mesh: {fileID: 6753568942237695447, guid: e38660e2dd39e1c4d9105ef0bcc6befc, type: 3}
+--- !u!95 &2111684471 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2859952615638192371, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+  m_PrefabInstance: {fileID: 4967562743325837647}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2124383388
 GameObject:
   m_ObjectHideFlags: 0
@@ -19726,6 +19731,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 220611803504278459, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2111684471}
+    - target: {fileID: 220611803504278459, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -19733,6 +19742,10 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 1531645717}
+    - target: {fileID: 1984291398673199929, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2111684471}
     - target: {fileID: 1984291398673199929, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -19793,6 +19806,10 @@ PrefabInstance:
       propertyPath: spdIcon
       value: 
       objectReference: {fileID: 642209562}
+    - target: {fileID: 7504740577030883180, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2111684471}
     - target: {fileID: 7504740577030883180, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
       propertyPath: cheatText
       value: 
