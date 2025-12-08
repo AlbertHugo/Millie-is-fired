@@ -19819,7 +19819,13 @@ PrefabInstance:
       value: Millicent_Humanoide
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1831991121871571811, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+    - {fileID: 7243836783090118792, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+    - {fileID: 6779104809244388098, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+    - {fileID: 112068447202443407, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+    - {fileID: 1508025991841525736, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
+    - {fileID: 6036930518903446740, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 597ff60bfdb0a0d49beac0a6882d970d, type: 3}
